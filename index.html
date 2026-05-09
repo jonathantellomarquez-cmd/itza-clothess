@@ -3,924 +3,490 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ITZA CLOTHESS | Fabricantes Directos · Monterrey</title>
+<title>ITZA CLOTHESS | Fabricantes Directos · Monterrey NL</title>
 <meta name="description" content="Fabricantes directos de ropa en Monterrey, NL. Bordado computarizado, impresión DTF. Playeras, polos, sudaderas, uniformes. Tallas XS–5XL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ── */
+/* ══════════════ RESET & TOKENS ══════════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:        #D8D6D0;
-  --bg2:       #CCCAC4;
-  --navy:      #163556;
-  --navy2:     #1E4A78;
-  --navy-lt:   #1B3A5C;
-  --black:     #0D0D0D;
-  --white:     #F5F3EF;
-  --text:      #1a1a1a;
-  --text-lt:   #444;
-  --radius:    18px;
-  --radius-sm: 10px;
-  --font-h:    'Barlow Condensed','Bebas Neue',sans-serif;
-  --font-b:    'Inter',sans-serif;
-  --tr:        cubic-bezier(.76,0,.24,1);
-  --shadow:    0 8px 40px rgba(22,53,86,.15);
+  --bg:       #D8D6D0;
+  --bg-d:     #C8C6C0;
+  --surface:  #E6E4DE;
+  --white:    #F5F3EF;
+  --navy:     #163556;
+  --navy-2:   #1B3F65;
+  --navy-lt:  #2A5A8C;
+  --black:    #0D0D0D;
+  --text:     #1C1C1C;
+  --muted:    #5A5A5A;
+  --gold:     #C49A3C;
+  --r:        16px;
+  --r-sm:     8px;
+  --r-lg:     24px;
+  --shadow:   0 12px 48px rgba(22,53,86,.14);
+  --shadow-lg:0 24px 80px rgba(22,53,86,.22);
+  --ease:     cubic-bezier(.76,0,.24,1);
+  --fh:       'Barlow Condensed',sans-serif;
+  --fb:       'Inter',sans-serif;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:var(--font-b);background:var(--bg);color:var(--text);cursor:none;overflow-x:hidden;}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);cursor:none;overflow-x:hidden;}
 ::selection{background:var(--navy);color:var(--white);}
 a{color:inherit;text-decoration:none;}
 img{display:block;max-width:100%;}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px;}
 
-/* ── PROGRESS ── */
-#progress{position:fixed;top:0;left:0;height:3px;background:var(--navy);z-index:9999;width:0;transition:width .1s;}
+/* ══════════════ CURSOR ══════════════ */
+#cursor{position:fixed;top:0;left:0;z-index:99999;pointer-events:none;}
+.c-dot{width:8px;height:8px;background:var(--navy);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:transform .15s,background .2s;}
+.c-ring{width:36px;height:36px;border:1.5px solid rgba(22,53,86,.45);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease),border-color .3s;}
+body.hovered .c-ring{width:56px;height:56px;border-color:var(--navy);}
+body.clicking .c-dot{transform:translate(-50%,-50%) scale(1.8);background:var(--gold);}
 
-/* ── CURSOR ── */
-#cur{position:fixed;top:0;left:0;z-index:9998;pointer-events:none;}
-#cur-d{width:10px;height:10px;background:var(--navy);border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
-#cur-r{width:38px;height:38px;border:1.5px solid rgba(22,53,86,.5);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .35s var(--tr),height .35s var(--tr);}
+/* ══════════════ PROGRESS ══════════════ */
+#prog{position:fixed;top:0;left:0;height:2.5px;background:linear-gradient(90deg,var(--navy),var(--navy-lt));z-index:9999;width:0;transition:width .08s;}
 
-/* ── NAV ── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
-#nav.on{background:rgba(216,214,208,.94);backdrop-filter:blur(18px);padding:14px 5%;border-bottom:1px solid rgba(22,53,86,.12);box-shadow:0 2px 20px rgba(22,53,86,.08);}
-.nav-logo{font-family:var(--font-h);font-size:clamp(20px,2.5vw,26px);letter-spacing:4px;color:var(--navy);line-height:1;}
-.nav-logo small{display:block;font-size:.42em;letter-spacing:5px;color:var(--navy2);font-family:var(--font-b);font-weight:400;opacity:.8;}
-.nav-links{display:flex;gap:32px;list-style:none;}
-.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--navy2);position:relative;padding-bottom:3px;transition:color .3s;}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--navy);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--tr);}
-.nav-links a:hover{color:var(--navy);}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
-.nav-cta{padding:10px 24px;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:4px;transition:background .3s,transform .2s;cursor:none;}
-.nav-cta:hover{background:var(--navy2);transform:translateY(-2px);}
+/* ══════════════ NAV ══════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:24px 5%;display:flex;align-items:center;justify-content:space-between;transition:all .45s var(--ease);}
+#nav.stuck{background:rgba(214,212,206,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 5%;border-bottom:1px solid rgba(22,53,86,.1);box-shadow:0 1px 24px rgba(22,53,86,.08);}
+.logo{display:flex;align-items:center;gap:14px;}
+.logo-icon{width:38px;height:38px;border:1.5px solid var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.logo-icon svg{width:20px;height:20px;}
+.logo-text{font-family:var(--fh);font-size:22px;letter-spacing:4px;color:var(--navy);line-height:1;}
+.logo-text small{display:block;font-size:.42em;letter-spacing:5px;color:var(--navy-lt);font-family:var(--fb);font-weight:400;opacity:.75;text-transform:uppercase;}
+.nav-mid{display:flex;gap:36px;list-style:none;}
+.nav-mid a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:.65;transition:opacity .25s;}
+.nav-mid a:hover{opacity:1;}
+.nav-end{display:flex;align-items:center;gap:14px;}
+.nav-wa{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:#25D366;color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:transform .2s,box-shadow .2s;cursor:none;}
+.nav-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
+.nav-cta{padding:10px 22px;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:4px;transition:background .25s,transform .2s;cursor:none;}
+.nav-cta:hover{background:var(--navy-2);transform:translateY(-2px);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:none;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:.3s;}
 
-/* ── MOBILE MENU ── */
-.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:28px;}
-.mob-menu.open{display:flex;}
-.mob-menu a{font-family:var(--font-h);font-size:52px;color:var(--white);letter-spacing:4px;transition:color .2s;}
-.mob-menu a:hover{color:var(--bg);}
-.mob-close{position:absolute;top:24px;right:28px;font-size:28px;color:rgba(255,255,255,.6);cursor:none;}
+/* ══════════════ MOBILE MENU ══════════════ */
+.mob{display:none;position:fixed;inset:0;z-index:1001;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:24px;}
+.mob.open{display:flex;}
+.mob a{font-family:var(--fh);font-size:56px;color:var(--white);letter-spacing:4px;transition:.2s;}
+.mob a:hover{color:var(--bg);}
+.mob-x{position:absolute;top:24px;right:28px;font-size:26px;color:rgba(255,255,255,.5);cursor:none;}
 
-/* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
-.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:flex-end;padding:80px 6% 60px;position:relative;overflow:hidden;}
-.hero-left::before{content:'ITZA';position:absolute;top:-40px;left:-20px;font-family:var(--font-h);font-size:clamp(200px,28vw,360px);color:rgba(255,255,255,.04);line-height:1;pointer-events:none;letter-spacing:-10px;}
-.hero-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:24px;display:flex;align-items:center;gap:12px;animation:fadeUp .8s var(--tr) both;}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.4);}
-.hero-h1{font-family:var(--font-h);font-size:clamp(72px,10vw,130px);line-height:.9;color:var(--white);letter-spacing:2px;animation:fadeUp .9s .1s var(--tr) both;}
-.hero-h1 span{display:block;color:var(--bg);opacity:.85;}
-.hero-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;margin:28px 0 40px;max-width:380px;animation:fadeUp 1s .2s var(--tr) both;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 1s .35s var(--tr) both;}
-.btn-w{padding:15px 36px;background:var(--white);color:var(--navy);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:background .3s,transform .3s;box-shadow:0 6px 24px rgba(0,0,0,.2);}
-.btn-w:hover{background:var(--bg);transform:translateY(-3px);}
-.btn-ghost{padding:15px 36px;border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;}
-.btn-ghost:hover{border-color:var(--white);color:var(--white);}
-.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px;animation:fadeUp 1s .5s var(--tr) both;}
-.h-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;}
-.hero-right{position:relative;overflow:hidden;}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 8s ease;}
-.hero-right:hover img{transform:scale(1.04);}
-.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%);}
-.hero-scroll{position:absolute;bottom:32px;right:32px;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;}
-.hero-scroll span{font-size:9px;letter-spacing:3px;color:var(--white);text-transform:uppercase;writing-mode:vertical-lr;opacity:.6;}
-.scroll-l{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);animation:scrollP 2s ease-in-out infinite;}
-@keyframes scrollP{0%,100%{transform:scaleY(1);opacity:.8;}50%{transform:scaleY(.5);opacity:.3;}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+/* ══════════════ HERO ══════════════ */
+#hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden;}
+.hero-l{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:140px 7% 80px;position:relative;overflow:hidden;}
+.hero-l::before{content:'ITZA';position:absolute;left:-30px;bottom:-60px;font-family:var(--fh);font-size:clamp(280px,35vw,520px);color:rgba(255,255,255,.025);line-height:1;pointer-events:none;letter-spacing:-16px;user-select:none;}
+.hero-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:28px;display:flex;align-items:center;gap:14px;animation:fadeUp .9s var(--ease) both;}
+.hero-eyebrow span{display:block;width:32px;height:1px;background:rgba(255,255,255,.3);}
+.hero-h1{font-family:var(--fh);font-size:clamp(80px,11vw,150px);line-height:.88;color:var(--white);letter-spacing:2px;animation:fadeUp 1s .1s var(--ease) both;}
+.hero-h1 em{display:block;font-style:normal;-webkit-text-stroke:1.5px rgba(255,255,255,.3);color:transparent;}
+.hero-desc{font-size:clamp(13px,1.4vw,15px);font-weight:300;color:rgba(255,255,255,.55);line-height:1.8;margin:32px 0 44px;max-width:400px;animation:fadeUp 1s .2s var(--ease) both;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 1s .3s var(--ease) both;}
+.btn-solid{padding:15px 38px;background:var(--white);color:var(--navy);font-weight:700;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;box-shadow:0 6px 28px rgba(0,0,0,.2);}
+.btn-solid:hover{background:var(--bg);transform:translateY(-3px);}
+.btn-outline-w{padding:15px 38px;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.75);font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;}
+.btn-outline-w:hover{border-color:rgba(255,255,255,.6);color:var(--white);}
+.hero-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:44px;animation:fadeUp 1s .45s var(--ease) both;}
+.chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:7px 16px;border-radius:100px;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.hero-r{position:relative;overflow:hidden;}
+.hero-r img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform 10s ease;}
+#hero:hover .hero-r img{transform:scale(1.05);}
+.hero-r-overlay{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(22,53,86,.2) 50%,transparent 100%);}
+.hero-r-badge{position:absolute;bottom:40px;right:40px;background:rgba(245,243,239,.92);backdrop-filter:blur(12px);border-radius:var(--r);padding:20px 24px;box-shadow:var(--shadow);}
+.hero-r-badge .big{font-family:var(--fh);font-size:40px;color:var(--navy);line-height:1;}
+.hero-r-badge .small{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+.hero-scroll-ind{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;}
+.hero-scroll-ind span{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scr 2s ease-in-out infinite;}
+@keyframes scr{0%,100%{opacity:.7;transform:scaleY(1);}50%{opacity:.25;transform:scaleY(.5);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
 
-/* ── STATS STRIP ── */
-.stats-strip{background:var(--navy2);display:grid;grid-template-columns:repeat(4,1fr);}
-.stat{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1);transition:background .3s;}
+/* ══════════════ STATS ══════════════ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy-2);}
+.stat{padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background .3s,transform .3s;}
 .stat:last-child{border-right:none;}
 .stat:hover{background:var(--navy);}
-.stat-n{font-family:var(--font-h);font-size:clamp(36px,4vw,52px);color:var(--white);line-height:1;}
-.stat-l{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;}
+.stat-n{font-family:var(--fh);font-size:clamp(40px,4vw,58px);color:var(--white);line-height:1;letter-spacing:1px;}
+.stat-l{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;}
 
-/* ── SECTIONS ── */
-.section{padding:100px 5%;position:relative;}
-.s-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.s-label::before{content:'';flex:0 0 24px;height:1.5px;background:var(--navy);}
-.s-title{font-family:var(--font-h);font-size:clamp(48px,7vw,90px);line-height:.92;color:var(--navy);letter-spacing:1px;}
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--tr),transform .8s var(--tr);}
-.reveal.vis{opacity:1;transform:none;}
+/* ══════════════ SECTION BASE ══════════════ */
+.sec{padding:110px 5%;position:relative;}
+.s-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.s-label::before{content:'';flex:0 0 26px;height:1.5px;background:var(--navy);}
+.s-title{font-family:var(--fh);font-size:clamp(52px,7.5vw,100px);line-height:.9;color:var(--navy);letter-spacing:1px;text-transform:uppercase;}
+.s-title em{font-style:italic;color:var(--navy-lt);}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+.reveal-fast{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.reveal-fast.in{opacity:1;transform:none;}
 
-/* ── ABOUT ── */
+/* ══════════════ ABOUT ══════════════ */
 #about{background:var(--white);}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
-.about-img-col{position:relative;}
-.about-main-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow);}
-.about-main-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s var(--tr);}
-.about-main-img:hover img{transform:scale(1.04);}
-.about-tag{position:absolute;background:var(--navy);color:var(--white);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:10px 18px;border-radius:var(--radius-sm);}
-.about-tag.t1{top:-16px;right:-16px;}
-.about-tag.t2{bottom:28px;left:-16px;}
-.about-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(22,53,86,.12);border-radius:var(--radius-sm);overflow:hidden;margin-top:24px;}
-.mini-stat{background:var(--white);padding:22px 18px;text-align:center;}
-.mini-n{font-family:var(--font-h);font-size:38px;color:var(--navy);line-height:1;}
-.mini-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-lt);margin-top:2px;}
-.about-text p{font-size:16px;line-height:1.85;color:var(--text-lt);margin-bottom:20px;}
-.process-list{margin-top:36px;}
-.process-item{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(22,53,86,.1);transition:padding-left .3s;}
-.process-item:hover{padding-left:6px;}
-.p-num{font-family:var(--font-h);font-size:36px;color:rgba(22,53,86,.15);min-width:52px;line-height:1;transition:color .3s;}
-.process-item:hover .p-num{color:var(--navy);}
-.p-info h4{font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:2px;text-transform:uppercase;}
-.p-info p{font-size:13px;color:var(--text-lt);line-height:1.6;}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-visual{}
+.about-img-main{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:.75;box-shadow:var(--shadow-lg);position:relative;}
+.about-img-main img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s var(--ease);}
+.about-img-main:hover img{transform:scale(1.04);}
+.about-img-main::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,53,86,.3),transparent 50%);}
+.about-tag{position:absolute;z-index:2;background:var(--navy);color:var(--white);font-weight:700;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 18px;border-radius:var(--r-sm);}
+.about-tag.a{top:-16px;right:-16px;}
+.about-tag.b{bottom:24px;left:-16px;}
+.about-mini{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(22,53,86,.1);border-radius:var(--r-sm);overflow:hidden;margin-top:20px;}
+.mn{background:var(--white);padding:22px 16px;text-align:center;}
+.mn-n{font-family:var(--fh);font-size:40px;color:var(--navy);line-height:1;}
+.mn-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.about-text p{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:18px;}
+.about-text p strong{color:var(--navy);}
+.process{margin-top:40px;}
+.pi{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid rgba(22,53,86,.08);transition:padding-left .3s;}
+.pi:hover{padding-left:8px;}
+.pi-n{font-family:var(--fh);font-size:40px;color:rgba(22,53,86,.12);min-width:54px;line-height:1;transition:color .3s;}
+.pi:hover .pi-n{color:var(--navy);}
+.pi-t{font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase;}
+.pi-d{font-size:13px;color:var(--muted);line-height:1.6;}
 
-/* ── PRODUCTS ── */
+/* ══════════════ PRODUCTS ══════════════ */
 #products{background:var(--bg);}
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 52px;}
-.f-btn{padding:10px 22px;border-radius:100px;border:1.5px solid rgba(22,53,86,.25);background:transparent;color:var(--navy2);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:none;transition:all .3s;}
-.f-btn.active,.f-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;}
+.prod-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:48px;}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;}
+.fb{padding:9px 22px;border-radius:100px;border:1.5px solid rgba(22,53,86,.2);background:transparent;color:var(--navy);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:none;transition:all .25s;}
+.fb.on,.fb:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.prod-count{font-size:12px;color:var(--muted);letter-spacing:1px;}
+
+/* ── GRID MASONRY FEEL ── */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.pgrid{grid-template-columns:1fr;}}
 
 /* ── CARD ── */
-.card{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(22,53,86,.08);transition:transform .4s var(--tr),box-shadow .4s;cursor:none;position:relative;}
-.card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(22,53,86,.18);}
-.card-img{height:260px;overflow:hidden;position:relative;background:var(--bg);}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--tr);}
-.card:hover .card-img img{transform:scale(1.07);}
-.card-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
-.card-body{padding:22px 22px 18px;}
-.card-name{font-family:var(--font-h);font-size:22px;color:var(--navy);line-height:1.1;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;}
-.card-mat{font-size:12px;color:var(--navy2);font-weight:500;margin-bottom:10px;letter-spacing:.5px;}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.ctag{background:var(--bg);border:1px solid rgba(22,53,86,.12);padding:4px 10px;border-radius:100px;font-size:10px;color:var(--text-lt);letter-spacing:.5px;}
-.card-sizes{font-size:11px;color:var(--text-lt);border-top:1px solid rgba(22,53,86,.08);padding-top:12px;display:flex;align-items:center;gap:8px;}
-.card-sizes strong{color:var(--navy);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
-.card-cta{display:block;margin:14px 0 0;padding:12px;text-align:center;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius-sm);transition:background .3s;}
-.card-cta:hover{background:var(--navy2);}
+.pcard{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(22,53,86,.07);transition:transform .45s var(--ease),box-shadow .45s;cursor:none;opacity:0;transform:translateY(32px);}
+.pcard:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);}
+.pcard-img{position:relative;overflow:hidden;height:280px;background:var(--bg);}
+.pcard-img img.thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s var(--ease);}
+.pcard:hover .pcard-img img.thumb{transform:scale(1.08);}
+/* "Ver catálogo" overlay */
+.pcard-overlay{position:absolute;inset:0;background:rgba(22,53,86,.72);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;transition:opacity .35s;}
+.pcard:hover .pcard-overlay{opacity:1;}
+.overlay-icon{width:56px;height:56px;border:2px solid rgba(255,255,255,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:scale(.8);transition:transform .3s var(--ease);}
+.pcard:hover .overlay-icon{transform:scale(1);}
+.overlay-icon svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;}
+.overlay-text{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.pcard-cat{position:absolute;top:14px;left:14px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:100px;z-index:1;}
+.pcard-body{padding:22px 22px 20px;}
+.pcard-name{font-family:var(--fh);font-size:22px;color:var(--navy);line-height:1.1;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px;}
+.pcard-mat{font-size:11px;color:var(--navy-lt);font-weight:500;margin-bottom:10px;letter-spacing:.3px;}
+.pcard-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+.ptag{background:var(--bg);border:1px solid rgba(22,53,86,.1);padding:3px 9px;border-radius:100px;font-size:9px;color:var(--muted);letter-spacing:.5px;}
+.pcard-foot{border-top:1px solid rgba(22,53,86,.07);padding-top:12px;display:flex;align-items:center;justify-content:space-between;}
+.pcard-sz{font-size:10px;color:var(--muted);}
+.pcard-sz strong{color:var(--navy);font-size:9px;letter-spacing:1px;text-transform:uppercase;}
+.pcard-wa{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--r-sm);transition:background .2s;cursor:none;}
+.pcard-wa:hover{background:var(--navy-2);}
 
-/* ── MARQUEE ── */
-#marquee{padding:60px 0;background:var(--navy);overflow:hidden;position:relative;}
-.mq-label{text-align:center;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:32px;}
-.mq-track{display:flex;gap:20px;width:max-content;animation:mq 35s linear infinite;}
+/* ══════════════ MODAL (CATALOG LIGHTBOX) ══════════════ */
+#modal{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;}
+#modal.open{display:flex;}
+.modal-bg{position:absolute;inset:0;background:rgba(13,13,13,.88);backdrop-filter:blur(8px);animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal-box{position:relative;z-index:1;max-width:680px;width:100%;max-height:92vh;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);animation:modalIn .4s var(--ease) both;}
+@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(30px);}to{opacity:1;transform:none;}}
+.modal-img-wrap{overflow-y:auto;max-height:92vh;background:var(--white);}
+.modal-img-wrap img{width:100%;display:block;}
+.modal-close{position:absolute;top:16px;right:16px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(13,13,13,.7);border:none;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,transform .2s;}
+.modal-close:hover{background:var(--navy);transform:rotate(90deg);}
+.modal-close svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;}
+.modal-wa{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(22,53,86,.95),rgba(22,53,86,.7),transparent);padding:48px 24px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.modal-wa-info{color:var(--white);}
+.modal-wa-info .name{font-family:var(--fh);font-size:26px;letter-spacing:1px;line-height:1;}
+.modal-wa-info .hint{font-size:11px;opacity:.6;margin-top:3px;}
+.modal-wa-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:#25D366;color:white;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:100px;white-space:nowrap;transition:box-shadow .2s;cursor:none;}
+.modal-wa-btn:hover{box-shadow:0 8px 28px rgba(37,211,102,.5);}
+.modal-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 12px;pointer-events:none;}
+.mnav-btn{pointer-events:all;width:40px;height:40px;border-radius:50%;background:rgba(245,243,239,.9);border:none;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,transform .2s;}
+.mnav-btn:hover{background:var(--white);transform:scale(1.1);}
+.mnav-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2.5;}
+
+/* ══════════════ MARQUEE ══════════════ */
+#marquee{padding:56px 0;background:var(--navy);overflow:hidden;position:relative;}
+#marquee::before,#marquee::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:1;pointer-events:none;}
+#marquee::before{left:0;background:linear-gradient(90deg,var(--navy),transparent);}
+#marquee::after{right:0;background:linear-gradient(-90deg,var(--navy),transparent);}
+.mq-track{display:flex;gap:16px;width:max-content;animation:mq 40s linear infinite;}
 .mq-track:hover{animation-play-state:paused;}
 @keyframes mq{to{transform:translateX(-50%);}}
-.mq-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:12px 22px;border-radius:100px;font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap;transition:all .3s;}
-.mq-chip:hover{background:rgba(255,255,255,.13);color:var(--white);}
-.mq-chip span{font-size:16px;}
+.mchip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:11px 22px;border-radius:100px;font-size:12px;color:rgba(255,255,255,.6);white-space:nowrap;transition:all .25s;cursor:none;}
+.mchip:hover{background:rgba(255,255,255,.12);color:var(--white);border-color:rgba(255,255,255,.3);}
+.mchip span{font-size:15px;}
 
-/* ── SERVICES ── */
-#services{background:var(--white);}
-.srv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px;}
-.srv-cards{display:flex;flex-direction:column;gap:16px;}
-.srv-card{background:var(--bg);border:1px solid rgba(22,53,86,.1);border-radius:var(--radius);padding:32px 28px;transition:all .4s var(--tr);position:relative;overflow:hidden;}
-.srv-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--tr);}
-.srv-card:hover{background:var(--white);box-shadow:var(--shadow);transform:translateX(6px);}
-.srv-card:hover::before{transform:scaleY(1);}
-.srv-icon{font-size:36px;margin-bottom:16px;}
-.srv-name{font-family:var(--font-h);font-size:28px;color:var(--navy);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;}
-.srv-desc{font-size:13px;color:var(--text-lt);line-height:1.7;}
-.srv-img-col{position:relative;}
-.srv-img-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.srv-img-wrap img{width:100%;display:block;}
+/* ══════════════ SERVICES ══════════════ */
+#services{background:var(--surface);}
+.srv-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px;}
+.srv-list{display:flex;flex-direction:column;gap:4px;}
+.scard{padding:28px;background:var(--white);border-radius:var(--r);border:1px solid rgba(22,53,86,.08);transition:all .35s var(--ease);cursor:default;position:relative;overflow:hidden;}
+.scard::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy);border-radius:2px;transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);}
+.scard:hover{transform:translateX(8px);box-shadow:var(--shadow);border-color:rgba(22,53,86,.15);}
+.scard:hover::after{transform:scaleY(1);}
+.scard-icon{font-size:32px;margin-bottom:14px;}
+.scard-name{font-family:var(--fh);font-size:26px;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.scard-desc{font-size:13px;color:var(--muted);line-height:1.7;}
+.srv-visual{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);}
+.srv-visual img{width:100%;display:block;transition:transform .6s var(--ease);}
+.srv-visual:hover img{transform:scale(1.03);}
 
-/* ── CONTACT ── */
+/* ══════════════ CONTACT ══════════════ */
 #contact{background:var(--navy);position:relative;overflow:hidden;}
-#contact::before{content:'ITZA';position:absolute;right:-60px;bottom:-80px;font-family:var(--font-h);font-size:clamp(200px,30vw,400px);color:rgba(255,255,255,.03);line-height:1;pointer-events:none;}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.contact-label,.contact-title{color:var(--white);}
-.contact-label{color:rgba(255,255,255,.5);}
-.contact-title{color:var(--white);}
-.contact-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.8;margin:20px 0 44px;}
-.c-items{display:flex;flex-direction:column;}
-.c-item{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:padding-left .3s;}
-.c-item:hover{padding-left:6px;}
-.c-icon{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(255,255,255,.06);transition:background .3s;}
-.c-item:hover .c-icon{background:rgba(255,255,255,.12);}
-.c-info small{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.c-info a,.c-info p{font-size:14px;color:var(--white);margin-top:2px;display:block;}
-.c-info a:hover{color:var(--bg);}
-.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;}
-.soc-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:11px;color:rgba(255,255,255,.6);transition:all .3s;cursor:none;}
-.soc-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);color:var(--white);}
-
-/* ── FORM ── */
-.form-box{background:var(--white);border-radius:var(--radius);padding:40px 36px;}
-.form-title{font-family:var(--font-h);font-size:32px;color:var(--navy);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;}
-.form-sub{font-size:13px;color:var(--text-lt);margin-bottom:28px;}
-.fg{margin-bottom:18px;}
-.fg label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:7px;}
-.fg input,.fg textarea,.fg select{width:100%;background:var(--bg);border:1.5px solid rgba(22,53,86,.12);border-radius:var(--radius-sm);padding:13px 15px;color:var(--text);font-family:var(--font-b);font-size:14px;outline:none;transition:border-color .3s;-webkit-appearance:none;cursor:none;}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--navy);background:var(--white);}
+#contact::before{content:'CLOTHESS';position:absolute;right:-80px;bottom:-100px;font-family:var(--fh);font-size:clamp(160px,20vw,300px);color:rgba(255,255,255,.025);line-height:1;pointer-events:none;white-space:nowrap;}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact-info .s-label{color:rgba(255,255,255,.4);}
+.contact-info .s-title{color:var(--white);}
+.contact-desc{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8;margin:20px 0 44px;}
+.ci{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07);transition:padding-left .3s;}
+.ci:hover{padding-left:8px;}
+.ci-icon{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background .3s;}
+.ci:hover .ci-icon{background:rgba(255,255,255,.1);}
+.ci-info small{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);}
+.ci-info a,.ci-info p{font-size:14px;color:var(--white);margin-top:3px;display:block;transition:color .2s;}
+.ci-info a:hover{color:var(--bg);}
+.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:36px;}
+.soc{display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(255,255,255,.13);border-radius:100px;font-size:10px;color:rgba(255,255,255,.55);transition:all .25s;cursor:none;letter-spacing:1px;}
+.soc:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:var(--white);}
+/* form */
+.form-box{background:var(--white);border-radius:var(--r-lg);padding:40px 36px;}
+.form-title{font-family:var(--fh);font-size:36px;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.form-sub{font-size:12px;color:var(--muted);margin-bottom:28px;letter-spacing:.3px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:7px;}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1.5px solid rgba(22,53,86,.1);border-radius:var(--r-sm);padding:13px 15px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:border-color .25s,background .25s;-webkit-appearance:none;cursor:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);background:var(--white);}
 .fg select option{background:var(--white);}
-.fg textarea{resize:vertical;min-height:90px;}
-.form-submit{width:100%;padding:16px;background:var(--navy);border:none;border-radius:var(--radius-sm);font-family:var(--font-b);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);cursor:none;transition:background .3s,transform .2s;}
-.form-submit:hover{background:var(--navy2);transform:translateY(-2px);}
+.fg textarea{resize:vertical;min-height:85px;}
+.form-btn{width:100%;padding:16px;background:var(--navy);border:none;border-radius:var(--r-sm);font-family:var(--fb);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);cursor:none;transition:background .25s,transform .2s;}
+.form-btn:hover{background:var(--navy-2);transform:translateY(-2px);}
 
-/* ── FOOTER ── */
-footer{background:var(--bg2);border-top:1px solid rgba(22,53,86,.1);padding:52px 5% 28px;}
-.footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:24px;}
-.footer-logo{font-family:var(--font-h);font-size:30px;color:var(--navy);letter-spacing:4px;}
-.footer-logo small{display:block;font-size:.34em;letter-spacing:6px;color:var(--navy2);font-family:var(--font-b);font-weight:300;}
-.footer-nav{display:flex;gap:28px;flex-wrap:wrap;}
-.footer-nav a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--navy2);transition:color .3s;}
-.footer-nav a:hover{color:var(--navy);}
-.footer-bot{border-top:1px solid rgba(22,53,86,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-bot p,.footer-bot span{font-size:11px;color:var(--text-lt);}
+/* ══════════════ FOOTER ══════════════ */
+footer{background:var(--bg-d);border-top:1px solid rgba(22,53,86,.1);padding:56px 5% 28px;}
+.foot-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;flex-wrap:wrap;gap:24px;}
+.foot-logo{font-family:var(--fh);font-size:32px;color:var(--navy);letter-spacing:4px;}
+.foot-logo small{display:block;font-size:.35em;letter-spacing:6px;color:var(--muted);font-family:var(--fb);font-weight:300;text-transform:uppercase;}
+.foot-nav{display:flex;gap:28px;flex-wrap:wrap;}
+.foot-nav a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color .2s;}
+.foot-nav a:hover{color:var(--navy);}
+.foot-bot{border-top:1px solid rgba(22,53,86,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-bot p,.foot-bot span{font-size:11px;color:var(--muted);}
 
-/* ── WHATSAPP ── */
-#wa{position:fixed;bottom:28px;right:28px;z-index:998;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,.4);cursor:none;transition:transform .3s,box-shadow .3s;animation:wab 2.8s ease-in-out infinite;}
-#wa:hover{transform:scale(1.12);box-shadow:0 10px 36px rgba(37,211,102,.5);}
-@keyframes wab{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-#wa .ring{position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.35);animation:waRing 2.4s ease-out infinite;}
-@keyframes waRing{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.5);opacity:0;}}
+/* ══════════════ WA FLOAT ══════════════ */
+#wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 28px rgba(37,211,102,.4);cursor:none;transition:transform .3s,box-shadow .3s;}
+#wa-float:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,211,102,.5);}
+#wa-float .pulse{position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:pulse 2.5s ease-out infinite;}
+@keyframes pulse{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.6);opacity:0;}}
 
-/* ── RESPONSIVE ── */
+/* ══════════════ RESPONSIVE ══════════════ */
 @media(max-width:1024px){
   #hero{grid-template-columns:1fr;}
-  .hero-right{display:none;}
-  .hero-left{min-height:100vh;padding:120px 6% 80px;}
-  .about-grid,.contact-grid,.srv-grid{grid-template-columns:1fr;gap:48px;}
-  .stats-strip{grid-template-columns:repeat(2,1fr);}
-  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero-r{display:none;}
+  .hero-l{min-height:100vh;padding:120px 6% 80px;}
+  .about-wrap,.contact-wrap,.srv-wrap{grid-template-columns:1fr;gap:48px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .stat:nth-child(2){border-right:none;}
 }
 @media(max-width:768px){
-  .nav-links,.nav-cta{display:none;}
+  .nav-mid,.nav-cta,.nav-wa{display:none;}
   .hamburger{display:flex;}
-  .prod-grid{grid-template-columns:1fr 1fr;}
-  .section{padding:72px 5%;}
-  .stats-strip{grid-template-columns:repeat(2,1fr);}
+  .sec{padding:80px 5%;}
+  .pgrid{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:500px){
-  .prod-grid{grid-template-columns:1fr;}
-  .stats-strip{grid-template-columns:1fr 1fr;}
-  .hero-h1{font-size:64px;}
-  .filter-bar{gap:6px;}
-  .f-btn{padding:8px 14px;font-size:10px;}
+@media(max-width:480px){
+  .pgrid{grid-template-columns:1fr;}
+  .hero-h1{font-size:72px;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.08);}
 }
 </style>
 </head>
 <body>
 
 <!-- CURSOR -->
-<div id="cur"><div id="cur-d"></div><div id="cur-r"></div></div>
+<div id="cursor"><div class="c-dot"></div><div class="c-ring"></div></div>
 <!-- PROGRESS -->
-<div id="progress"></div>
-<!-- WHATSAPP -->
-<a id="wa" href="https://wa.me/528118269338?text=Hola%2C%20me%20interesa%20cotizar%20uniformes" target="_blank">
-  <div class="ring"></div>💬
-</a>
+<div id="prog"></div>
+<!-- WA FLOAT -->
+<a id="wa-float" href="https://wa.me/528118269338?text=Hola%2C%20me%20interesa%20cotizar" target="_blank"><div class="pulse"></div>💬</a>
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">ITZA CLOTHESS<small>FABRICANTES DIRECTOS</small></div>
-  <ul class="nav-links">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5"><path d="M12 3C12 3 5 6 5 13a7 7 0 0014 0c0-7-7-10-7-10z"/><line x1="12" y1="13" x2="12" y2="20"/></svg>
+    </div>
+    <div class="logo-text">ITZA CLOTHESS<small>Fabricantes Directos</small></div>
+  </div>
+  <ul class="nav-mid">
     <li><a href="#about">Nosotros</a></li>
     <li><a href="#products">Catálogo</a></li>
     <li><a href="#services">Servicios</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">Cotizar</a>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <div class="nav-end">
+    <a class="nav-wa" href="https://wa.me/528118269338" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.025.507 3.934 1.395 5.61L0 24l6.545-1.371A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.52-5.17-1.424l-.37-.22-3.885.815.824-3.795-.24-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+    <a class="nav-cta" href="#contact">Cotizar</a>
+    <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
 </nav>
-<div class="mob-menu" id="mobMenu">
-  <span class="mob-close" onclick="toggleMenu()">✕</span>
-  <a href="#about" onclick="toggleMenu()">Nosotros</a>
-  <a href="#products" onclick="toggleMenu()">Catálogo</a>
-  <a href="#services" onclick="toggleMenu()">Servicios</a>
-  <a href="#contact" onclick="toggleMenu()">Contacto</a>
+<div class="mob" id="mobMenu">
+  <span class="mob-x" onclick="toggleMob()">✕</span>
+  <a href="#about" onclick="toggleMob()">Nosotros</a>
+  <a href="#products" onclick="toggleMob()">Catálogo</a>
+  <a href="#services" onclick="toggleMob()">Servicios</a>
+  <a href="#contact" onclick="toggleMob()">Contacto</a>
 </div>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ══════════════════════════════════ HERO ══════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Monterrey · NL · México</div>
-    <h1 class="hero-h1">ITZA<span>CLOTHESS</span></h1>
-    <p class="hero-sub">Somos fabricantes directos. Controlamos cada etapa desde el corte hasta el bordado computarizado. Calidad industrial, sin intermediarios.</p>
+  <div class="hero-l">
+    <div class="hero-eyebrow"><span></span>Monterrey · NL · México · Est. 2020</div>
+    <h1 class="hero-h1">ITZA<em>CLOTHESS</em></h1>
+    <p class="hero-desc">Somos fabricantes directos. Controlamos cada etapa desde el corte de la tela hasta el bordado computarizado. Calidad industrial, sin intermediarios, con entrega comprometida.</p>
     <div class="hero-btns">
-      <a class="btn-w" href="#products">Ver Catálogo</a>
-      <a class="btn-ghost" href="#contact">Solicitar Cotización</a>
+      <a class="btn-solid" href="#products">Ver Catálogo Completo</a>
+      <a class="btn-outline-w" href="#contact">Solicitar Cotización</a>
     </div>
-    <div class="hero-badges">
-      <span class="h-badge">XS – 5XL</span>
-      <span class="h-badge">Bordado</span>
-      <span class="h-badge">DTF · DTF-UV</span>
-      <span class="h-badge">Envíos nacionales</span>
+    <div class="hero-chips">
+      <span class="chip">XS – 5XL</span>
+      <span class="chip">Bordado</span>
+      <span class="chip">DTF · DTF-UV</span>
+      <span class="chip">Envíos nacionales</span>
+      <span class="chip">Préstamo corrida tallas</span>
     </div>
+    <div class="hero-scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
   </div>
-  <div class="hero-right">
-    <img src="img/page_01.jpg" alt="ITZA CLOTHESS - Fabricantes directos Monterrey">
-    <div class="hero-scroll"><span>Scroll</span><div class="scroll-l"></div></div>
+  <div class="hero-r">
+    <img src="img/page_01.jpg" alt="ITZA CLOTHESS">
+    <div class="hero-r-overlay"></div>
+    <div class="hero-r-badge">
+      <div class="big">30+</div>
+      <div class="small">Modelos disponibles</div>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats-strip">
+<div class="stats">
   <div class="stat"><div class="stat-n">30+</div><div class="stat-l">Modelos</div></div>
   <div class="stat"><div class="stat-n">5XL</div><div class="stat-l">Talla máxima</div></div>
-  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Fabricantes</div></div>
-  <div class="stat"><div class="stat-n">MTY</div><div class="stat-l">Envío local / nacional</div></div>
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Fabricantes propios</div></div>
+  <div class="stat"><div class="stat-n">MTY</div><div class="stat-l">Envío local · nacional</div></div>
 </div>
 
-<!-- ═══════════ ABOUT ═══════════ -->
-<section id="about" class="section">
-  <div class="about-grid">
-    <div class="about-img-col reveal">
-      <div class="about-main-img">
+<!-- ══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+<section id="about" class="sec">
+  <div class="about-wrap">
+    <div class="about-visual reveal">
+      <div class="about-img-main">
         <img src="img/page_02.jpg" alt="Calidad Industrial Itza Clothess">
+        <div class="about-tag a">Fabricantes Directos</div>
+        <div class="about-tag b">Monterrey, N.L.</div>
       </div>
-      <div class="about-tag t1">Fabricantes Directos</div>
-      <div class="about-tag t2">Monterrey, N.L.</div>
-      <div class="about-mini-grid">
-        <div class="mini-stat"><div class="mini-n">100%</div><div class="mini-l">Propio</div></div>
-        <div class="mini-stat"><div class="mini-n">0</div><div class="mini-l">Intermediarios</div></div>
-        <div class="mini-stat"><div class="mini-n">XS</div><div class="mini-l">Talla min.</div></div>
-        <div class="mini-stat"><div class="mini-n">5XL</div><div class="mini-l">Talla máx.</div></div>
+      <div class="about-mini">
+        <div class="mn"><div class="mn-n">100%</div><div class="mn-l">Propio</div></div>
+        <div class="mn"><div class="mn-n">0</div><div class="mn-l">Intermediarios</div></div>
+        <div class="mn"><div class="mn-n">XS</div><div class="mn-l">Talla mín.</div></div>
+        <div class="mn"><div class="mn-n">5XL</div><div class="mn-l">Talla máx.</div></div>
       </div>
     </div>
-    <div class="reveal">
+    <div class="about-text reveal">
       <div class="s-label">¿Quiénes somos?</div>
       <h2 class="s-title">CALIDAD<br>INDUSTRIAL</h2>
-      <div style="margin-top:32px;">
-        <p>Somos fabricantes y no revendedores. En Itza Clothess controlamos cada etapa: desde el corte de la tela hasta el bordado computarizado final.</p>
+      <div style="margin-top:36px">
+        <p>Somos fabricantes y <strong>no revendedores</strong>. En Itza Clothess controlamos cada etapa: desde el corte de la tela hasta el bordado computarizado final.</p>
         <p>Seriedad, capacidad de respuesta y acabados de nivel profesional para instituciones que no aceptan menos. Tu proyecto está en manos de un equipo que controla todo el proceso, de principio a fin.</p>
-        <p style="color:var(--navy);font-weight:600;font-size:14px;">Contamos con préstamo para corrida de tallas · Envíos locales y nacionales</p>
+        <p><strong>Contamos con préstamo para corrida de tallas · Envíos locales y nacionales.</strong></p>
       </div>
-      <div class="process-list">
-        <div class="process-item"><div class="p-num">01</div><div class="p-info"><h4>Selección de Modelo Base</h4><p>Elegimos el modelo que mejor se adapta a tu necesidad.</p></div></div>
-        <div class="process-item"><div class="p-num">02</div><div class="p-info"><h4>Configuración de Tallas (XS–5XL)</h4><p>Cuadro de tallas para toda la corrida.</p></div></div>
-        <div class="process-item"><div class="p-num">03</div><div class="p-info"><h4>Personalización de Marca</h4><p>Bordado computarizado o DTF con tu logo corporativo.</p></div></div>
-        <div class="process-item"><div class="p-num">04</div><div class="p-info"><h4>Producción y Entrega Directa</h4><p>Todo en taller propio. Sin intermediarios.</p></div></div>
+      <div class="process">
+        <div class="pi"><div class="pi-n">01</div><div><div class="pi-t">Selección de Modelo Base</div><div class="pi-d">Elegimos el modelo que mejor se adapta a tu necesidad y presupuesto.</div></div></div>
+        <div class="pi"><div class="pi-n">02</div><div><div class="pi-t">Configuración de Tallas (XS–5XL)</div><div class="pi-d">Cuadro de tallas completo para toda la corrida, desde la más pequeña hasta la más grande.</div></div></div>
+        <div class="pi"><div class="pi-n">03</div><div><div class="pi-t">Personalización de Marca</div><div class="pi-d">Bordado computarizado o impresión DTF / DTF-UV con tu logo y colores corporativos.</div></div></div>
+        <div class="pi"><div class="pi-n">04</div><div><div class="pi-t">Producción y Entrega Directa</div><div class="pi-d">Todo en taller propio. Sin intermediarios, con tiempos de entrega comprometidos.</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PRODUCTS ═══════════ -->
-<section id="products" class="section">
-  <div class="reveal">
-    <div class="s-label">Catálogo Completo</div>
-    <h2 class="s-title">NUESTROS<br>PRODUCTOS</h2>
+<!-- ══════════════════════════════════ PRODUCTS ══════════════════════════════════ -->
+<section id="products" class="sec">
+  <div class="prod-header reveal">
+    <div>
+      <div class="s-label">Catálogo Completo</div>
+      <h2 class="s-title">NUESTROS<br>PRODUCTOS</h2>
+    </div>
+    <div style="text-align:right">
+      <p style="font-size:13px;color:var(--muted);max-width:280px;line-height:1.6;">Haz clic en cualquier producto para ver la ficha completa del catálogo con todos los colores y especificaciones.</p>
+    </div>
   </div>
-  <div class="filter-bar reveal">
-    <button class="f-btn active" onclick="filter(this,'all')">Todos</button>
-    <button class="f-btn" onclick="filter(this,'playera')">Playeras</button>
-    <button class="f-btn" onclick="filter(this,'polo')">Polo</button>
-    <button class="f-btn" onclick="filter(this,'pantalon')">Pantalones</button>
-    <button class="f-btn" onclick="filter(this,'sudadera')">Sudaderas</button>
-    <button class="f-btn" onclick="filter(this,'industrial')">Industrial</button>
-    <button class="f-btn" onclick="filter(this,'accesorio')">Accesorios</button>
+  <div class="filter-row reveal" style="margin-bottom:48px">
+    <button class="fb on" onclick="filt(this,'all')">Todos</button>
+    <button class="fb" onclick="filt(this,'playera')">Playeras</button>
+    <button class="fb" onclick="filt(this,'polo')">Polo</button>
+    <button class="fb" onclick="filt(this,'pantalon')">Pantalones</button>
+    <button class="fb" onclick="filt(this,'sudadera')">Sudaderas</button>
+    <button class="fb" onclick="filt(this,'industrial')">Industrial</button>
+    <button class="fb" onclick="filt(this,'accesorio')">Accesorios</button>
   </div>
-  <div class="prod-grid" id="grid">
-
-    <!-- PLAYERA CUELLO REDONDO -->
-    <div class="card" data-cat="playera">
-      <div class="card-img">
-        <img src="img/page_03.jpg" alt="Playera Cuello Redondo" style="object-position:center 10%;">
-        <span class="card-cat">Playera</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Playera Cuello Redondo</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón / 100% Algodón</div>
-        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Cuello%20Redondo" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- PLAYERA MANGA LARGA -->
-    <div class="card" data-cat="playera">
-      <div class="card-img">
-        <img src="img/page_03.jpg" alt="Playera Cuello Redondo Manga Larga" style="object-position:center 85%;">
-        <span class="card-cat">Playera</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Playera Cuello Redondo Manga Larga</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón / 100% Algodón</div>
-        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Manga%20Larga" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO PIQUÉ -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_04.jpg" alt="Polo Piqué" style="object-position:center 10%;">
-        <span class="card-cat">Polo</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Piqué</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón</div>
-        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO PIQUÉ MANGA LARGA -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_04.jpg" alt="Polo Piqué Manga Larga" style="object-position:center 85%;">
-        <span class="card-cat">Polo</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Piqué Manga Larga</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón</div>
-        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9%20Manga%20Larga" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO DRI-FIT -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_05.jpg" alt="Polo Dri-Fit" style="object-position:center 10%;">
-        <span class="card-cat">Polo Dri-Fit</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Dri-Fit</div>
-        <div class="card-mat">100% Poliéster · Transpirable</div>
-        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO DRI-FIT MANGA LARGA -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_05.jpg" alt="Polo Dri-Fit Manga Larga" style="object-position:center 85%;">
-        <span class="card-cat">Polo Dri-Fit</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Dri-Fit Manga Larga</div>
-        <div class="card-mat">100% Poliéster · Transpirable</div>
-        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Manga%20Larga" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO DRI-FIT COMBINADA -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_06.jpg" alt="Polo Dri-Fit Combinada" style="object-position:center 10%;">
-        <span class="card-cat">Polo Dri-Fit</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Dri-Fit Combinada</div>
-        <div class="card-mat">100% Poliéster · Transpirable</div>
-        <div class="card-tags"><span class="ctag">Combinada</span><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- POLO DRI-FIT COMBINADA MANGA LARGA -->
-    <div class="card" data-cat="polo">
-      <div class="card-img">
-        <img src="img/page_06.jpg" alt="Polo Dri-Fit Combinada Manga Larga" style="object-position:center 85%;">
-        <span class="card-cat">Polo Dri-Fit</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Polo Dri-Fit Combinada Manga Larga</div>
-        <div class="card-mat">100% Poliéster · Transpirable</div>
-        <div class="card-tags"><span class="ctag">Combinada</span><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada%20ML" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- JERSEY BEISBOLERA -->
-    <div class="card" data-cat="playera">
-      <div class="card-img">
-        <img src="img/page_07.jpg" alt="Jersey Beisbolera" style="object-position:center 10%;">
-        <span class="card-cat">Jersey</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Jersey Beisbolera</div>
-        <div class="card-mat">100% Poliéster</div>
-        <div class="card-tags"><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span><span class="ctag">Varios diseños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Jersey%20Beisbolera" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- CAMISA DE VESTIR -->
-    <div class="card" data-cat="playera">
-      <div class="card-img">
-        <img src="img/page_07.jpg" alt="Camisa de Vestir Manga Larga" style="object-position:center 85%;">
-        <span class="card-cat">Camisa</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Camisa de Vestir Manga Larga</div>
-        <div class="card-mat">100% Algodón / 60% Algodón – 40% Poliéster</div>
-        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL · Carta completa disponible</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20la%20carta%20completa%20de%20Camisas%20de%20Vestir" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- CAMISOLA MEZCLILLA -->
-    <div class="card" data-cat="industrial">
-      <div class="card-img">
-        <img src="img/page_08.jpg" alt="Camisola Mezclilla" style="object-position:center 10%;">
-        <span class="card-cat">Mezclilla</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Camisola Mezclilla</div>
-        <div class="card-mat">100% Algodón · 14oz</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">14oz</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 2XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisola%20Mezclilla" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- CAMISA MEZCLILLA LISA -->
-    <div class="card" data-cat="industrial">
-      <div class="card-img">
-        <img src="img/page_08.jpg" alt="Camisa Mezclilla Lisa" style="object-position:center 85%;">
-        <span class="card-cat">Mezclilla</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Camisa Mezclilla Lisa</div>
-        <div class="card-mat">100% Algodón · 7oz</div>
-        <div class="card-tags"><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">7oz</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 2XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisa%20Mezclilla%20Lisa" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- PANTALÓN MEZCLILLA -->
-    <div class="card" data-cat="pantalon">
-      <div class="card-img">
-        <img src="img/page_09.jpg" alt="Pantalón Mezclilla" style="object-position:center 10%;">
-        <span class="card-cat">Pantalón</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Pantalón Mezclilla</div>
-        <div class="card-mat">14oz</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">14oz</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- PANTALÓN MEZCLILLA LISO -->
-    <div class="card" data-cat="pantalon">
-      <div class="card-img">
-        <img src="img/page_09.jpg" alt="Pantalón Mezclilla Liso Casual" style="object-position:center 85%;">
-        <span class="card-cat">Pantalón</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Pantalón Mezclilla Liso Casual</div>
-        <div class="card-mat">Mezclilla Lisa</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Casual</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla%20Casual" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- PANTALÓN CARGO -->
-    <div class="card" data-cat="pantalon">
-      <div class="card-img">
-        <img src="img/page_10.jpg" alt="Pantalón Cargo" style="object-position:center 10%;">
-        <span class="card-cat">Pantalón</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Pantalón Cargo</div>
-        <div class="card-mat">Resistente · Múltiples bolsillos</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Cargo</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Cargo" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- PANTALÓN DE VESTIR -->
-    <div class="card" data-cat="pantalon">
-      <div class="card-img">
-        <img src="img/page_10.jpg" alt="Pantalón de Vestir" style="object-position:center 85%;">
-        <span class="card-cat">Pantalón</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Pantalón de Vestir Casual</div>
-        <div class="card-mat">Formal · Casual</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Vestir</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20de%20Vestir" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- SUDADERA BÁSICA -->
-    <div class="card" data-cat="sudadera">
-      <div class="card-img">
-        <img src="img/page_11.jpg" alt="Sudadera Básica" style="object-position:center 10%;">
-        <span class="card-cat">Sudadera</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Sudadera Básica Cuello Redondo</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón</div>
-        <div class="card-tags"><span class="ctag">Adulto Unisex</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20Básica" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- SUDADERA COMPLETA -->
-    <div class="card" data-cat="sudadera">
-      <div class="card-img">
-        <img src="img/page_11.jpg" alt="Sudadera Completa Capucha" style="object-position:center 85%;">
-        <span class="card-cat">Sudadera</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Sudadera Completa con Capucha</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón</div>
-        <div class="card-tags"><span class="ctag">Capucha</span><span class="ctag">Cangurera</span><span class="ctag">Adulto</span><span class="ctag">Niños</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20con%20Capucha" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- SUDADERA DE CIERRE -->
-    <div class="card" data-cat="sudadera">
-      <div class="card-img">
-        <img src="img/page_12.jpg" alt="Sudadera de Cierre" style="object-position:center 10%;">
-        <span class="card-cat">Sudadera</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Sudadera de Cierre con Capucha</div>
-        <div class="card-mat">50% Poliéster – 50% Algodón</div>
-        <div class="card-tags"><span class="ctag">Cierre</span><span class="ctag">Capucha</span><span class="ctag">Cangurera</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20de%20Cierre" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- CHAMARRA NEOPRENO -->
-    <div class="card" data-cat="sudadera">
-      <div class="card-img">
-        <img src="img/page_12.jpg" alt="Chamarra Neopreno" style="object-position:center 85%;">
-        <span class="card-cat">Chamarra</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Chamarra Neopreno</div>
-        <div class="card-mat">90% Poliéster – 10% Licra · Antifluidos</div>
-        <div class="card-tags"><span class="ctag">Antifluidos</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chamarra%20Neopreno" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- OVEROL -->
-    <div class="card" data-cat="industrial">
-      <div class="card-img">
-        <img src="img/page_13.jpg" alt="Overol Industrial" style="object-position:center 10%;">
-        <span class="card-cat">Industrial</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Overol</div>
-        <div class="card-mat">100% Algodón · Gabardina</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Gabardina</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Overol" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- CHALECO INDUSTRIAL -->
-    <div class="card" data-cat="industrial">
-      <div class="card-img">
-        <img src="img/page_13.jpg" alt="Chaleco Industrial" style="object-position:center 85%;">
-        <span class="card-cat">Industrial</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Chaleco Industrial</div>
-        <div class="card-mat">100% Algodón · Gabardina</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Gabardina</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chaleco%20Industrial" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- QUIRÚRGICO -->
-    <div class="card" data-cat="industrial">
-      <div class="card-img">
-        <img src="img/page_14.jpg" alt="Quirúrgico Filipinas Scrubs" style="object-position:center 10%;">
-        <span class="card-cat">Médico</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Quirúrgico / Filipinas</div>
-        <div class="card-mat">Antifluidos · Transpirables</div>
-        <div class="card-tags"><span class="ctag">Scrubs</span><span class="ctag">Corte Recto</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
-        <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Quirúrgico%20Filipinas" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- MANDIL COMPLETO -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_14.jpg" alt="Mandil Completo" style="object-position:center 85%;">
-        <span class="card-cat">Mandil</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Mandil Completo</div>
-        <div class="card-mat">Cinta Ajustable</div>
-        <div class="card-tags"><span class="ctag">Unitalla</span><span class="ctag">Unisex</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Unitalla</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Completo" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- MANDIL CORTO -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_15.jpg" alt="Mandil Corto" style="object-position:center 10%;">
-        <span class="card-cat">Mandil</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Mandil Corto</div>
-        <div class="card-mat">100% Poliéster / 60% Algodón – 40% Poliéster</div>
-        <div class="card-tags"><span class="ctag">Unitalla</span><span class="ctag">Unisex</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Unitalla</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Corto" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- ESTOLA -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_15.jpg" alt="Estola Graduación" style="object-position:center 85%;">
-        <span class="card-cat">Graduación</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Estola</div>
-        <div class="card-mat">Satén – Poliéster</div>
-        <div class="card-tags"><span class="ctag">Niño</span><span class="ctag">Adulto</span><span class="ctag">Unisex</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Niño / Adulto</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Estola" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- GORRA TRUCKER -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_16.jpg" alt="Gorra Trucker" style="object-position:center 10%;">
-        <span class="card-cat">Gorra</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Gorra Trucker</div>
-        <div class="card-mat">Malla posterior · Ajustable</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Trucker" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- GORRA INDOMABLE -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_16.jpg" alt="Gorra Indomable" style="object-position:center 85%;">
-        <span class="card-cat">Gorra</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Gorra Indomable</div>
-        <div class="card-mat">Ajustable</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Indomable" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- GORRA BELLA -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_17.jpg" alt="Gorra Bella" style="object-position:center 10%;">
-        <span class="card-cat">Gorra</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Gorra Bella</div>
-        <div class="card-mat">Ajustable</div>
-        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
-        <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Bella" target="_blank">Cotizar →</a>
-      </div>
-    </div>
-
-    <!-- TERMOS -->
-    <div class="card" data-cat="accesorio">
-      <div class="card-img">
-        <img src="img/page_17.jpg" alt="Termos Personalizados" style="object-position:center 85%;">
-        <span class="card-cat">Termos</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Termos</div>
-        <div class="card-mat">Solicita catálogo completo por mensaje</div>
-        <div class="card-tags"><span class="ctag">Varios modelos</span><span class="ctag">Personalizable</span></div>
-        <div class="card-sizes"><strong>Info:</strong> Consulta por WhatsApp</div>
-        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20ver%20el%20catálogo%20de%20Termos" target="_blank">Ver Catálogo →</a>
-      </div>
-    </div>
-
-  </div>
+  <div class="pgrid" id="pgrid"></div>
 </section>
 
-<!-- ═══════════ MARQUEE ═══════════ -->
+<!-- MARQUEE -->
 <div id="marquee">
-  <div class="mq-label">Modelos de referencia · Se pueden fabricar más diseños y colores</div>
-  <div class="mq-track">
-    <div class="mq-chip"><span>⚾</span>Jersey Beisbolera</div>
-    <div class="mq-chip"><span>👔</span>Camisa de Vestir</div>
-    <div class="mq-chip"><span>⚡</span>Polo Dri-Fit</div>
-    <div class="mq-chip"><span>👕</span>Polo Piqué</div>
-    <div class="mq-chip"><span>🧥</span>Chamarra Neopreno</div>
-    <div class="mq-chip"><span>🦺</span>Chaleco Industrial</div>
-    <div class="mq-chip"><span>🏥</span>Quirúrgico Scrubs</div>
-    <div class="mq-chip"><span>🎓</span>Estola</div>
-    <div class="mq-chip"><span>👖</span>Pantalón Cargo</div>
-    <div class="mq-chip"><span>🧢</span>Gorras</div>
-    <div class="mq-chip"><span>☕</span>Termos</div>
-    <div class="mq-chip"><span>👨‍🍳</span>Mandil</div>
-    <div class="mq-chip"><span>🧥</span>Overol Industrial</div>
-    <div class="mq-chip"><span>⚾</span>Jersey Beisbolera</div>
-    <div class="mq-chip"><span>👔</span>Camisa de Vestir</div>
-    <div class="mq-chip"><span>⚡</span>Polo Dri-Fit</div>
-    <div class="mq-chip"><span>👕</span>Polo Piqué</div>
-    <div class="mq-chip"><span>🧥</span>Chamarra Neopreno</div>
-    <div class="mq-chip"><span>🦺</span>Chaleco Industrial</div>
-    <div class="mq-chip"><span>🏥</span>Quirúrgico Scrubs</div>
-    <div class="mq-chip"><span>🎓</span>Estola</div>
-    <div class="mq-chip"><span>👖</span>Pantalón Cargo</div>
-    <div class="mq-chip"><span>🧢</span>Gorras</div>
-    <div class="mq-chip"><span>☕</span>Termos</div>
-    <div class="mq-chip"><span>👨‍🍳</span>Mandil</div>
-    <div class="mq-chip"><span>🧥</span>Overol Industrial</div>
-  </div>
+  <div class="mq-track" id="mqt"></div>
 </div>
 
-<!-- ═══════════ SERVICES ═══════════ -->
-<section id="services" class="section">
+<!-- ══════════════════════════════════ SERVICES ══════════════════════════════════ -->
+<section id="services" class="sec">
   <div class="reveal">
     <div class="s-label">Técnicas disponibles</div>
     <h2 class="s-title">NUESTROS<br>SERVICIOS</h2>
   </div>
-  <div class="srv-grid">
-    <div class="srv-cards reveal">
-      <div class="srv-card">
-        <div class="srv-icon">🪡</div>
-        <div class="srv-name">Bordado Computarizado</div>
-        <div class="srv-desc">Alta resolución con maquinaria industrial. Perfecto para logos, nombres y diseños corporativos con acabado profesional duradero.</div>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon">🖨️</div>
-        <div class="srv-name">Impresión DTF</div>
-        <div class="srv-desc">Direct to Film. Colores vivos, alta definición, lavable. Ideal para diseños complejos, fotorrealistas o con gradientes.</div>
-      </div>
-      <div class="srv-card">
-        <div class="srv-icon">✨</div>
-        <div class="srv-name">Impresión DTF-UV</div>
-        <div class="srv-desc">Tecnología avanzada: colores ultra vibrantes con acabado UV de larga duración. Resistente al sol, lavado y fricción. Para proyectos premium.</div>
-      </div>
+  <div class="srv-wrap">
+    <div class="srv-list reveal">
+      <div class="scard"><div class="scard-icon">🪡</div><div class="scard-name">Bordado Computarizado</div><div class="scard-desc">Alta resolución con maquinaria industrial especializada. Perfecto para logos, nombres y diseños corporativos. Acabado profesional y duradero que no se despega ni desvanece.</div></div>
+      <div class="scard"><div class="scard-icon">🖨️</div><div class="scard-name">Impresión DTF</div><div class="scard-desc">Direct to Film. Colores vivos, alta definición, lavable. Ideal para diseños complejos, fotorrealistas o con gradientes que el bordado no puede replicar.</div></div>
+      <div class="scard"><div class="scard-icon">✨</div><div class="scard-name">Impresión DTF-UV</div><div class="scard-desc">Tecnología de última generación: colores ultra vibrantes con acabado UV de larga duración. Resistente al sol, lavado y fricción. La opción premium para proyectos exigentes.</div></div>
     </div>
-    <div class="srv-img-col reveal">
-      <div class="srv-img-wrap">
-        <img src="img/page_29.jpg" alt="Técnicas y Servicios ITZA CLOTHESS">
-      </div>
+    <div class="srv-visual reveal">
+      <img src="img/page_29.jpg" alt="Técnicas y Servicios ITZA CLOTHESS">
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CONTACT ═══════════ -->
-<section id="contact" class="section">
-  <div class="contact-grid">
-    <div class="reveal">
-      <div class="s-label contact-label">Contáctanos</div>
-      <h2 class="s-title contact-title">SOLICITA TU<br>COTIZACIÓN</h2>
-      <p class="contact-sub">Respondemos el mismo día. Envíos locales y nacionales. Contamos con préstamo para corrida de tallas.</p>
-      <div class="c-items">
-        <div class="c-item">
-          <div class="c-icon">📞</div>
-          <div class="c-info"><small>WhatsApp / Teléfonos</small><a href="tel:+528118269338">+52 8118 2693 38</a><a href="tel:+528135989470">+52 8135 9894 70</a></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon">✉️</div>
-          <div class="c-info"><small>Email</small><a href="mailto:itzaclothess@gmail.com">itzaclothess@gmail.com</a></div>
-        </div>
-        <div class="c-item">
-          <div class="c-icon">📍</div>
-          <div class="c-info"><small>Ubicación</small><p>Lic. Alfonso Santos Palomo 8008, Col. CROC, Monterrey, N.L.</p></div>
-        </div>
+<!-- ══════════════════════════════════ CONTACT ══════════════════════════════════ -->
+<section id="contact" class="sec">
+  <div class="contact-wrap">
+    <div class="contact-info reveal">
+      <div class="s-label">Contáctanos</div>
+      <h2 class="s-title" style="color:var(--white)">SOLICITA TU<br>COTIZACIÓN</h2>
+      <p class="contact-desc">Respondemos el mismo día. Envíos locales y nacionales. Contamos con préstamo para corrida de tallas. Sin compromiso.</p>
+      <div>
+        <div class="ci"><div class="ci-icon">📞</div><div class="ci-info"><small>WhatsApp · Teléfonos</small><a href="tel:+528118269338">+52 8118 2693 38</a><a href="tel:+528135989470">+52 8135 9894 70</a></div></div>
+        <div class="ci"><div class="ci-icon">✉️</div><div class="ci-info"><small>Email</small><a href="mailto:itzaclothess@gmail.com">itzaclothess@gmail.com</a></div></div>
+        <div class="ci"><div class="ci-icon">📍</div><div class="ci-info"><small>Ubicación</small><p>Lic. Alfonso Santos Palomo 8008,<br>Col. CROC, Monterrey, N.L.</p></div></div>
       </div>
       <div class="socials">
-        <a class="soc-btn" href="https://instagram.com/itzaclothess" target="_blank">📸 itzaclothess</a>
-        <a class="soc-btn" href="https://facebook.com/ItzaClothess" target="_blank">👤 Itza Clothess</a>
-        <a class="soc-btn" href="https://tiktok.com/@itza.clothess_of" target="_blank">🎵 itza.clothess_of</a>
+        <a class="soc" href="https://instagram.com/itzaclothess" target="_blank">📸 itzaclothess</a>
+        <a class="soc" href="https://facebook.com/ItzaClothess" target="_blank">👤 Itza Clothess</a>
+        <a class="soc" href="https://tiktok.com/@itza.clothess_of" target="_blank">🎵 itza.clothess_of</a>
       </div>
     </div>
     <div class="reveal">
       <div class="form-box">
         <div class="form-title">Cotizar Ahora</div>
-        <div class="form-sub">Sin compromiso · Respuesta el mismo día</div>
+        <div class="form-sub">Sin compromiso · Respuesta garantizada el mismo día</div>
         <form onsubmit="sendWA(event)">
           <div class="fg"><label>Nombre / Empresa</label><input type="text" placeholder="Tu nombre o empresa" required></div>
           <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+52 81 0000 0000" required></div>
@@ -934,64 +500,360 @@ footer{background:var(--bg2);border-top:1px solid rgba(22,53,86,.1);padding:52px
               <option>Mandiles</option><option>Estola</option><option>Termos</option><option>Otro / Varios</option>
             </select>
           </div>
-          <div class="fg"><label>Detalles del pedido</label><textarea placeholder="Cantidad, tallas, colores, personalización (logo, bordado, impresión)..."></textarea></div>
-          <button type="submit" class="form-submit">Enviar por WhatsApp →</button>
+          <div class="fg"><label>Detalles del pedido</label><textarea placeholder="Cantidad, tallas, colores, personalización (logo, bordado, DTF)..."></textarea></div>
+          <button type="submit" class="form-btn">Enviar por WhatsApp →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-logo">ITZA CLOTHESS<small>FABRICANTES DIRECTOS · MONTERREY N.L.</small></div>
-    <nav class="footer-nav">
+  <div class="foot-top">
+    <div class="foot-logo">ITZA CLOTHESS<small>Fabricantes Directos · Monterrey N.L.</small></div>
+    <nav class="foot-nav">
       <a href="#about">Nosotros</a><a href="#products">Catálogo</a>
       <a href="#services">Servicios</a><a href="#contact">Contacto</a>
     </nav>
   </div>
-  <div class="footer-bot">
-    <p>© 2025 Itza Clothess · Monterrey, Nuevo León, México</p>
+  <div class="foot-bot">
+    <p>© 2025 Itza Clothess · Monterrey, Nuevo León, México · Todos los derechos reservados</p>
     <span>Fabricantes Directos · Sin Intermediarios</span>
   </div>
 </footer>
 
-<script>
-// ── CURSOR
-const D=document.getElementById('cur-d'),R=document.getElementById('cur-r');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;D.style.left=mx+'px';D.style.top=my+'px';});
-(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(loop);})();
+<!-- ══════════════════════════════════ MODAL ══════════════════════════════════ -->
+<div id="modal">
+  <div class="modal-bg" id="modalbg"></div>
+  <div class="modal-box">
+    <div class="modal-img-wrap"><img id="modal-img" src="" alt="Catálogo"></div>
+    <button class="modal-close" id="modal-close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-wa">
+      <div class="modal-wa-info"><div class="name" id="modal-name"></div><div class="hint">Toca para cotizar por WhatsApp</div></div>
+      <a class="modal-wa-btn" id="modal-wa-link" href="#" target="_blank">💬 Cotizar →</a>
+    </div>
+    <div class="modal-nav">
+      <button class="mnav-btn" id="modal-prev"><svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg></button>
+      <button class="mnav-btn" id="modal-next"><svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg></button>
+    </div>
+  </div>
+</div>
 
-// ── NAV + PROGRESS
-const nav=document.getElementById('nav'),bar=document.getElementById('progress');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('on',scrollY>50);
-  bar.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
+<script>
+/* ══════════ PRODUCT DATA ══════════ */
+const PRODUCTS = [
+  // PLAYERAS
+  { name:"Playera Cuello Redondo", cat:"playera", badge:"Playera",
+    mat:"50% Poliéster – 50% Algodón / 100% Algodón",
+    tags:["Manga Corta","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_03.jpg", wa:"Playera%20Cuello%20Redondo" },
+
+  { name:"Playera Cuello Redondo Manga Larga", cat:"playera", badge:"Playera",
+    mat:"50% Poliéster – 50% Algodón / 100% Algodón",
+    tags:["Manga Larga","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_03.jpg", wa:"Playera%20Cuello%20Redondo%20Manga%20Larga" },
+
+  // POLO
+  { name:"Polo Piqué", cat:"polo", badge:"Polo",
+    mat:"50% Poliéster – 50% Algodón",
+    tags:["Manga Corta","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_04.jpg", wa:"Polo%20Piqu%C3%A9" },
+
+  { name:"Polo Piqué Manga Larga", cat:"polo", badge:"Polo",
+    mat:"50% Poliéster – 50% Algodón",
+    tags:["Manga Larga","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_04.jpg", wa:"Polo%20Piqu%C3%A9%20Manga%20Larga" },
+
+  { name:"Polo Dri-Fit", cat:"polo", badge:"Dri-Fit",
+    mat:"100% Poliéster · Transpirable",
+    tags:["Manga Corta","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_05.jpg", wa:"Polo%20Dri-Fit" },
+
+  { name:"Polo Dri-Fit Manga Larga", cat:"polo", badge:"Dri-Fit",
+    mat:"100% Poliéster · Transpirable",
+    tags:["Manga Larga","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_05.jpg", wa:"Polo%20Dri-Fit%20Manga%20Larga" },
+
+  { name:"Polo Dri-Fit Combinada", cat:"polo", badge:"Dri-Fit",
+    mat:"100% Poliéster · Transpirable",
+    tags:["Combinada","Manga Corta","Dama","Caballero","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1565084888279-aca607bb7f1e?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_06.jpg", wa:"Polo%20Dri-Fit%20Combinada" },
+
+  { name:"Polo Dri-Fit Combinada Manga Larga", cat:"polo", badge:"Dri-Fit",
+    mat:"100% Poliéster · Transpirable",
+    tags:["Combinada","Manga Larga","Dama","Caballero"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1593856219618-9b7a7a10be52?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_06.jpg", wa:"Polo%20Dri-Fit%20Combinada%20Manga%20Larga" },
+
+  // CAMISAS
+  { name:"Jersey Beisbolera", cat:"playera", badge:"Jersey",
+    mat:"100% Poliéster",
+    tags:["Dama","Caballero","Niños","Varios diseños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1529933901647-fd65c79d3a28?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_07.jpg", wa:"Jersey%20Beisbolera" },
+
+  { name:"Camisa de Vestir Manga Larga", cat:"playera", badge:"Camisa",
+    mat:"100% Algodón / 60% Algodón – 40% Poliéster",
+    tags:["Manga Larga","Dama","Caballero"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_07.jpg", wa:"Camisa%20de%20Vestir%20Manga%20Larga" },
+
+  // MEZCLILLA
+  { name:"Camisola Mezclilla", cat:"industrial", badge:"Mezclilla",
+    mat:"100% Algodón · 14oz",
+    tags:["Unisex","14oz","Industrial"], sz:"XS – 2XL",
+    thumb:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_08.jpg", wa:"Camisola%20Mezclilla" },
+
+  { name:"Camisa Mezclilla Lisa", cat:"industrial", badge:"Mezclilla",
+    mat:"100% Algodón · 7oz",
+    tags:["Dama","Caballero","7oz"], sz:"XS – 2XL",
+    thumb:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_08.jpg", wa:"Camisa%20Mezclilla%20Lisa" },
+
+  // PANTALONES
+  { name:"Pantalón Mezclilla", cat:"pantalon", badge:"Pantalón",
+    mat:"14oz · Resistente",
+    tags:["Unisex","Industrial","14oz"], sz:"28 – 44",
+    thumb:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_09.jpg", wa:"Pantalón%20Mezclilla" },
+
+  { name:"Pantalón Mezclilla Liso Casual", cat:"pantalon", badge:"Pantalón",
+    mat:"Mezclilla Lisa · Casual",
+    tags:["Unisex","Casual"], sz:"28 – 44",
+    thumb:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_09.jpg", wa:"Pantalón%20Mezclilla%20Casual" },
+
+  { name:"Pantalón Cargo", cat:"pantalon", badge:"Pantalón",
+    mat:"Resistente · Múltiples bolsillos",
+    tags:["Unisex","Cargo","Industrial"], sz:"28 – 44",
+    thumb:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_10.jpg", wa:"Pantalón%20Cargo" },
+
+  { name:"Pantalón de Vestir Casual", cat:"pantalon", badge:"Pantalón",
+    mat:"Formal · Casual",
+    tags:["Unisex","Vestir"], sz:"28 – 44",
+    thumb:"https://images.unsplash.com/photo-1594938298603-c8148ce4d3ad?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_10.jpg", wa:"Pantalón%20de%20Vestir" },
+
+  // SUDADERAS
+  { name:"Sudadera Básica Cuello Redondo", cat:"sudadera", badge:"Sudadera",
+    mat:"50% Poliéster – 50% Algodón",
+    tags:["Adulto Unisex","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_11.jpg", wa:"Sudadera%20Básica" },
+
+  { name:"Sudadera Completa con Capucha", cat:"sudadera", badge:"Sudadera",
+    mat:"50% Poliéster – 50% Algodón",
+    tags:["Capucha","Cangurera","Adulto","Niños"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_11.jpg", wa:"Sudadera%20con%20Capucha" },
+
+  { name:"Sudadera de Cierre con Capucha", cat:"sudadera", badge:"Sudadera",
+    mat:"50% Poliéster – 50% Algodón",
+    tags:["Cierre","Capucha","Cangurera"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_12.jpg", wa:"Sudadera%20de%20Cierre" },
+
+  { name:"Chamarra Neopreno", cat:"sudadera", badge:"Chamarra",
+    mat:"90% Poliéster – 10% Licra · Antifluidos",
+    tags:["Antifluidos","Dama","Caballero"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_12.jpg", wa:"Chamarra%20Neopreno" },
+
+  // INDUSTRIAL
+  { name:"Overol", cat:"industrial", badge:"Industrial",
+    mat:"100% Algodón · Gabardina",
+    tags:["Unisex","Gabardina","Industrial"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1537832816519-689ad163239b?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_13.jpg", wa:"Overol" },
+
+  { name:"Chaleco Industrial", cat:"industrial", badge:"Industrial",
+    mat:"100% Algodón · Gabardina",
+    tags:["Unisex","Gabardina","Industrial"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_13.jpg", wa:"Chaleco%20Industrial" },
+
+  { name:"Quirúrgico / Filipinas", cat:"industrial", badge:"Médico",
+    mat:"Antifluidos · Transpirables",
+    tags:["Scrubs","Corte Recto","Dama","Caballero"], sz:"XS – 5XL",
+    thumb:"https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_14.jpg", wa:"Quirúrgico%20Filipinas" },
+
+  // ACCESORIOS
+  { name:"Mandil Completo", cat:"accesorio", badge:"Mandil",
+    mat:"Cinta Ajustable",
+    tags:["Unitalla","Unisex"], sz:"Unitalla",
+    thumb:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_14.jpg", wa:"Mandil%20Completo" },
+
+  { name:"Mandil Corto", cat:"accesorio", badge:"Mandil",
+    mat:"100% Poliéster / 60% Algodón – 40% Poliéster",
+    tags:["Unitalla","Unisex"], sz:"Unitalla",
+    thumb:"https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_15.jpg", wa:"Mandil%20Corto" },
+
+  { name:"Estola", cat:"accesorio", badge:"Graduación",
+    mat:"Satén · Poliéster",
+    tags:["Niño","Adulto","Unisex"], sz:"Niño / Adulto",
+    thumb:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_15.jpg", wa:"Estola" },
+
+  { name:"Gorra Trucker", cat:"accesorio", badge:"Gorra",
+    mat:"Malla posterior · Ajustable",
+    tags:["Unisex","Bordado disponible"], sz:"Ajustable",
+    thumb:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_16.jpg", wa:"Gorra%20Trucker" },
+
+  { name:"Gorra Indomable", cat:"accesorio", badge:"Gorra",
+    mat:"Ajustable",
+    tags:["Unisex","Bordado disponible"], sz:"Ajustable",
+    thumb:"https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_16.jpg", wa:"Gorra%20Indomable" },
+
+  { name:"Gorra Bella", cat:"accesorio", badge:"Gorra",
+    mat:"Ajustable",
+    tags:["Unisex","Bordado disponible"], sz:"Ajustable",
+    thumb:"https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_17.jpg", wa:"Gorra%20Bella" },
+
+  { name:"Termos", cat:"accesorio", badge:"Termos",
+    mat:"Solicita catálogo por mensaje",
+    tags:["Varios modelos","Personalizable"], sz:"Consultar",
+    thumb:"https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=600&h=700&fit=crop&auto=format",
+    catalog:"img/page_17.jpg", wa:"Cat%C3%A1logo%20de%20Termos" },
+];
+
+/* ══════════ MARQUEE ITEMS ══════════ */
+const mqItems = ["⚾ Jersey Beisbolera","👔 Camisa de Vestir","⚡ Polo Dri-Fit","👕 Polo Piqué","🧥 Chamarra Neopreno","🦺 Chaleco Industrial","🏥 Quirúrgico Scrubs","🎓 Estola","👖 Pantalón Cargo","🧢 Gorras","☕ Termos","👨‍🍳 Mandil","🧥 Overol Industrial"];
+const mqt = document.getElementById('mqt');
+[...mqItems,...mqItems].forEach(t=>{
+  const c=document.createElement('div'); c.className='mchip';
+  const [ic,...ws]=t.split(' '); c.innerHTML=`<span>${ic}</span>${ws.join(' ')}`;
+  mqt.appendChild(c);
 });
 
-// ── REVEAL
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+/* ══════════ RENDER PRODUCTS ══════════ */
+let visibleProducts = [...PRODUCTS];
+let activeIdx = 0;
 
-// ── CARD STAGGER
-const co=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*55);}),{threshold:.08});
-document.querySelectorAll('.card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(28px)';c.style.transition=`opacity .6s ${i*.04}s ease,transform .6s ${i*.04}s ease,box-shadow .4s,transform .4s var(--tr)`;co.observe(c);});
-
-// ── FILTER
-function filter(btn,cat){
-  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.card').forEach(c=>{
-    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
+function renderCards(list){
+  const grid = document.getElementById('pgrid');
+  grid.innerHTML='';
+  list.forEach((p,i)=>{
+    const card = document.createElement('div');
+    card.className='pcard'; card.dataset.cat=p.cat;
+    card.innerHTML=`
+      <div class="pcard-img">
+        <img class="thumb" src="${p.thumb}" alt="${p.name}" loading="lazy">
+        <div class="pcard-overlay">
+          <div class="overlay-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="overlay-text">Ver en catálogo</div>
+        </div>
+        <span class="pcard-cat">${p.badge}</span>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-mat">${p.mat}</div>
+        <div class="pcard-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+        <div class="pcard-foot">
+          <div class="pcard-sz"><strong>Tallas:</strong> ${p.sz}</div>
+          <a class="pcard-wa" href="https://wa.me/528118269338?text=Quiero%20cotizar%20${p.wa}" target="_blank" onclick="event.stopPropagation()">Cotizar →</a>
+        </div>
+      </div>`;
+    card.addEventListener('click', ()=>openModal(i, list));
+    setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)';card.style.transition=`opacity .6s ${i*.05}s ease, transform .6s ${i*.05}s ease, box-shadow .4s, transform .45s var(--ease)`;},i*55+100);
+    grid.appendChild(card);
   });
 }
+renderCards(PRODUCTS);
 
-// ── MOBILE MENU
-function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
+/* ══════════ FILTER ══════════ */
+function filt(btn,cat){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  visibleProducts = cat==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===cat);
+  renderCards(visibleProducts);
+}
 
-// ── FORM → WHATSAPP
+/* ══════════ MODAL ══════════ */
+const modal=document.getElementById('modal');
+const mImg=document.getElementById('modal-img');
+const mName=document.getElementById('modal-name');
+const mWa=document.getElementById('modal-wa-link');
+
+function openModal(idx, list){
+  activeIdx=idx;
+  visibleProducts=list;
+  setModal(list[idx]);
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function setModal(p){
+  mImg.src=p.catalog;
+  mImg.alt=p.name;
+  mName.textContent=p.name;
+  mWa.href=`https://wa.me/528118269338?text=Quiero%20cotizar%20${p.wa}`;
+  document.getElementById('modal-img-wrap') && (document.querySelector('.modal-img-wrap').scrollTop=0);
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal-close').addEventListener('click',closeModal);
+document.getElementById('modalbg').addEventListener('click',closeModal);
+document.getElementById('modal-prev').addEventListener('click',()=>{
+  activeIdx=(activeIdx-1+visibleProducts.length)%visibleProducts.length;
+  setModal(visibleProducts[activeIdx]);
+});
+document.getElementById('modal-next').addEventListener('click',()=>{
+  activeIdx=(activeIdx+1)%visibleProducts.length;
+  setModal(visibleProducts[activeIdx]);
+});
+document.addEventListener('keydown',e=>{
+  if(!modal.classList.contains('open'))return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='ArrowLeft'){activeIdx=(activeIdx-1+visibleProducts.length)%visibleProducts.length;setModal(visibleProducts[activeIdx]);}
+  if(e.key==='ArrowRight'){activeIdx=(activeIdx+1)%visibleProducts.length;setModal(visibleProducts[activeIdx]);}
+});
+
+/* ══════════ CURSOR ══════════ */
+const dot=document.querySelector('.c-dot'),ring=document.querySelector('.c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+document.addEventListener('mousedown',()=>document.body.classList.add('clicking'));
+document.addEventListener('mouseup',()=>document.body.classList.remove('clicking'));
+document.querySelectorAll('a,button,.pcard,.fb,.scard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovered'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovered'));
+});
+(function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+
+/* ══════════ NAV + PROGRESS ══════════ */
+const nav=document.getElementById('nav'),prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('stuck',scrollY>60);
+  prog.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
+});
+
+/* ══════════ REVEAL ══════════ */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ══════════ MOBILE ══════════ */
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');}
+
+/* ══════════ FORM ══════════ */
 function sendWA(e){
   e.preventDefault();
   const f=e.target;
@@ -1002,10 +864,11 @@ function sendWA(e){
   window.open(`https://wa.me/528118269338?text=${encodeURIComponent(`Hola Itza Clothess! 👋\n\nNombre: ${n}\nTeléfono: ${t}\nProducto: ${p}\n\nDetalles: ${d}\n\n¡Gracias!`)}`,'_blank');
 }
 
-// ── SOUND (subtle)
-let ctx;
-function snd(f,d){try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(0,ctx.currentTime);g.gain.linearRampToValueAtTime(.03,ctx.currentTime+.02);g.gain.linearRampToValueAtTime(0,ctx.currentTime+d);o.start();o.stop(ctx.currentTime+d);}catch(e){}}
-document.querySelectorAll('a,button,.card,.f-btn').forEach(el=>el.addEventListener('mouseenter',()=>snd(660,.1)));
+/* ══════════ SUBTLE SOUND ══════════ */
+let actx;
+function snd(f,d){try{if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)();const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.frequency.value=f;g.gain.setValueAtTime(0,actx.currentTime);g.gain.linearRampToValueAtTime(.025,actx.currentTime+.02);g.gain.linearRampToValueAtTime(0,actx.currentTime+d);o.start();o.stop(actx.currentTime+d);}catch(e){}}
+document.querySelectorAll('.pcard').forEach(c=>c.addEventListener('mouseenter',()=>snd(880,.08)));
+document.querySelectorAll('.fb').forEach(b=>b.addEventListener('click',()=>snd(660,.06)));
 </script>
 </body>
 </html>
