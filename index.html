@@ -4,1763 +4,1008 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ITZA CLOTHESS | Fabricantes Directos · Monterrey</title>
-<meta name="description" content="Fabricantes directos de ropa en Monterrey, NL. Bordado computarizado, impresión DTF. Playeras, polos, sudaderas, uniformes industriales. Tallas XS–5XL.">
+<meta name="description" content="Fabricantes directos de ropa en Monterrey, NL. Bordado computarizado, impresión DTF. Playeras, polos, sudaderas, uniformes. Tallas XS–5XL.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
 <style>
-/* ===================== RESET & VARIABLES ===================== */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --black: #080808;
-  --deep: #0d0d0d;
-  --surface: #111111;
-  --card: #161616;
-  --border: rgba(201,168,76,0.18);
-  --gold: #C9A84C;
-  --gold2: #E8C97A;
-  --gold3: #F5E3A0;
-  --white: #F0EDE8;
-  --gray: #888;
-  --text: #CCCAC4;
-  --font-head: 'Bebas Neue', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', serif;
-  --radius: 16px;
-  --radius-sm: 8px;
-  --glow: 0 0 40px rgba(201,168,76,0.15);
-  --transition: cubic-bezier(0.76,0,0.24,1);
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:        #D8D6D0;
+  --bg2:       #CCCAC4;
+  --navy:      #163556;
+  --navy2:     #1E4A78;
+  --navy-lt:   #1B3A5C;
+  --black:     #0D0D0D;
+  --white:     #F5F3EF;
+  --text:      #1a1a1a;
+  --text-lt:   #444;
+  --radius:    18px;
+  --radius-sm: 10px;
+  --font-h:    'Barlow Condensed','Bebas Neue',sans-serif;
+  --font-b:    'Inter',sans-serif;
+  --tr:        cubic-bezier(.76,0,.24,1);
+  --shadow:    0 8px 40px rgba(22,53,86,.15);
 }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body {
-  font-family: var(--font-body);
-  background: var(--black);
-  color: var(--text);
-  cursor: none;
-  overflow-x: hidden;
-}
-::selection { background: var(--gold); color: var(--black); }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--font-b);background:var(--bg);color:var(--text);cursor:none;overflow-x:hidden;}
+::selection{background:var(--navy);color:var(--white);}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
 
-/* ===================== CUSTOM CURSOR ===================== */
-#cursor {
-  position: fixed; top:0; left:0; z-index: 9999;
-  pointer-events: none;
-}
-#cursor-dot {
-  width: 8px; height: 8px;
-  background: var(--gold);
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%,-50%);
-  transition: width .2s, height .2s, background .2s;
-}
-#cursor-ring {
-  width: 40px; height: 40px;
-  border: 1.5px solid rgba(201,168,76,0.6);
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%,-50%);
-  transition: width .4s var(--transition), height .4s var(--transition), border-color .3s;
-}
-body:has(a:hover) #cursor-ring,
-body:has(button:hover) #cursor-ring { width: 60px; height: 60px; border-color: var(--gold); }
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px;}
 
-/* ===================== SCROLLBAR ===================== */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+/* ── PROGRESS ── */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--navy);z-index:9999;width:0;transition:width .1s;}
 
-/* ===================== SCROLL PROGRESS ===================== */
-#progress-bar {
-  position: fixed; top:0; left:0; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold3));
-  z-index: 10000; width: 0%; transition: width .1s linear;
-  box-shadow: 0 0 12px var(--gold);
-}
+/* ── CURSOR ── */
+#cur{position:fixed;top:0;left:0;z-index:9998;pointer-events:none;}
+#cur-d{width:10px;height:10px;background:var(--navy);border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
+#cur-r{width:38px;height:38px;border:1.5px solid rgba(22,53,86,.5);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .35s var(--tr),height .35s var(--tr);}
 
-/* ===================== NOISE TEXTURE OVERLAY ===================== */
-body::before {
-  content:'';
-  position: fixed; inset:0; z-index: 1; pointer-events: none;
-  opacity: .025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+#nav.on{background:rgba(216,214,208,.94);backdrop-filter:blur(18px);padding:14px 5%;border-bottom:1px solid rgba(22,53,86,.12);box-shadow:0 2px 20px rgba(22,53,86,.08);}
+.nav-logo{font-family:var(--font-h);font-size:clamp(20px,2.5vw,26px);letter-spacing:4px;color:var(--navy);line-height:1;}
+.nav-logo small{display:block;font-size:.42em;letter-spacing:5px;color:var(--navy2);font-family:var(--font-b);font-weight:400;opacity:.8;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--navy2);position:relative;padding-bottom:3px;transition:color .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--navy);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--tr);}
+.nav-links a:hover{color:var(--navy);}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{padding:10px 24px;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:4px;transition:background .3s,transform .2s;cursor:none;}
+.nav-cta:hover{background:var(--navy2);transform:translateY(-2px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
 
-/* ===================== NAV ===================== */
-#nav {
-  position: fixed; top:0; left:0; right:0; z-index: 1000;
-  padding: 20px 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background .4s, padding .4s, backdrop-filter .4s;
-}
-#nav.scrolled {
-  background: rgba(8,8,8,0.92);
-  backdrop-filter: blur(20px);
-  padding: 14px 5%;
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: var(--font-head);
-  font-size: clamp(22px,3vw,28px);
-  letter-spacing: 4px;
-  color: var(--white);
-  display: flex; flex-direction: column; line-height: 1;
-}
-.nav-logo span { font-size: .45em; letter-spacing: 6px; color: var(--gold); font-family: var(--font-body); font-weight:300; }
-.nav-links {
-  display: flex; gap: 36px; list-style: none;
-}
-.nav-links a {
-  font-size: 12px; font-weight: 500; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--gray);
-  position: relative; padding-bottom: 4px;
-  transition: color .3s;
-}
-.nav-links a::after {
-  content:''; position: absolute; bottom:0; left:0; right:0;
-  height: 1px; background: var(--gold);
-  transform: scaleX(0); transform-origin: right;
-  transition: transform .4s var(--transition);
-}
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-.nav-cta {
-  padding: 10px 24px;
-  border: 1px solid var(--gold);
-  font-size: 11px; font-weight: 600; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--gold);
-  border-radius: 2px;
-  transition: background .3s, color .3s, box-shadow .3s;
-  background: transparent;
-  cursor: none;
-}
-.nav-cta:hover { background: var(--gold); color: var(--black); box-shadow: var(--glow); }
-.hamburger { display:none; flex-direction:column; gap:5px; cursor:none; }
-.hamburger span { display:block; width:24px; height:1.5px; background: var(--white); transition:.3s; }
+/* ── MOBILE MENU ── */
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:28px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:var(--font-h);font-size:52px;color:var(--white);letter-spacing:4px;transition:color .2s;}
+.mob-menu a:hover{color:var(--bg);}
+.mob-close{position:absolute;top:24px;right:28px;font-size:28px;color:rgba(255,255,255,.6);cursor:none;}
 
-/* ===================== HERO ===================== */
-#hero {
-  position: relative; height: 100vh; min-height: 700px;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
-    linear-gradient(180deg, #0d0d0d 0%, #080808 100%);
-}
-.hero-grid {
-  position: absolute; inset:0;
-  background-image:
-    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridMove 20s linear infinite;
-}
-@keyframes gridMove {
-  to { background-position: 60px 60px; }
-}
-.hero-particles {
-  position: absolute; inset:0; pointer-events: none;
-}
-.particle {
-  position: absolute; border-radius: 50%;
-  background: var(--gold); opacity: 0;
-  animation: float var(--dur, 8s) var(--delay,0s) infinite ease-in-out;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0) scale(1); opacity:0; }
-  20%,80% { opacity: var(--op, .4); }
-  50% { transform: translateY(-80px) scale(1.2); }
-}
-.hero-content {
-  position: relative; z-index:2; text-align: center;
-  padding: 0 20px;
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap:8px;
-  border: 1px solid var(--border);
-  padding: 8px 20px; border-radius: 100px;
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 32px;
-  background: rgba(201,168,76,0.06);
-  animation: fadeDown .8s var(--transition) both;
-}
-.hero-badge-dot { width:6px; height:6px; background: var(--gold); border-radius:50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
-@keyframes fadeDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:none;} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:none;} }
-.hero-title {
-  font-family: var(--font-head);
-  font-size: clamp(72px, 14vw, 180px);
-  line-height: .9; letter-spacing: -2px;
-  color: var(--white);
-  animation: fadeUp .9s .2s var(--transition) both;
-}
-.hero-title span {
-  display: block;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, var(--gold) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
-}
-@keyframes shimmer { to { background-position: 200% center; } }
-.hero-subtitle {
-  font-family: var(--font-body); font-weight: 300;
-  font-size: clamp(12px,1.5vw,15px); letter-spacing: 6px;
-  text-transform: uppercase; color: var(--gray);
-  margin: 20px 0 48px;
-  animation: fadeUp 1s .4s var(--transition) both;
-}
-.hero-actions {
-  display: flex; gap:16px; justify-content:center; flex-wrap:wrap;
-  animation: fadeUp 1s .6s var(--transition) both;
-}
-.btn-primary {
-  padding: 16px 44px;
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
-  color: var(--black); font-weight: 700;
-  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  border-radius: 2px; border: none; cursor: none;
-  position: relative; overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
-  box-shadow: 0 8px 32px rgba(201,168,76,.3);
-}
-.btn-primary::before {
-  content:''; position:absolute; inset:0;
-  background: linear-gradient(135deg, var(--gold3), var(--gold));
-  opacity:0; transition: opacity .3s;
-}
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(201,168,76,.4); }
-.btn-primary:hover::before { opacity:1; }
-.btn-primary span { position:relative; z-index:1; }
-.btn-outline {
-  padding: 16px 44px;
-  border: 1px solid rgba(201,168,76,.4);
-  color: var(--gold); font-weight: 500;
-  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
-  border-radius: 2px; background: transparent; cursor: none;
-  transition: border-color .3s, background .3s, transform .3s;
-}
-.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,.08); transform: translateY(-3px); }
-.hero-scroll {
-  position: absolute; bottom: 40px; left:50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap:8px;
-  animation: fadeUp 1s 1s var(--transition) both;
-}
-.hero-scroll span { font-size:10px; letter-spacing:3px; color:var(--gray); text-transform:uppercase; }
-.scroll-line {
-  width: 1px; height: 60px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse { 0%,100%{transform:scaleY(1);opacity:1;} 50%{transform:scaleY(.6);opacity:.5;} }
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.hero-left{background:var(--navy);display:flex;flex-direction:column;justify-content:flex-end;padding:80px 6% 60px;position:relative;overflow:hidden;}
+.hero-left::before{content:'ITZA';position:absolute;top:-40px;left:-20px;font-family:var(--font-h);font-size:clamp(200px,28vw,360px);color:rgba(255,255,255,.04);line-height:1;pointer-events:none;letter-spacing:-10px;}
+.hero-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:24px;display:flex;align-items:center;gap:12px;animation:fadeUp .8s var(--tr) both;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.4);}
+.hero-h1{font-family:var(--font-h);font-size:clamp(72px,10vw,130px);line-height:.9;color:var(--white);letter-spacing:2px;animation:fadeUp .9s .1s var(--tr) both;}
+.hero-h1 span{display:block;color:var(--bg);opacity:.85;}
+.hero-sub{font-size:14px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;margin:28px 0 40px;max-width:380px;animation:fadeUp 1s .2s var(--tr) both;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 1s .35s var(--tr) both;}
+.btn-w{padding:15px 36px;background:var(--white);color:var(--navy);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:background .3s,transform .3s;box-shadow:0 6px 24px rgba(0,0,0,.2);}
+.btn-w:hover{background:var(--bg);transform:translateY(-3px);}
+.btn-ghost{padding:15px 36px;border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;}
+.btn-ghost:hover{border-color:var(--white);color:var(--white);}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px;animation:fadeUp 1s .5s var(--tr) both;}
+.h-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:100px;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 8s ease;}
+.hero-right:hover img{transform:scale(1.04);}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%);}
+.hero-scroll{position:absolute;bottom:32px;right:32px;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;}
+.hero-scroll span{font-size:9px;letter-spacing:3px;color:var(--white);text-transform:uppercase;writing-mode:vertical-lr;opacity:.6;}
+.scroll-l{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);animation:scrollP 2s ease-in-out infinite;}
+@keyframes scrollP{0%,100%{transform:scaleY(1);opacity:.8;}50%{transform:scaleY(.5);opacity:.3;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
 
-/* ===================== SECTIONS COMMON ===================== */
-.section { padding: 120px 5%; position:relative; }
-.section-label {
-  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
-  display: flex; align-items: center; gap:12px;
-}
-.section-label::before {
-  content:''; flex:0 0 30px; height:1px; background: var(--gold);
-}
-.section-title {
-  font-family: var(--font-head);
-  font-size: clamp(42px, 6vw, 80px);
-  line-height: 1; color: var(--white);
-  letter-spacing: -1px;
-}
-.section-title em { font-style: italic; font-family: var(--font-serif); color: var(--gold); }
-.reveal {
-  opacity:0; transform: translateY(40px);
-  transition: opacity .8s var(--transition), transform .8s var(--transition);
-}
-.reveal.visible { opacity:1; transform:none; }
+/* ── STATS STRIP ── */
+.stats-strip{background:var(--navy2);display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1);transition:background .3s;}
+.stat:last-child{border-right:none;}
+.stat:hover{background:var(--navy);}
+.stat-n{font-family:var(--font-h);font-size:clamp(36px,4vw,52px);color:var(--white);line-height:1;}
+.stat-l{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px;}
 
-/* ===================== ABOUT ===================== */
-#about {
-  background: var(--surface);
-  position: relative; overflow: hidden;
-}
-#about::before {
-  content:'';
-  position:absolute; top:-1px; left:0; right:0; height:1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.about-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-}
-.about-visual {
-  position: relative;
-}
-.about-img-wrap {
-  aspect-ratio: 4/5;
-  background: var(--card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  overflow: hidden; position: relative;
-  display: flex; align-items: center; justify-content: center;
-}
-.about-img-wrap::after {
-  content: 'IC';
-  font-family: var(--font-head);
-  font-size: 160px; color: rgba(201,168,76,0.06);
-  letter-spacing: -8px;
-}
-.about-fabric-texture {
-  position: absolute; inset:0;
-  background:
-    repeating-linear-gradient(
-      45deg,
-      transparent, transparent 2px,
-      rgba(201,168,76,.015) 2px, rgba(201,168,76,.015) 4px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent, transparent 2px,
-      rgba(201,168,76,.015) 2px, rgba(201,168,76,.015) 4px
-    );
-}
-.about-tag {
-  position: absolute;
-  background: var(--gold); color: var(--black);
-  font-weight: 700; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  padding: 8px 16px; border-radius: var(--radius-sm);
-}
-.about-tag.t1 { top:-20px; right:-20px; }
-.about-tag.t2 { bottom: 24px; left: -20px; }
-.about-stats {
-  display: grid; grid-template-columns: 1fr 1fr; gap:1px;
-  background: var(--border); border-radius: var(--radius); overflow:hidden;
-  margin-top: 32px;
-}
-.stat-item {
-  background: var(--card); padding: 28px 24px; text-align: center;
-}
-.stat-num {
-  font-family: var(--font-head); font-size: 42px; color: var(--gold); line-height:1;
-}
-.stat-label { font-size: 11px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; margin-top:4px; }
-.about-text { }
-.about-text p {
-  font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom:24px;
-}
-.process-steps {
-  margin-top: 40px; display: flex; flex-direction: column; gap:0;
-}
-.process-step {
-  display: flex; gap:20px; align-items: flex-start;
-  padding: 20px 0; border-bottom: 1px solid var(--border);
-  transition: padding-left .3s;
-}
-.process-step:hover { padding-left: 8px; }
-.step-num {
-  font-family: var(--font-head); font-size: 32px; color: var(--border);
-  min-width: 50px; line-height:1;
-  transition: color .3s;
-}
-.process-step:hover .step-num { color: var(--gold); }
-.step-info h4 { font-size: 13px; font-weight:600; color: var(--white); letter-spacing:1px; margin-bottom:4px; }
-.step-info p { font-size: 13px; color: var(--gray); }
+/* ── SECTIONS ── */
+.section{padding:100px 5%;position:relative;}
+.s-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.s-label::before{content:'';flex:0 0 24px;height:1.5px;background:var(--navy);}
+.s-title{font-family:var(--font-h);font-size:clamp(48px,7vw,90px);line-height:.92;color:var(--navy);letter-spacing:1px;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--tr),transform .8s var(--tr);}
+.reveal.vis{opacity:1;transform:none;}
 
-/* ===================== PRODUCTS ===================== */
-#products { background: var(--black); }
-.cat-filter {
-  display: flex; gap:8px; flex-wrap:wrap; margin: 48px 0 60px;
-}
-.cat-btn {
-  padding: 10px 24px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
-  background: transparent; color: var(--gray);
-  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: none; transition: all .3s;
-}
-.cat-btn.active, .cat-btn:hover {
-  background: var(--gold); color: var(--black);
-  border-color: var(--gold); font-weight:600;
-}
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-.product-card {
-  background: var(--card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: transform .4s var(--transition), box-shadow .4s, border-color .4s;
-  cursor: none;
-  position: relative;
-}
-.product-card::before {
-  content:''; position:absolute; inset:0; z-index:0;
-  background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
-  opacity:0; transition: opacity .4s;
-}
-.product-card:hover { transform: translateY(-8px); border-color: rgba(201,168,76,.4); box-shadow: 0 24px 60px rgba(0,0,0,.6), var(--glow); }
-.product-card:hover::before { opacity:1; }
-.card-visual {
-  height: 220px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, var(--surface), var(--black));
-}
-.card-icon {
-  font-size: 72px; opacity: .12;
-  transition: transform .4s var(--transition), opacity .4s;
-}
-.product-card:hover .card-icon { transform: scale(1.1) rotate(-5deg); opacity: .2; }
-.card-cat-badge {
-  position:absolute; top:12px; left:12px;
-  background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.25);
-  color: var(--gold); font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 100px;
-}
-.card-fabric-overlay {
-  position: absolute; inset:0;
-  background: repeating-linear-gradient(
-    90deg, transparent, transparent 3px,
-    rgba(255,255,255,.008) 3px, rgba(255,255,255,.008) 6px
-  );
-}
-.card-body { padding: 24px; position:relative; z-index:1; }
-.card-title {
-  font-family: var(--font-head); font-size: 22px; color: var(--white);
-  letter-spacing: 1px; line-height: 1.1; margin-bottom: 10px;
-}
-.card-material {
-  font-size: 12px; color: var(--gold); letter-spacing: 1px;
-  margin-bottom: 12px;
-}
-.card-details {
-  display: flex; flex-wrap:wrap; gap:8px; margin-bottom: 16px;
-}
-.card-tag {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 4px 10px; border-radius: 100px;
-  font-size: 10px; color: var(--gray); letter-spacing:1px;
-}
-.card-sizes {
-  font-size: 11px; color: var(--gray); padding-top: 12px;
-  border-top: 1px solid var(--border);
-  display:flex; align-items:center; gap:8px;
-}
-.card-sizes strong { color: var(--gold); font-size: 10px; letter-spacing:1px; text-transform:uppercase; }
-.card-hover-cta {
-  position: absolute; bottom:0; left:0; right:0;
-  background: linear-gradient(to top, var(--card) 60%, transparent);
-  padding: 40px 24px 24px;
-  transform: translateY(100%); transition: transform .4s var(--transition);
-  text-align:center;
-}
-.product-card:hover .card-hover-cta { transform: none; }
-.card-cta-btn {
-  display:block; padding:10px;
-  background: var(--gold); color: var(--black);
-  font-size: 11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
-  border-radius: var(--radius-sm);
-  transition: background .2s;
-}
-.card-cta-btn:hover { background: var(--gold3); }
+/* ── ABOUT ── */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-img-col{position:relative;}
+.about-main-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow);}
+.about-main-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s var(--tr);}
+.about-main-img:hover img{transform:scale(1.04);}
+.about-tag{position:absolute;background:var(--navy);color:var(--white);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:10px 18px;border-radius:var(--radius-sm);}
+.about-tag.t1{top:-16px;right:-16px;}
+.about-tag.t2{bottom:28px;left:-16px;}
+.about-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(22,53,86,.12);border-radius:var(--radius-sm);overflow:hidden;margin-top:24px;}
+.mini-stat{background:var(--white);padding:22px 18px;text-align:center;}
+.mini-n{font-family:var(--font-h);font-size:38px;color:var(--navy);line-height:1;}
+.mini-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-lt);margin-top:2px;}
+.about-text p{font-size:16px;line-height:1.85;color:var(--text-lt);margin-bottom:20px;}
+.process-list{margin-top:36px;}
+.process-item{display:flex;gap:18px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(22,53,86,.1);transition:padding-left .3s;}
+.process-item:hover{padding-left:6px;}
+.p-num{font-family:var(--font-h);font-size:36px;color:rgba(22,53,86,.15);min-width:52px;line-height:1;transition:color .3s;}
+.process-item:hover .p-num{color:var(--navy);}
+.p-info h4{font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:2px;text-transform:uppercase;}
+.p-info p{font-size:13px;color:var(--text-lt);line-height:1.6;}
 
-/* ===================== SAMPLES MARQUEE ===================== */
-#samples {
-  padding: 80px 0; background: var(--surface); overflow:hidden;
-  position:relative;
-}
-#samples::before, #samples::after {
-  content:''; position:absolute; top:0; bottom:0; width:200px; z-index:2;
-  pointer-events:none;
-}
-#samples::before { left:0; background: linear-gradient(90deg, var(--surface), transparent); }
-#samples::after { right:0; background: linear-gradient(-90deg, var(--surface), transparent); }
-.marquee-label {
-  text-align:center; margin-bottom:48px;
-  font-size:10px; letter-spacing:6px; text-transform:uppercase; color:var(--gold);
-}
-.marquee-track { display:flex; gap:24px; width:max-content; animation: marquee 30s linear infinite; }
-.marquee-track:hover { animation-play-state: paused; }
-@keyframes marquee { to { transform: translateX(-50%); } }
-.sample-chip {
-  display: flex; align-items:center; gap:12px;
-  background: var(--card); border: 1px solid var(--border);
-  padding: 14px 24px; border-radius: 100px;
-  font-size: 13px; color: var(--text); white-space:nowrap;
-  transition: border-color .3s, color .3s;
-}
-.sample-chip:hover { border-color: var(--gold); color: var(--gold); }
-.sample-chip-icon { font-size:18px; }
+/* ── PRODUCTS ── */
+#products{background:var(--bg);}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 52px;}
+.f-btn{padding:10px 22px;border-radius:100px;border:1.5px solid rgba(22,53,86,.25);background:transparent;color:var(--navy2);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:none;transition:all .3s;}
+.f-btn.active,.f-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;}
 
-/* ===================== SERVICES ===================== */
-#services {
-  background: var(--black); position:relative; overflow:hidden;
-}
-.services-inner {
-  display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
-}
-.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap:24px; }
-.service-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 36px 28px;
-  transition: transform .4s var(--transition), border-color .4s, box-shadow .4s;
-  position:relative; overflow:hidden;
-}
-.service-card::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold3));
-  transform:scaleX(0); transform-origin:left; transition: transform .4s var(--transition);
-}
-.service-card:hover { transform:translateY(-6px); border-color:rgba(201,168,76,.4); box-shadow: var(--glow); }
-.service-card:hover::after { transform:scaleX(1); }
-.service-icon { font-size:40px; margin-bottom:20px; }
-.service-name {
-  font-family: var(--font-head); font-size:24px; color:var(--white);
-  margin-bottom:10px; letter-spacing:1px;
-}
-.service-desc { font-size:13px; color:var(--gray); line-height:1.7; }
-.service-card.featured {
-  grid-column: 1/-1;
-  display:flex; gap:32px; align-items:center;
-  background: linear-gradient(135deg, rgba(201,168,76,0.08), var(--card));
-  border-color: rgba(201,168,76,.3);
-}
-.service-card.featured .service-icon { font-size:60px; }
+/* ── CARD ── */
+.card{background:var(--white);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(22,53,86,.08);transition:transform .4s var(--tr),box-shadow .4s;cursor:none;position:relative;}
+.card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(22,53,86,.18);}
+.card-img{height:260px;overflow:hidden;position:relative;background:var(--bg);}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--tr);}
+.card:hover .card-img img{transform:scale(1.07);}
+.card-cat{position:absolute;top:12px;left:12px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+.card-body{padding:22px 22px 18px;}
+.card-name{font-family:var(--font-h);font-size:22px;color:var(--navy);line-height:1.1;margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;}
+.card-mat{font-size:12px;color:var(--navy2);font-weight:500;margin-bottom:10px;letter-spacing:.5px;}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.ctag{background:var(--bg);border:1px solid rgba(22,53,86,.12);padding:4px 10px;border-radius:100px;font-size:10px;color:var(--text-lt);letter-spacing:.5px;}
+.card-sizes{font-size:11px;color:var(--text-lt);border-top:1px solid rgba(22,53,86,.08);padding-top:12px;display:flex;align-items:center;gap:8px;}
+.card-sizes strong{color:var(--navy);font-size:10px;letter-spacing:1px;text-transform:uppercase;}
+.card-cta{display:block;margin:14px 0 0;padding:12px;text-align:center;background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius-sm);transition:background .3s;}
+.card-cta:hover{background:var(--navy2);}
 
-/* ===================== COLORS STRIP ===================== */
-#colors {
-  padding: 80px 5%; background: var(--surface);
-}
-.colors-inner {
-  display:flex; align-items:center; gap:60px;
-}
-.colors-text { flex:0 0 340px; }
-.colors-text p { font-size:15px; color:var(--text); line-height:1.8; margin-top:16px; }
-.color-swatches {
-  flex:1; display:flex; flex-wrap:wrap; gap:12px;
-}
-.swatch {
-  width:48px; height:48px; border-radius:50%;
-  border:2px solid rgba(255,255,255,.08);
-  transition: transform .3s, box-shadow .3s;
-  cursor:none; position:relative;
-}
-.swatch:hover { transform:scale(1.3); box-shadow:0 8px 24px rgba(0,0,0,.5); z-index:1; }
-.swatch::after {
-  content: attr(data-name);
-  position:absolute; bottom:-24px; left:50%; transform:translateX(-50%);
-  font-size:9px; color:var(--gray); letter-spacing:1px; white-space:nowrap;
-  opacity:0; transition:.2s;
-}
-.swatch:hover::after { opacity:1; }
+/* ── MARQUEE ── */
+#marquee{padding:60px 0;background:var(--navy);overflow:hidden;position:relative;}
+.mq-label{text-align:center;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:32px;}
+.mq-track{display:flex;gap:20px;width:max-content;animation:mq 35s linear infinite;}
+.mq-track:hover{animation-play-state:paused;}
+@keyframes mq{to{transform:translateX(-50%);}}
+.mq-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:12px 22px;border-radius:100px;font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap;transition:all .3s;}
+.mq-chip:hover{background:rgba(255,255,255,.13);color:var(--white);}
+.mq-chip span{font-size:16px;}
 
-/* ===================== CONTACT ===================== */
-#contact {
-  background: var(--black); position:relative; overflow:hidden;
-}
-#contact::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.contact-info { }
-.contact-info p {
-  font-size:16px; color:var(--text); line-height:1.8; margin-top:20px; margin-bottom:48px;
-}
-.contact-items { display:flex; flex-direction:column; gap:0; }
-.contact-item {
-  display:flex; align-items:center; gap:20px;
-  padding:20px 0; border-bottom:1px solid var(--border);
-  transition: padding-left .3s;
-}
-.contact-item:hover { padding-left:8px; }
-.contact-item-icon {
-  width:44px; height:44px; border-radius:50%;
-  border:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center;
-  font-size:18px; flex-shrink:0;
-  background: var(--card); transition: background .3s, border-color .3s;
-}
-.contact-item:hover .contact-item-icon { background: rgba(201,168,76,.12); border-color:var(--gold); }
-.contact-item-text { }
-.contact-item-text small { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); }
-.contact-item-text a, .contact-item-text p { font-size:15px; color:var(--white); font-weight:400; margin-top:2px; }
-.contact-item-text a:hover { color:var(--gold); }
-.socials { display:flex; gap:12px; margin-top:48px; flex-wrap:wrap; }
-.social-btn {
-  display:flex; align-items:center; gap:8px;
-  padding: 12px 20px;
-  border:1px solid var(--border); border-radius:100px;
-  font-size:12px; color:var(--gray);
-  transition: all .3s; cursor:none;
-}
-.social-btn:hover { background:rgba(201,168,76,.1); border-color:var(--gold); color:var(--gold); }
-.contact-form-wrap {
-  background: var(--card); border:1px solid var(--border);
-  border-radius: var(--radius); padding:40px;
-}
-.form-title { font-family:var(--font-head); font-size:28px; color:var(--white); margin-bottom:8px; }
-.form-subtitle { font-size:13px; color:var(--gray); margin-bottom:32px; }
-.form-group { margin-bottom:20px; }
-.form-group label { display:block; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width:100%; background:var(--surface);
-  border:1px solid var(--border); border-radius:var(--radius-sm);
-  padding:14px 16px; color:var(--white); font-family:var(--font-body); font-size:14px;
-  transition: border-color .3s, box-shadow .3s;
-  cursor:none; outline:none;
-  -webkit-appearance:none;
-}
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,168,76,.1); }
-.form-group select option { background:var(--surface); }
-.form-group textarea { resize:vertical; min-height:100px; }
-.form-submit {
-  width:100%; padding:16px;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
-  border:none; border-radius:var(--radius-sm);
-  font-family:var(--font-body); font-size:12px; font-weight:700;
-  letter-spacing:3px; text-transform:uppercase; color:var(--black);
-  cursor:none; transition:transform .3s, box-shadow .3s;
-}
-.form-submit:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(201,168,76,.4); }
+/* ── SERVICES ── */
+#services{background:var(--white);}
+.srv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px;}
+.srv-cards{display:flex;flex-direction:column;gap:16px;}
+.srv-card{background:var(--bg);border:1px solid rgba(22,53,86,.1);border-radius:var(--radius);padding:32px 28px;transition:all .4s var(--tr);position:relative;overflow:hidden;}
+.srv-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--tr);}
+.srv-card:hover{background:var(--white);box-shadow:var(--shadow);transform:translateX(6px);}
+.srv-card:hover::before{transform:scaleY(1);}
+.srv-icon{font-size:36px;margin-bottom:16px;}
+.srv-name{font-family:var(--font-h);font-size:28px;color:var(--navy);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;}
+.srv-desc{font-size:13px;color:var(--text-lt);line-height:1.7;}
+.srv-img-col{position:relative;}
+.srv-img-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.srv-img-wrap img{width:100%;display:block;}
 
-/* ===================== FOOTER ===================== */
-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 60px 5% 30px;
-}
-.footer-inner { display:flex; align-items:center; justify-content:space-between; margin-bottom:48px; flex-wrap:wrap; gap:32px; }
-.footer-logo { font-family:var(--font-head); font-size:32px; color:var(--white); letter-spacing:4px; }
-.footer-logo span { display:block; font-size:.35em; letter-spacing:8px; color:var(--gold); font-family:var(--font-body); font-weight:300; }
-.footer-links { display:flex; gap:32px; flex-wrap:wrap; }
-.footer-links a { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); transition:color .3s; }
-.footer-links a:hover { color:var(--gold); }
-.footer-bottom { border-top:1px solid var(--border); padding-top:30px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-.footer-bottom p { font-size:12px; color:var(--gray); }
-.footer-bottom span { font-size:12px; color:var(--gold); }
+/* ── CONTACT ── */
+#contact{background:var(--navy);position:relative;overflow:hidden;}
+#contact::before{content:'ITZA';position:absolute;right:-60px;bottom:-80px;font-family:var(--font-h);font-size:clamp(200px,30vw,400px);color:rgba(255,255,255,.03);line-height:1;pointer-events:none;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.contact-label,.contact-title{color:var(--white);}
+.contact-label{color:rgba(255,255,255,.5);}
+.contact-title{color:var(--white);}
+.contact-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.8;margin:20px 0 44px;}
+.c-items{display:flex;flex-direction:column;}
+.c-item{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:padding-left .3s;}
+.c-item:hover{padding-left:6px;}
+.c-icon{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(255,255,255,.06);transition:background .3s;}
+.c-item:hover .c-icon{background:rgba(255,255,255,.12);}
+.c-info small{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.c-info a,.c-info p{font-size:14px;color:var(--white);margin-top:2px;display:block;}
+.c-info a:hover{color:var(--bg);}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;}
+.soc-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(255,255,255,.15);border-radius:100px;font-size:11px;color:rgba(255,255,255,.6);transition:all .3s;cursor:none;}
+.soc-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);color:var(--white);}
 
-/* ===================== WHATSAPP FLOAT ===================== */
-#wa-float {
-  position:fixed; bottom:32px; right:32px; z-index:999;
-  width:60px; height:60px; border-radius:50%;
-  background:linear-gradient(135deg, #25D366, #128C7E);
-  display:flex; align-items:center; justify-content:center;
-  font-size:28px; box-shadow:0 8px 32px rgba(37,211,102,.4);
-  cursor:none; transition:transform .3s, box-shadow .3s;
-  animation: waBounce 3s ease-in-out infinite;
-}
-#wa-float:hover { transform:scale(1.1); box-shadow:0 12px 48px rgba(37,211,102,.5); }
-@keyframes waBounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
-#wa-float .wa-ring {
-  position:absolute; inset:-4px; border-radius:50%;
-  border:2px solid rgba(37,211,102,.4);
-  animation:waRing 2.5s ease-in-out infinite;
-}
-@keyframes waRing { 0%{transform:scale(1);opacity:.8;} 100%{transform:scale(1.4);opacity:0;} }
+/* ── FORM ── */
+.form-box{background:var(--white);border-radius:var(--radius);padding:40px 36px;}
+.form-title{font-family:var(--font-h);font-size:32px;color:var(--navy);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase;}
+.form-sub{font-size:13px;color:var(--text-lt);margin-bottom:28px;}
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:7px;}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--bg);border:1.5px solid rgba(22,53,86,.12);border-radius:var(--radius-sm);padding:13px 15px;color:var(--text);font-family:var(--font-b);font-size:14px;outline:none;transition:border-color .3s;-webkit-appearance:none;cursor:none;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--navy);background:var(--white);}
+.fg select option{background:var(--white);}
+.fg textarea{resize:vertical;min-height:90px;}
+.form-submit{width:100%;padding:16px;background:var(--navy);border:none;border-radius:var(--radius-sm);font-family:var(--font-b);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);cursor:none;transition:background .3s,transform .2s;}
+.form-submit:hover{background:var(--navy2);transform:translateY(-2px);}
 
-/* ===================== MOBILE NAV ===================== */
-.mobile-menu {
-  display:none; position:fixed; inset:0; z-index:999;
-  background:rgba(8,8,8,.97); backdrop-filter:blur(20px);
-  flex-direction:column; align-items:center; justify-content:center; gap:32px;
-}
-.mobile-menu.open { display:flex; }
-.mobile-menu a { font-family:var(--font-head); font-size:48px; color:var(--white); letter-spacing:4px; transition:color .3s; }
-.mobile-menu a:hover { color:var(--gold); }
-.mobile-close { position:absolute; top:24px; right:24px; font-size:32px; color:var(--gray); cursor:none; }
+/* ── FOOTER ── */
+footer{background:var(--bg2);border-top:1px solid rgba(22,53,86,.1);padding:52px 5% 28px;}
+.footer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:24px;}
+.footer-logo{font-family:var(--font-h);font-size:30px;color:var(--navy);letter-spacing:4px;}
+.footer-logo small{display:block;font-size:.34em;letter-spacing:6px;color:var(--navy2);font-family:var(--font-b);font-weight:300;}
+.footer-nav{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-nav a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--navy2);transition:color .3s;}
+.footer-nav a:hover{color:var(--navy);}
+.footer-bot{border-top:1px solid rgba(22,53,86,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-bot p,.footer-bot span{font-size:11px;color:var(--text-lt);}
 
-/* ===================== RESPONSIVE ===================== */
-@media(max-width:900px){
-  .about-inner,
-  .contact-inner,
-  .services-inner { grid-template-columns:1fr; gap:48px; }
-  .services-grid { grid-template-columns:1fr; }
-  .service-card.featured { flex-direction:column; }
-  .colors-inner { flex-direction:column; }
-  .nav-links, .nav-cta { display:none; }
-  .hamburger { display:flex; }
-  .footer-inner { flex-direction:column; align-items:flex-start; }
-  .about-stats { grid-template-columns:1fr 1fr; }
+/* ── WHATSAPP ── */
+#wa{position:fixed;bottom:28px;right:28px;z-index:998;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,.4);cursor:none;transition:transform .3s,box-shadow .3s;animation:wab 2.8s ease-in-out infinite;}
+#wa:hover{transform:scale(1.12);box-shadow:0 10px 36px rgba(37,211,102,.5);}
+@keyframes wab{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+#wa .ring{position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.35);animation:waRing 2.4s ease-out infinite;}
+@keyframes waRing{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.5);opacity:0;}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{min-height:100vh;padding:120px 6% 80px;}
+  .about-grid,.contact-grid,.srv-grid{grid-template-columns:1fr;gap:48px;}
+  .stats-strip{grid-template-columns:repeat(2,1fr);}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
 }
-@media(max-width:600px){
-  .section { padding:80px 5%; }
-  .products-grid { grid-template-columns:1fr; }
-  .hero-title { font-size:72px; }
-  .cat-filter { gap:6px; }
-  .cat-btn { padding:8px 16px; font-size:10px; }
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .prod-grid{grid-template-columns:1fr 1fr;}
+  .section{padding:72px 5%;}
+  .stats-strip{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:500px){
+  .prod-grid{grid-template-columns:1fr;}
+  .stats-strip{grid-template-columns:1fr 1fr;}
+  .hero-h1{font-size:64px;}
+  .filter-bar{gap:6px;}
+  .f-btn{padding:8px 14px;font-size:10px;}
 }
 </style>
 </head>
 <body>
 
 <!-- CURSOR -->
-<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
-
-<!-- SCROLL PROGRESS -->
-<div id="progress-bar"></div>
-
-<!-- WHATSAPP FLOAT -->
-<a id="wa-float" href="https://wa.me/528118269338?text=Hola%2C%20me%20interesa%20cotizar%20uniformes" target="_blank" title="Cotiza por WhatsApp">
-  <div class="wa-ring"></div>
-  📱
+<div id="cur"><div id="cur-d"></div><div id="cur-r"></div></div>
+<!-- PROGRESS -->
+<div id="progress"></div>
+<!-- WHATSAPP -->
+<a id="wa" href="https://wa.me/528118269338?text=Hola%2C%20me%20interesa%20cotizar%20uniformes" target="_blank">
+  <div class="ring"></div>💬
 </a>
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">
-    ITZA CLOTHESS
-    <span>FABRICANTES DIRECTOS</span>
-  </div>
+  <div class="nav-logo">ITZA CLOTHESS<small>FABRICANTES DIRECTOS</small></div>
   <ul class="nav-links">
     <li><a href="#about">Nosotros</a></li>
     <li><a href="#products">Catálogo</a></li>
     <li><a href="#services">Servicios</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">Cotizar Ahora</a>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <a class="nav-cta" href="#contact">Cotizar</a>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+<div class="mob-menu" id="mobMenu">
+  <span class="mob-close" onclick="toggleMenu()">✕</span>
   <a href="#about" onclick="toggleMenu()">Nosotros</a>
   <a href="#products" onclick="toggleMenu()">Catálogo</a>
   <a href="#services" onclick="toggleMenu()">Servicios</a>
   <a href="#contact" onclick="toggleMenu()">Contacto</a>
 </div>
 
-<!-- ======================== HERO ======================== -->
+<!-- ═══════════ HERO ═══════════ -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-particles" id="particles"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Monterrey, NL · México · Fabricantes Directos
+  <div class="hero-left">
+    <div class="hero-eyebrow">Monterrey · NL · México</div>
+    <h1 class="hero-h1">ITZA<span>CLOTHESS</span></h1>
+    <p class="hero-sub">Somos fabricantes directos. Controlamos cada etapa desde el corte hasta el bordado computarizado. Calidad industrial, sin intermediarios.</p>
+    <div class="hero-btns">
+      <a class="btn-w" href="#products">Ver Catálogo</a>
+      <a class="btn-ghost" href="#contact">Solicitar Cotización</a>
     </div>
-    <h1 class="hero-title">
-      ITZA<span>CLOTHESS</span>
-    </h1>
-    <p class="hero-subtitle">Calidad Industrial · Bordado Computarizado · Tallas XS – 5XL</p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#products"><span>Ver Catálogo</span></a>
-      <a class="btn-outline" href="#contact">Solicitar Cotización</a>
+    <div class="hero-badges">
+      <span class="h-badge">XS – 5XL</span>
+      <span class="h-badge">Bordado</span>
+      <span class="h-badge">DTF · DTF-UV</span>
+      <span class="h-badge">Envíos nacionales</span>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
+  <div class="hero-right">
+    <img src="img/page_01.jpg" alt="ITZA CLOTHESS - Fabricantes directos Monterrey">
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-l"></div></div>
   </div>
 </section>
 
-<!-- ======================== ABOUT ======================== -->
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat"><div class="stat-n">30+</div><div class="stat-l">Modelos</div></div>
+  <div class="stat"><div class="stat-n">5XL</div><div class="stat-l">Talla máxima</div></div>
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Fabricantes</div></div>
+  <div class="stat"><div class="stat-n">MTY</div><div class="stat-l">Envío local / nacional</div></div>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
 <section id="about" class="section">
-  <div class="about-inner">
-    <div class="about-visual reveal">
-      <div class="about-img-wrap">
-        <div class="about-fabric-texture"></div>
-        <div class="about-tag t1">+30 Productos</div>
-        <div class="about-tag t2">XS — 5XL</div>
+  <div class="about-grid">
+    <div class="about-img-col reveal">
+      <div class="about-main-img">
+        <img src="img/page_02.jpg" alt="Calidad Industrial Itza Clothess">
       </div>
-      <div class="about-stats">
-        <div class="stat-item">
-          <div class="stat-num">30+</div>
-          <div class="stat-label">Modelos</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">5XL</div>
-          <div class="stat-label">Talla Máx.</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Fabricantes</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">MTY</div>
-          <div class="stat-label">Envío Local/Nac.</div>
-        </div>
+      <div class="about-tag t1">Fabricantes Directos</div>
+      <div class="about-tag t2">Monterrey, N.L.</div>
+      <div class="about-mini-grid">
+        <div class="mini-stat"><div class="mini-n">100%</div><div class="mini-l">Propio</div></div>
+        <div class="mini-stat"><div class="mini-n">0</div><div class="mini-l">Intermediarios</div></div>
+        <div class="mini-stat"><div class="mini-n">XS</div><div class="mini-l">Talla min.</div></div>
+        <div class="mini-stat"><div class="mini-n">5XL</div><div class="mini-l">Talla máx.</div></div>
       </div>
     </div>
-    <div class="about-text reveal">
-      <div class="section-label">Quiénes somos</div>
-      <h2 class="section-title">Calidad<br><em>Industrial</em></h2>
-      <p style="margin-top:32px">Somos fabricantes y no revendedores. En Itza Clothess controlamos cada etapa: desde el corte de la tela hasta el bordado computarizado final.</p>
-      <p>Seriedad, capacidad de respuesta y acabados de nivel profesional para instituciones que no aceptan menos. Tu proyecto está en manos de un equipo que controla todo el proceso, de principio a fin.</p>
-      <p style="color:var(--gold);font-size:13px;font-weight:500;">Contamos con préstamo para corrida de tallas · Envíos locales y nacionales</p>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-num">01</div>
-          <div class="step-info">
-            <h4>Selección de Modelo Base</h4>
-            <p>Elegimos juntos el modelo que mejor se adapta a tu necesidad.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">02</div>
-          <div class="step-info">
-            <h4>Configuración de Tallas (XS–5XL)</h4>
-            <p>Cuadro de tallas para toda la corrida, desde la más pequeña hasta la más grande.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">03</div>
-          <div class="step-info">
-            <h4>Personalización de Marca</h4>
-            <p>Bordado computarizado o impresión DTF con tu logo y colores corporativos.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="step-num">04</div>
-          <div class="step-info">
-            <h4>Producción y Entrega Directa</h4>
-            <p>Todo en taller propio. Sin intermediarios, con tiempos de entrega comprometidos.</p>
-          </div>
-        </div>
+    <div class="reveal">
+      <div class="s-label">¿Quiénes somos?</div>
+      <h2 class="s-title">CALIDAD<br>INDUSTRIAL</h2>
+      <div style="margin-top:32px;">
+        <p>Somos fabricantes y no revendedores. En Itza Clothess controlamos cada etapa: desde el corte de la tela hasta el bordado computarizado final.</p>
+        <p>Seriedad, capacidad de respuesta y acabados de nivel profesional para instituciones que no aceptan menos. Tu proyecto está en manos de un equipo que controla todo el proceso, de principio a fin.</p>
+        <p style="color:var(--navy);font-weight:600;font-size:14px;">Contamos con préstamo para corrida de tallas · Envíos locales y nacionales</p>
+      </div>
+      <div class="process-list">
+        <div class="process-item"><div class="p-num">01</div><div class="p-info"><h4>Selección de Modelo Base</h4><p>Elegimos el modelo que mejor se adapta a tu necesidad.</p></div></div>
+        <div class="process-item"><div class="p-num">02</div><div class="p-info"><h4>Configuración de Tallas (XS–5XL)</h4><p>Cuadro de tallas para toda la corrida.</p></div></div>
+        <div class="process-item"><div class="p-num">03</div><div class="p-info"><h4>Personalización de Marca</h4><p>Bordado computarizado o DTF con tu logo corporativo.</p></div></div>
+        <div class="process-item"><div class="p-num">04</div><div class="p-info"><h4>Producción y Entrega Directa</h4><p>Todo en taller propio. Sin intermediarios.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== PRODUCTS ======================== -->
+<!-- ═══════════ PRODUCTS ═══════════ -->
 <section id="products" class="section">
   <div class="reveal">
-    <div class="section-label">Catálogo Completo</div>
-    <h2 class="section-title">Nuestros<br><em>Productos</em></h2>
+    <div class="s-label">Catálogo Completo</div>
+    <h2 class="s-title">NUESTROS<br>PRODUCTOS</h2>
   </div>
-  <div class="cat-filter reveal">
-    <button class="cat-btn active" onclick="filterCat(this,'all')">Todos</button>
-    <button class="cat-btn" onclick="filterCat(this,'playeras')">Playeras</button>
-    <button class="cat-btn" onclick="filterCat(this,'polo')">Polo</button>
-    <button class="cat-btn" onclick="filterCat(this,'pantalon')">Pantalones</button>
-    <button class="cat-btn" onclick="filterCat(this,'sudadera')">Sudaderas</button>
-    <button class="cat-btn" onclick="filterCat(this,'industrial')">Industrial</button>
-    <button class="cat-btn" onclick="filterCat(this,'accesorios')">Accesorios</button>
+  <div class="filter-bar reveal">
+    <button class="f-btn active" onclick="filter(this,'all')">Todos</button>
+    <button class="f-btn" onclick="filter(this,'playera')">Playeras</button>
+    <button class="f-btn" onclick="filter(this,'polo')">Polo</button>
+    <button class="f-btn" onclick="filter(this,'pantalon')">Pantalones</button>
+    <button class="f-btn" onclick="filter(this,'sudadera')">Sudaderas</button>
+    <button class="f-btn" onclick="filter(this,'industrial')">Industrial</button>
+    <button class="f-btn" onclick="filter(this,'accesorio')">Accesorios</button>
   </div>
-  <div class="products-grid" id="productsGrid">
+  <div class="prod-grid" id="grid">
 
-    <!-- PLAYERAS -->
-    <div class="product-card" data-cat="playeras">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👕</div>
-        <div class="card-cat-badge">Playera</div>
+    <!-- PLAYERA CUELLO REDONDO -->
+    <div class="card" data-cat="playera">
+      <div class="card-img">
+        <img src="img/page_03.jpg" alt="Playera Cuello Redondo" style="object-position:center 10%;">
+        <span class="card-cat">Playera</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Playera Cuello Redondo</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón / 100% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Corta</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Playera Cuello Redondo</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón / 100% Algodón</div>
+        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Cuello%20Redondo" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Cuello%20Redondo" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="playeras">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👕</div>
-        <div class="card-cat-badge">Playera</div>
+    <!-- PLAYERA MANGA LARGA -->
+    <div class="card" data-cat="playera">
+      <div class="card-img">
+        <img src="img/page_03.jpg" alt="Playera Cuello Redondo Manga Larga" style="object-position:center 85%;">
+        <span class="card-cat">Playera</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Playera Cuello Redondo Manga Larga</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón / 100% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Larga</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Playera Cuello Redondo Manga Larga</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón / 100% Algodón</div>
+        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Manga%20Larga" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Playera%20Manga%20Larga" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- POLO -->
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👔</div>
-        <div class="card-cat-badge">Polo</div>
+    <!-- POLO PIQUÉ -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_04.jpg" alt="Polo Piqué" style="object-position:center 10%;">
+        <span class="card-cat">Polo</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Piqué</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Corta</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Piqué</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón</div>
+        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👔</div>
-        <div class="card-cat-badge">Polo</div>
+    <!-- POLO PIQUÉ MANGA LARGA -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_04.jpg" alt="Polo Piqué Manga Larga" style="object-position:center 85%;">
+        <span class="card-cat">Polo</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Piqué Manga Larga</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Larga</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Piqué Manga Larga</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón</div>
+        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9%20Manga%20Larga" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Piqu%C3%A9%20Manga%20Larga" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">⚡</div>
-        <div class="card-cat-badge">Polo Dri-Fit</div>
+    <!-- POLO DRI-FIT -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_05.jpg" alt="Polo Dri-Fit" style="object-position:center 10%;">
+        <span class="card-cat">Polo Dri-Fit</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Dri-Fit</h3>
-        <div class="card-material">100% Poliéster · Transpirable</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Corta</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Dri-Fit</div>
+        <div class="card-mat">100% Poliéster · Transpirable</div>
+        <div class="card-tags"><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">⚡</div>
-        <div class="card-cat-badge">Polo Dri-Fit</div>
+    <!-- POLO DRI-FIT MANGA LARGA -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_05.jpg" alt="Polo Dri-Fit Manga Larga" style="object-position:center 85%;">
+        <span class="card-cat">Polo Dri-Fit</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Dri-Fit Manga Larga</h3>
-        <div class="card-material">100% Poliéster · Transpirable</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Larga</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Dri-Fit Manga Larga</div>
+        <div class="card-mat">100% Poliéster · Transpirable</div>
+        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Manga%20Larga" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Manga%20Larga" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">⚡</div>
-        <div class="card-cat-badge">Polo Dri-Fit</div>
+    <!-- POLO DRI-FIT COMBINADA -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_06.jpg" alt="Polo Dri-Fit Combinada" style="object-position:center 10%;">
+        <span class="card-cat">Polo Dri-Fit</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Dri-Fit Combinada</h3>
-        <div class="card-material">100% Poliéster · Transpirable</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Corta</span>
-          <span class="card-tag">Combinada</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Dri-Fit Combinada</div>
+        <div class="card-mat">100% Poliéster · Transpirable</div>
+        <div class="card-tags"><span class="ctag">Combinada</span><span class="ctag">Manga Corta</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="polo">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">⚡</div>
-        <div class="card-cat-badge">Polo Dri-Fit</div>
+    <!-- POLO DRI-FIT COMBINADA MANGA LARGA -->
+    <div class="card" data-cat="polo">
+      <div class="card-img">
+        <img src="img/page_06.jpg" alt="Polo Dri-Fit Combinada Manga Larga" style="object-position:center 85%;">
+        <span class="card-cat">Polo Dri-Fit</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Polo Dri-Fit Combinada Manga Larga</h3>
-        <div class="card-material">100% Poliéster · Transpirable</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Larga</span>
-          <span class="card-tag">Combinada</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Polo Dri-Fit Combinada Manga Larga</div>
+        <div class="card-mat">100% Poliéster · Transpirable</div>
+        <div class="card-tags"><span class="ctag">Combinada</span><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada%20ML" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Polo%20Dri-Fit%20Combinada%20Manga%20Larga" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- CAMISAS -->
-    <div class="product-card" data-cat="playeras">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">⚾</div>
-        <div class="card-cat-badge">Jersey</div>
+    <!-- JERSEY BEISBOLERA -->
+    <div class="card" data-cat="playera">
+      <div class="card-img">
+        <img src="img/page_07.jpg" alt="Jersey Beisbolera" style="object-position:center 10%;">
+        <span class="card-cat">Jersey</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Jersey Beisbolera</h3>
-        <div class="card-material">100% Poliéster</div>
-        <div class="card-details">
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">Niños</span>
-          <span class="card-tag">Varios Diseños</span>
-        </div>
+        <div class="card-name">Jersey Beisbolera</div>
+        <div class="card-mat">100% Poliéster</div>
+        <div class="card-tags"><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">Niños</span><span class="ctag">Varios diseños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Jersey%20Beisbolera" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Jersey%20Beisbolera" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="playeras">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👔</div>
-        <div class="card-cat-badge">Camisa</div>
+    <!-- CAMISA DE VESTIR -->
+    <div class="card" data-cat="playera">
+      <div class="card-img">
+        <img src="img/page_07.jpg" alt="Camisa de Vestir Manga Larga" style="object-position:center 85%;">
+        <span class="card-cat">Camisa</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Camisa de Vestir Manga Larga</h3>
-        <div class="card-material">100% Algodón / 60% Algodón · 40% Poliéster</div>
-        <div class="card-details">
-          <span class="card-tag">Manga Larga</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-        </div>
+        <div class="card-name">Camisa de Vestir Manga Larga</div>
+        <div class="card-mat">100% Algodón / 60% Algodón – 40% Poliéster</div>
+        <div class="card-tags"><span class="ctag">Manga Larga</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL · Carta completa disponible</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20la%20carta%20completa%20de%20Camisas%20de%20Vestir" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20la%20carta%20completa%20de%20Camisas%20de%20Vestir" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="industrial">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧥</div>
-        <div class="card-cat-badge">Mezclilla</div>
+    <!-- CAMISOLA MEZCLILLA -->
+    <div class="card" data-cat="industrial">
+      <div class="card-img">
+        <img src="img/page_08.jpg" alt="Camisola Mezclilla" style="object-position:center 10%;">
+        <span class="card-cat">Mezclilla</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Camisola Mezclilla</h3>
-        <div class="card-material">100% Algodón · 14oz</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">14oz</span>
-        </div>
+        <div class="card-name">Camisola Mezclilla</div>
+        <div class="card-mat">100% Algodón · 14oz</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">14oz</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 2XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisola%20Mezclilla" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisola%20Mezclilla" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="industrial">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👕</div>
-        <div class="card-cat-badge">Mezclilla</div>
+    <!-- CAMISA MEZCLILLA LISA -->
+    <div class="card" data-cat="industrial">
+      <div class="card-img">
+        <img src="img/page_08.jpg" alt="Camisa Mezclilla Lisa" style="object-position:center 85%;">
+        <span class="card-cat">Mezclilla</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Camisa Mezclilla Lisa</h3>
-        <div class="card-material">100% Algodón · 7oz</div>
-        <div class="card-details">
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-          <span class="card-tag">7oz</span>
-        </div>
+        <div class="card-name">Camisa Mezclilla Lisa</div>
+        <div class="card-mat">100% Algodón · 7oz</div>
+        <div class="card-tags"><span class="ctag">Dama</span><span class="ctag">Caballero</span><span class="ctag">7oz</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 2XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisa%20Mezclilla%20Lisa" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Camisa%20Mezclilla%20Lisa" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- PANTALONES -->
-    <div class="product-card" data-cat="pantalon">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👖</div>
-        <div class="card-cat-badge">Pantalón</div>
+    <!-- PANTALÓN MEZCLILLA -->
+    <div class="card" data-cat="pantalon">
+      <div class="card-img">
+        <img src="img/page_09.jpg" alt="Pantalón Mezclilla" style="object-position:center 10%;">
+        <span class="card-cat">Pantalón</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Pantalón Mezclilla</h3>
-        <div class="card-material">14oz · Resistente</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">14oz</span>
-        </div>
+        <div class="card-name">Pantalón Mezclilla</div>
+        <div class="card-mat">14oz</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">14oz</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="pantalon">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👖</div>
-        <div class="card-cat-badge">Pantalón</div>
+    <!-- PANTALÓN MEZCLILLA LISO -->
+    <div class="card" data-cat="pantalon">
+      <div class="card-img">
+        <img src="img/page_09.jpg" alt="Pantalón Mezclilla Liso Casual" style="object-position:center 85%;">
+        <span class="card-cat">Pantalón</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Pantalón Mezclilla Liso Casual</h3>
-        <div class="card-material">Mezclilla Lisa</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Casual</span>
-        </div>
+        <div class="card-name">Pantalón Mezclilla Liso Casual</div>
+        <div class="card-mat">Mezclilla Lisa</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Casual</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla%20Casual" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Mezclilla%20Casual" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="pantalon">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👖</div>
-        <div class="card-cat-badge">Pantalón</div>
+    <!-- PANTALÓN CARGO -->
+    <div class="card" data-cat="pantalon">
+      <div class="card-img">
+        <img src="img/page_10.jpg" alt="Pantalón Cargo" style="object-position:center 10%;">
+        <span class="card-cat">Pantalón</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Pantalón Cargo</h3>
-        <div class="card-material">Resistente</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Múltiples Bolsillos</span>
-        </div>
+        <div class="card-name">Pantalón Cargo</div>
+        <div class="card-mat">Resistente · Múltiples bolsillos</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Cargo</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Cargo" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20Cargo" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="pantalon">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👖</div>
-        <div class="card-cat-badge">Pantalón</div>
+    <!-- PANTALÓN DE VESTIR -->
+    <div class="card" data-cat="pantalon">
+      <div class="card-img">
+        <img src="img/page_10.jpg" alt="Pantalón de Vestir" style="object-position:center 85%;">
+        <span class="card-cat">Pantalón</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Pantalón de Vestir Casual</h3>
-        <div class="card-material">Casual · Formal</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Vestir</span>
-        </div>
+        <div class="card-name">Pantalón de Vestir Casual</div>
+        <div class="card-mat">Formal · Casual</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Vestir</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> 28 – 44</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20de%20Vestir" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Pantalón%20de%20Vestir" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- SUDADERAS -->
-    <div class="product-card" data-cat="sudadera">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧥</div>
-        <div class="card-cat-badge">Sudadera</div>
+    <!-- SUDADERA BÁSICA -->
+    <div class="card" data-cat="sudadera">
+      <div class="card-img">
+        <img src="img/page_11.jpg" alt="Sudadera Básica" style="object-position:center 10%;">
+        <span class="card-cat">Sudadera</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Sudadera Básica Cuello Redondo</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Adulto Unisex</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Sudadera Básica Cuello Redondo</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón</div>
+        <div class="card-tags"><span class="ctag">Adulto Unisex</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20Básica" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20Básica" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="sudadera">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧥</div>
-        <div class="card-cat-badge">Sudadera</div>
+    <!-- SUDADERA COMPLETA -->
+    <div class="card" data-cat="sudadera">
+      <div class="card-img">
+        <img src="img/page_11.jpg" alt="Sudadera Completa Capucha" style="object-position:center 85%;">
+        <span class="card-cat">Sudadera</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Sudadera Completa con Capucha y Cangurera</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Capucha</span>
-          <span class="card-tag">Cangurera</span>
-          <span class="card-tag">Adulto</span>
-          <span class="card-tag">Niños</span>
-        </div>
+        <div class="card-name">Sudadera Completa con Capucha</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón</div>
+        <div class="card-tags"><span class="ctag">Capucha</span><span class="ctag">Cangurera</span><span class="ctag">Adulto</span><span class="ctag">Niños</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20con%20Capucha" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20con%20Capucha" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="sudadera">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧥</div>
-        <div class="card-cat-badge">Sudadera</div>
+    <!-- SUDADERA DE CIERRE -->
+    <div class="card" data-cat="sudadera">
+      <div class="card-img">
+        <img src="img/page_12.jpg" alt="Sudadera de Cierre" style="object-position:center 10%;">
+        <span class="card-cat">Sudadera</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Sudadera de Cierre con Capucha</h3>
-        <div class="card-material">50% Poliéster · 50% Algodón</div>
-        <div class="card-details">
-          <span class="card-tag">Cierre</span>
-          <span class="card-tag">Capucha</span>
-          <span class="card-tag">Cangurera</span>
-          <span class="card-tag">Adulto</span>
-        </div>
+        <div class="card-name">Sudadera de Cierre con Capucha</div>
+        <div class="card-mat">50% Poliéster – 50% Algodón</div>
+        <div class="card-tags"><span class="ctag">Cierre</span><span class="ctag">Capucha</span><span class="ctag">Cangurera</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20de%20Cierre" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Sudadera%20de%20Cierre" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="sudadera">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🥋</div>
-        <div class="card-cat-badge">Chamarra</div>
+    <!-- CHAMARRA NEOPRENO -->
+    <div class="card" data-cat="sudadera">
+      <div class="card-img">
+        <img src="img/page_12.jpg" alt="Chamarra Neopreno" style="object-position:center 85%;">
+        <span class="card-cat">Chamarra</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Chamarra Neopreno</h3>
-        <div class="card-material">90% Poliéster · 10% Licra · Antifluidos</div>
-        <div class="card-details">
-          <span class="card-tag">Antifluidos</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-        </div>
+        <div class="card-name">Chamarra Neopreno</div>
+        <div class="card-mat">90% Poliéster – 10% Licra · Antifluidos</div>
+        <div class="card-tags"><span class="ctag">Antifluidos</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chamarra%20Neopreno" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chamarra%20Neopreno" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- INDUSTRIAL -->
-    <div class="product-card" data-cat="industrial">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🦺</div>
-        <div class="card-cat-badge">Industrial</div>
+    <!-- OVEROL -->
+    <div class="card" data-cat="industrial">
+      <div class="card-img">
+        <img src="img/page_13.jpg" alt="Overol Industrial" style="object-position:center 10%;">
+        <span class="card-cat">Industrial</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Overol</h3>
-        <div class="card-material">100% Algodón · Gabardina</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Gabardina</span>
-          <span class="card-tag">Industrial</span>
-        </div>
+        <div class="card-name">Overol</div>
+        <div class="card-mat">100% Algodón · Gabardina</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Gabardina</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Overol" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Overol" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="industrial">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🦺</div>
-        <div class="card-cat-badge">Industrial</div>
+    <!-- CHALECO INDUSTRIAL -->
+    <div class="card" data-cat="industrial">
+      <div class="card-img">
+        <img src="img/page_13.jpg" alt="Chaleco Industrial" style="object-position:center 85%;">
+        <span class="card-cat">Industrial</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Chaleco Industrial</h3>
-        <div class="card-material">100% Algodón · Gabardina</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Gabardina</span>
-          <span class="card-tag">Industrial</span>
-        </div>
+        <div class="card-name">Chaleco Industrial</div>
+        <div class="card-mat">100% Algodón · Gabardina</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Gabardina</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chaleco%20Industrial" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Chaleco%20Industrial" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="industrial">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🏥</div>
-        <div class="card-cat-badge">Médico</div>
+    <!-- QUIRÚRGICO -->
+    <div class="card" data-cat="industrial">
+      <div class="card-img">
+        <img src="img/page_14.jpg" alt="Quirúrgico Filipinas Scrubs" style="object-position:center 10%;">
+        <span class="card-cat">Médico</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Quirúrgico / Filipinas</h3>
-        <div class="card-material">Antifluidos · Transpirable</div>
-        <div class="card-details">
-          <span class="card-tag">Scrubs</span>
-          <span class="card-tag">Corte Recto</span>
-          <span class="card-tag">Dama</span>
-          <span class="card-tag">Caballero</span>
-        </div>
+        <div class="card-name">Quirúrgico / Filipinas</div>
+        <div class="card-mat">Antifluidos · Transpirables</div>
+        <div class="card-tags"><span class="ctag">Scrubs</span><span class="ctag">Corte Recto</span><span class="ctag">Dama</span><span class="ctag">Caballero</span></div>
         <div class="card-sizes"><strong>Tallas:</strong> XS – 5XL</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Quirúrgico%20Filipinas" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Quirúrgico%20Filipinas" target="_blank">Cotizar →</a></div>
     </div>
 
-    <!-- ACCESORIOS -->
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👨‍🍳</div>
-        <div class="card-cat-badge">Mandil</div>
+    <!-- MANDIL COMPLETO -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_14.jpg" alt="Mandil Completo" style="object-position:center 85%;">
+        <span class="card-cat">Mandil</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Mandil Completo</h3>
-        <div class="card-material">Cinta Ajustable</div>
-        <div class="card-details">
-          <span class="card-tag">Unitalla</span>
-          <span class="card-tag">Unisex</span>
-        </div>
+        <div class="card-name">Mandil Completo</div>
+        <div class="card-mat">Cinta Ajustable</div>
+        <div class="card-tags"><span class="ctag">Unitalla</span><span class="ctag">Unisex</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Unitalla</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Completo" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Completo" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">👨‍🍳</div>
-        <div class="card-cat-badge">Mandil</div>
+    <!-- MANDIL CORTO -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_15.jpg" alt="Mandil Corto" style="object-position:center 10%;">
+        <span class="card-cat">Mandil</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Mandil Corto</h3>
-        <div class="card-material">100% Poliéster / 60% Algodón · 40% Poliéster · Cinta Ajustable</div>
-        <div class="card-details">
-          <span class="card-tag">Unitalla</span>
-          <span class="card-tag">Unisex</span>
-        </div>
+        <div class="card-name">Mandil Corto</div>
+        <div class="card-mat">100% Poliéster / 60% Algodón – 40% Poliéster</div>
+        <div class="card-tags"><span class="ctag">Unitalla</span><span class="ctag">Unisex</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Unitalla</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Corto" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Mandil%20Corto" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🎓</div>
-        <div class="card-cat-badge">Graduación</div>
+    <!-- ESTOLA -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_15.jpg" alt="Estola Graduación" style="object-position:center 85%;">
+        <span class="card-cat">Graduación</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Estola</h3>
-        <div class="card-material">Satén / Poliéster</div>
-        <div class="card-details">
-          <span class="card-tag">Niño</span>
-          <span class="card-tag">Adulto</span>
-          <span class="card-tag">Unisex</span>
-        </div>
+        <div class="card-name">Estola</div>
+        <div class="card-mat">Satén – Poliéster</div>
+        <div class="card-tags"><span class="ctag">Niño</span><span class="ctag">Adulto</span><span class="ctag">Unisex</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Niño / Adulto</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Estola" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Estola" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧢</div>
-        <div class="card-cat-badge">Gorra</div>
+    <!-- GORRA TRUCKER -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_16.jpg" alt="Gorra Trucker" style="object-position:center 10%;">
+        <span class="card-cat">Gorra</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Gorra Trucker</h3>
-        <div class="card-material">Malla Posterior · Ajustable</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Bordado Disponible</span>
-        </div>
+        <div class="card-name">Gorra Trucker</div>
+        <div class="card-mat">Malla posterior · Ajustable</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Trucker" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Trucker" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧢</div>
-        <div class="card-cat-badge">Gorra</div>
+    <!-- GORRA INDOMABLE -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_16.jpg" alt="Gorra Indomable" style="object-position:center 85%;">
+        <span class="card-cat">Gorra</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Gorra Indomable</h3>
-        <div class="card-material">Ajustable</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Bordado Disponible</span>
-        </div>
+        <div class="card-name">Gorra Indomable</div>
+        <div class="card-mat">Ajustable</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Indomable" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Indomable" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">🧢</div>
-        <div class="card-cat-badge">Gorra</div>
+    <!-- GORRA BELLA -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_17.jpg" alt="Gorra Bella" style="object-position:center 10%;">
+        <span class="card-cat">Gorra</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Gorra Bella</h3>
-        <div class="card-material">Ajustable</div>
-        <div class="card-details">
-          <span class="card-tag">Unisex</span>
-          <span class="card-tag">Bordado Disponible</span>
-        </div>
+        <div class="card-name">Gorra Bella</div>
+        <div class="card-mat">Ajustable</div>
+        <div class="card-tags"><span class="ctag">Unisex</span><span class="ctag">Bordado disponible</span></div>
         <div class="card-sizes"><strong>Talla:</strong> Ajustable</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Bella" target="_blank">Cotizar →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20cotizar%20Gorra%20Bella" target="_blank">Cotizar →</a></div>
     </div>
 
-    <div class="product-card" data-cat="accesorios">
-      <div class="card-visual">
-        <div class="card-fabric-overlay"></div>
-        <div class="card-icon">☕</div>
-        <div class="card-cat-badge">Termos</div>
+    <!-- TERMOS -->
+    <div class="card" data-cat="accesorio">
+      <div class="card-img">
+        <img src="img/page_17.jpg" alt="Termos Personalizados" style="object-position:center 85%;">
+        <span class="card-cat">Termos</span>
       </div>
       <div class="card-body">
-        <h3 class="card-title">Termos</h3>
-        <div class="card-material">Solicita catálogo completo</div>
-        <div class="card-details">
-          <span class="card-tag">Varios modelos</span>
-          <span class="card-tag">Personalizable</span>
-        </div>
-        <div class="card-sizes"><strong>Info:</strong> Solicita por mensaje</div>
+        <div class="card-name">Termos</div>
+        <div class="card-mat">Solicita catálogo completo por mensaje</div>
+        <div class="card-tags"><span class="ctag">Varios modelos</span><span class="ctag">Personalizable</span></div>
+        <div class="card-sizes"><strong>Info:</strong> Consulta por WhatsApp</div>
+        <a class="card-cta" href="https://wa.me/528118269338?text=Quiero%20ver%20el%20catálogo%20de%20Termos" target="_blank">Ver Catálogo →</a>
       </div>
-      <div class="card-hover-cta"><a class="card-cta-btn" href="https://wa.me/528118269338?text=Quiero%20ver%20el%20catálogo%20de%20Termos" target="_blank">Ver Catálogo →</a></div>
     </div>
 
   </div>
 </section>
 
-<!-- ======================== SAMPLES MARQUEE ======================== -->
-<section id="samples">
-  <div class="marquee-label">Tipos de prendas disponibles</div>
-  <div class="marquee-track" id="marqueeTrack">
-    <div class="sample-chip"><span class="sample-chip-icon">⚾</span> Jersey Beisbolera</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👔</span> Camisa de Vestir</div>
-    <div class="sample-chip"><span class="sample-chip-icon">⚡</span> Polo Dri-Fit</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👕</span> Polo Piqué</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧥</span> Chamarra Neopreno</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🦺</span> Chaleco Industrial</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🏥</span> Quirúrgico Scrubs</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🎓</span> Estola</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👖</span> Pantalón Cargo</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👕</span> Sudadera Capucha</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧢</span> Gorras Personalizadas</div>
-    <div class="sample-chip"><span class="sample-chip-icon">☕</span> Termos</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👨‍🍳</span> Mandil</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧥</span> Overol Industrial</div>
-    <!-- duplicated for infinite loop -->
-    <div class="sample-chip"><span class="sample-chip-icon">⚾</span> Jersey Beisbolera</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👔</span> Camisa de Vestir</div>
-    <div class="sample-chip"><span class="sample-chip-icon">⚡</span> Polo Dri-Fit</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👕</span> Polo Piqué</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧥</span> Chamarra Neopreno</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🦺</span> Chaleco Industrial</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🏥</span> Quirúrgico Scrubs</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🎓</span> Estola</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👖</span> Pantalón Cargo</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👕</span> Sudadera Capucha</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧢</span> Gorras Personalizadas</div>
-    <div class="sample-chip"><span class="sample-chip-icon">☕</span> Termos</div>
-    <div class="sample-chip"><span class="sample-chip-icon">👨‍🍳</span> Mandil</div>
-    <div class="sample-chip"><span class="sample-chip-icon">🧥</span> Overol Industrial</div>
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div id="marquee">
+  <div class="mq-label">Modelos de referencia · Se pueden fabricar más diseños y colores</div>
+  <div class="mq-track">
+    <div class="mq-chip"><span>⚾</span>Jersey Beisbolera</div>
+    <div class="mq-chip"><span>👔</span>Camisa de Vestir</div>
+    <div class="mq-chip"><span>⚡</span>Polo Dri-Fit</div>
+    <div class="mq-chip"><span>👕</span>Polo Piqué</div>
+    <div class="mq-chip"><span>🧥</span>Chamarra Neopreno</div>
+    <div class="mq-chip"><span>🦺</span>Chaleco Industrial</div>
+    <div class="mq-chip"><span>🏥</span>Quirúrgico Scrubs</div>
+    <div class="mq-chip"><span>🎓</span>Estola</div>
+    <div class="mq-chip"><span>👖</span>Pantalón Cargo</div>
+    <div class="mq-chip"><span>🧢</span>Gorras</div>
+    <div class="mq-chip"><span>☕</span>Termos</div>
+    <div class="mq-chip"><span>👨‍🍳</span>Mandil</div>
+    <div class="mq-chip"><span>🧥</span>Overol Industrial</div>
+    <div class="mq-chip"><span>⚾</span>Jersey Beisbolera</div>
+    <div class="mq-chip"><span>👔</span>Camisa de Vestir</div>
+    <div class="mq-chip"><span>⚡</span>Polo Dri-Fit</div>
+    <div class="mq-chip"><span>👕</span>Polo Piqué</div>
+    <div class="mq-chip"><span>🧥</span>Chamarra Neopreno</div>
+    <div class="mq-chip"><span>🦺</span>Chaleco Industrial</div>
+    <div class="mq-chip"><span>🏥</span>Quirúrgico Scrubs</div>
+    <div class="mq-chip"><span>🎓</span>Estola</div>
+    <div class="mq-chip"><span>👖</span>Pantalón Cargo</div>
+    <div class="mq-chip"><span>🧢</span>Gorras</div>
+    <div class="mq-chip"><span>☕</span>Termos</div>
+    <div class="mq-chip"><span>👨‍🍳</span>Mandil</div>
+    <div class="mq-chip"><span>🧥</span>Overol Industrial</div>
   </div>
-</section>
+</div>
 
-<!-- ======================== SERVICES ======================== -->
+<!-- ═══════════ SERVICES ═══════════ -->
 <section id="services" class="section">
-  <div class="services-inner">
-    <div class="reveal">
-      <div class="section-label">Técnicas</div>
-      <h2 class="section-title">Nuestros<br><em>Servicios</em></h2>
-      <p style="margin-top:24px;font-size:15px;color:var(--text);line-height:1.8;">
-        Somos fabricantes. Cada prenda se produce desde cero dentro de nuestro propio taller, utilizando maquinaria especializada para bordado e impresión. No dependemos de terceros ni intermediarios.
-      </p>
-      <a class="btn-primary" href="#contact" style="display:inline-block;margin-top:32px;"><span>Solicitar Muestra</span></a>
+  <div class="reveal">
+    <div class="s-label">Técnicas disponibles</div>
+    <h2 class="s-title">NUESTROS<br>SERVICIOS</h2>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-cards reveal">
+      <div class="srv-card">
+        <div class="srv-icon">🪡</div>
+        <div class="srv-name">Bordado Computarizado</div>
+        <div class="srv-desc">Alta resolución con maquinaria industrial. Perfecto para logos, nombres y diseños corporativos con acabado profesional duradero.</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">🖨️</div>
+        <div class="srv-name">Impresión DTF</div>
+        <div class="srv-desc">Direct to Film. Colores vivos, alta definición, lavable. Ideal para diseños complejos, fotorrealistas o con gradientes.</div>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">✨</div>
+        <div class="srv-name">Impresión DTF-UV</div>
+        <div class="srv-desc">Tecnología avanzada: colores ultra vibrantes con acabado UV de larga duración. Resistente al sol, lavado y fricción. Para proyectos premium.</div>
+      </div>
     </div>
-    <div class="services-grid reveal">
-      <div class="service-card">
-        <div class="service-icon">🪡</div>
-        <div class="service-name">Bordado Computarizado</div>
-        <div class="service-desc">Bordado de alta resolución con maquinaria industrial. Perfecto para logos, nombres y diseños corporativos con acabado profesional duradero.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🖨️</div>
-        <div class="service-name">Impresión DTF</div>
-        <div class="service-desc">Direct to Film. Colores vivos, alta definición, lavable. Ideal para diseños complejos, fotorrealistas o con gradientes.</div>
-      </div>
-      <div class="service-card featured">
-        <div class="service-icon">✨</div>
-        <div>
-          <div class="service-name">Impresión DTF-UV</div>
-          <div class="service-desc">La tecnología más avanzada: colores ultra vibrantes con acabado UV de larga duración. Resistente al sol, lavado y fricción. Para proyectos premium que exigen lo mejor.</div>
-        </div>
+    <div class="srv-img-col reveal">
+      <div class="srv-img-wrap">
+        <img src="img/page_29.jpg" alt="Técnicas y Servicios ITZA CLOTHESS">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== COLORS ======================== -->
-<section id="colors">
-  <div class="colors-inner reveal">
-    <div class="colors-text">
-      <div class="section-label">Personalización</div>
-      <h2 class="section-title" style="font-size:clamp(36px,4vw,56px)">Todos los<br><em>Colores</em></h2>
-      <p>Fabricamos en la gama completa de colores. Más diseños y combinaciones disponibles — consúltanos para tu proyecto específico.</p>
-    </div>
-    <div class="color-swatches">
-      <div class="swatch" style="background:#080808;" data-name="Negro"></div>
-      <div class="swatch" style="background:#F0EDE8;" data-name="Blanco"></div>
-      <div class="swatch" style="background:#C8102E;" data-name="Rojo"></div>
-      <div class="swatch" style="background:#002D72;" data-name="Marino"></div>
-      <div class="swatch" style="background:#003DA5;" data-name="Azul Rey"></div>
-      <div class="swatch" style="background:#69B3E7;" data-name="Azul Cielo"></div>
-      <div class="swatch" style="background:#00843D;" data-name="Verde"></div>
-      <div class="swatch" style="background:#84BD00;" data-name="Verde Lima"></div>
-      <div class="swatch" style="background:#FFC72C;" data-name="Amarillo"></div>
-      <div class="swatch" style="background:#FF6900;" data-name="Naranja"></div>
-      <div class="swatch" style="background:#7B2D8B;" data-name="Morado"></div>
-      <div class="swatch" style="background:#E40695;" data-name="Rosa Fuerte"></div>
-      <div class="swatch" style="background:#F4A7B9;" data-name="Rosa Palo"></div>
-      <div class="swatch" style="background:#6B4226;" data-name="Café"></div>
-      <div class="swatch" style="background:#8C8279;" data-name="Gris"></div>
-      <div class="swatch" style="background:#C9A84C;" data-name="Dorado"></div>
-      <div class="swatch" style="background:#4A7C59;" data-name="Verde Militar"></div>
-      <div class="swatch" style="background:#5B4A3F;" data-name="Guinda"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ======================== CONTACT ======================== -->
+<!-- ═══════════ CONTACT ═══════════ -->
 <section id="contact" class="section">
-  <div class="contact-inner">
-    <div class="contact-info reveal">
-      <div class="section-label">Contáctanos</div>
-      <h2 class="section-title">Solicita tu<br><em>Cotización</em></h2>
-      <p>Envíos locales y nacionales. Contamos con préstamo para corrida de tallas. Respondemos el mismo día.</p>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text">
-            <small>Teléfonos</small>
-            <a href="tel:+528118269338">+52 8118 2693 38</a>
-            <a href="tel:+528135989470">+52 8135 9894 70</a>
-          </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="s-label contact-label">Contáctanos</div>
+      <h2 class="s-title contact-title">SOLICITA TU<br>COTIZACIÓN</h2>
+      <p class="contact-sub">Respondemos el mismo día. Envíos locales y nacionales. Contamos con préstamo para corrida de tallas.</p>
+      <div class="c-items">
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div class="c-info"><small>WhatsApp / Teléfonos</small><a href="tel:+528118269338">+52 8118 2693 38</a><a href="tel:+528135989470">+52 8135 9894 70</a></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div class="contact-item-text">
-            <small>Email</small>
-            <a href="mailto:itzaclothess@gmail.com">itzaclothess@gmail.com</a>
-          </div>
+        <div class="c-item">
+          <div class="c-icon">✉️</div>
+          <div class="c-info"><small>Email</small><a href="mailto:itzaclothess@gmail.com">itzaclothess@gmail.com</a></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text">
-            <small>Ubicación</small>
-            <p>Lic. Alfonso Santos Palomo 8008,<br>Col. CROC, Monterrey, N.L.</p>
-          </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div class="c-info"><small>Ubicación</small><p>Lic. Alfonso Santos Palomo 8008, Col. CROC, Monterrey, N.L.</p></div>
         </div>
       </div>
       <div class="socials">
-        <a class="social-btn" href="https://instagram.com/itzaclothess" target="_blank">📸 itzaclothess</a>
-        <a class="social-btn" href="https://facebook.com/ItzaClothess" target="_blank">👤 Itza Clothess</a>
-        <a class="social-btn" href="https://tiktok.com/@itza.clothess_of" target="_blank">🎵 itza.clothess_of</a>
+        <a class="soc-btn" href="https://instagram.com/itzaclothess" target="_blank">📸 itzaclothess</a>
+        <a class="soc-btn" href="https://facebook.com/ItzaClothess" target="_blank">👤 Itza Clothess</a>
+        <a class="soc-btn" href="https://tiktok.com/@itza.clothess_of" target="_blank">🎵 itza.clothess_of</a>
       </div>
     </div>
-    <div class="contact-form-wrap reveal">
-      <div class="form-title">Cotizar Ahora</div>
-      <div class="form-subtitle">Te respondemos el mismo día · Sin compromiso</div>
-      <form id="cotizaForm" onsubmit="submitForm(event)">
-        <div class="form-group">
-          <label>Nombre / Empresa</label>
-          <input type="text" placeholder="Tu nombre o empresa" required>
-        </div>
-        <div class="form-group">
-          <label>Teléfono / WhatsApp</label>
-          <input type="tel" placeholder="+52 81 0000 0000" required>
-        </div>
-        <div class="form-group">
-          <label>Producto de Interés</label>
-          <select>
-            <option value="">Selecciona un producto</option>
-            <option>Playera Cuello Redondo</option>
-            <option>Polo Piqué</option>
-            <option>Polo Dri-Fit</option>
-            <option>Jersey Beisbolera</option>
-            <option>Camisa de Vestir</option>
-            <option>Sudadera</option>
-            <option>Chamarra Neopreno</option>
-            <option>Overol / Chaleco Industrial</option>
-            <option>Quirúrgico / Filipinas</option>
-            <option>Pantalones</option>
-            <option>Gorras</option>
-            <option>Mandiles</option>
-            <option>Termos</option>
-            <option>Otro / Varios</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Detalles del Pedido</label>
-          <textarea placeholder="Cantidad aproximada, tallas, colores, personalización (logo, bordado, impresión)..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">Enviar Cotización por WhatsApp →</button>
-      </form>
+    <div class="reveal">
+      <div class="form-box">
+        <div class="form-title">Cotizar Ahora</div>
+        <div class="form-sub">Sin compromiso · Respuesta el mismo día</div>
+        <form onsubmit="sendWA(event)">
+          <div class="fg"><label>Nombre / Empresa</label><input type="text" placeholder="Tu nombre o empresa" required></div>
+          <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+52 81 0000 0000" required></div>
+          <div class="fg"><label>Producto de interés</label>
+            <select>
+              <option value="">Selecciona un producto</option>
+              <option>Playera Cuello Redondo</option><option>Polo Piqué</option><option>Polo Dri-Fit</option>
+              <option>Jersey Beisbolera</option><option>Camisa de Vestir</option><option>Sudadera</option>
+              <option>Chamarra Neopreno</option><option>Overol / Chaleco Industrial</option>
+              <option>Quirúrgico / Filipinas</option><option>Pantalones</option><option>Gorras</option>
+              <option>Mandiles</option><option>Estola</option><option>Termos</option><option>Otro / Varios</option>
+            </select>
+          </div>
+          <div class="fg"><label>Detalles del pedido</label><textarea placeholder="Cantidad, tallas, colores, personalización (logo, bordado, impresión)..."></textarea></div>
+          <button type="submit" class="form-submit">Enviar por WhatsApp →</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== FOOTER ======================== -->
+<!-- ═══════════ FOOTER ═══════════ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      ITZA CLOTHESS
-      <span>FABRICANTES DIRECTOS · MONTERREY N.L.</span>
-    </div>
-    <nav class="footer-links">
-      <a href="#about">Nosotros</a>
-      <a href="#products">Catálogo</a>
-      <a href="#services">Servicios</a>
-      <a href="#contact">Contacto</a>
+  <div class="footer-top">
+    <div class="footer-logo">ITZA CLOTHESS<small>FABRICANTES DIRECTOS · MONTERREY N.L.</small></div>
+    <nav class="footer-nav">
+      <a href="#about">Nosotros</a><a href="#products">Catálogo</a>
+      <a href="#services">Servicios</a><a href="#contact">Contacto</a>
     </nav>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Itza Clothess · Todos los derechos reservados · Monterrey, Nuevo León, México</p>
+  <div class="footer-bot">
+    <p>© 2025 Itza Clothess · Monterrey, Nuevo León, México</p>
     <span>Fabricantes Directos · Sin Intermediarios</span>
   </div>
 </footer>
 
 <script>
-// ===================== CURSOR =====================
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
+// ── CURSOR
+const D=document.getElementById('cur-d'),R=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-(function animRing(){
-  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;D.style.left=mx+'px';D.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(loop);})();
 
-// ===================== NAV SCROLL =====================
-const nav = document.getElementById('nav');
-const bar = document.getElementById('progress-bar');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-  const p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  bar.style.width = p + '%';
+// ── NAV + PROGRESS
+const nav=document.getElementById('nav'),bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('on',scrollY>50);
+  bar.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
 });
 
-// ===================== REVEAL =====================
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── REVEAL
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-// ===================== PARTICLES =====================
-const pContainer = document.getElementById('particles');
-for(let i=0;i<20;i++){
-  const p = document.createElement('div');
-  p.className='particle';
-  const s = Math.random()*4+2;
-  p.style.cssText = `
-    width:${s}px;height:${s}px;
-    left:${Math.random()*100}%;
-    top:${Math.random()*100}%;
-    --dur:${Math.random()*8+6}s;
-    --delay:${Math.random()*8}s;
-    --op:${Math.random()*.5+.2};
-  `;
-  pContainer.appendChild(p);
-}
+// ── CARD STAGGER
+const co=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*55);}),{threshold:.08});
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(28px)';c.style.transition=`opacity .6s ${i*.04}s ease,transform .6s ${i*.04}s ease,box-shadow .4s,transform .4s var(--tr)`;co.observe(c);});
 
-// ===================== FILTER =====================
-function filterCat(btn, cat) {
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+// ── FILTER
+function filter(btn,cat){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.product-card').forEach(card => {
-    const show = cat==='all' || card.dataset.cat===cat;
-    card.style.display = show ? '' : 'none';
-    if(show){
-      card.style.animation='none';
-      card.offsetHeight;
-      card.style.animation='';
-    }
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
   });
-  playClick();
 }
 
-// ===================== MOBILE MENU =====================
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
+// ── MOBILE MENU
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open');}
 
-// ===================== SOUND (Web Audio API) =====================
-let audioCtx;
-function getAudio(){ if(!audioCtx) audioCtx=new(window.AudioContext||window.webkitAudioContext)(); return audioCtx; }
-function playHover(){
-  try{
-    const ctx=getAudio(); const o=ctx.createOscillator(); const g=ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.value=880; o.type='sine';
-    g.gain.setValueAtTime(0,ctx.currentTime); g.gain.linearRampToValueAtTime(.04,ctx.currentTime+.02);
-    g.gain.linearRampToValueAtTime(0,ctx.currentTime+.12);
-    o.start(ctx.currentTime); o.stop(ctx.currentTime+.12);
-  }catch(e){}
-}
-function playClick(){
-  try{
-    const ctx=getAudio(); const o=ctx.createOscillator(); const g=ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    o.frequency.value=660; o.type='triangle';
-    g.gain.setValueAtTime(.06,ctx.currentTime); g.gain.linearRampToValueAtTime(0,ctx.currentTime+.1);
-    o.start(ctx.currentTime); o.stop(ctx.currentTime+.1);
-  }catch(e){}
-}
-document.querySelectorAll('a,button,.product-card,.swatch').forEach(el=>{
-  el.addEventListener('mouseenter', playHover);
-});
-
-// ===================== FORM SUBMIT (WhatsApp redirect) =====================
-function submitForm(e){
+// ── FORM → WHATSAPP
+function sendWA(e){
   e.preventDefault();
   const f=e.target;
-  const nombre=f.querySelector('input[type=text]').value;
-  const tel=f.querySelector('input[type=tel]').value;
-  const prod=f.querySelector('select').value;
-  const det=f.querySelector('textarea').value;
-  const msg=encodeURIComponent(
-    `Hola Itza Clothess! 👋\n\nNombre: ${nombre}\nTeléfono: ${tel}\nProducto: ${prod}\n\nDetalles: ${det}\n\nQuedo en espera de cotización. ¡Gracias!`
-  );
-  window.open(`https://wa.me/528118269338?text=${msg}`,'_blank');
+  const n=f.querySelector('input[type=text]').value;
+  const t=f.querySelector('input[type=tel]').value;
+  const p=f.querySelector('select').value;
+  const d=f.querySelector('textarea').value;
+  window.open(`https://wa.me/528118269338?text=${encodeURIComponent(`Hola Itza Clothess! 👋\n\nNombre: ${n}\nTeléfono: ${t}\nProducto: ${p}\n\nDetalles: ${d}\n\n¡Gracias!`)}`,'_blank');
 }
 
-// ===================== HERO PARALLAX =====================
-document.addEventListener('mousemove', e => {
-  const x = (e.clientX/window.innerWidth-.5)*20;
-  const y = (e.clientY/window.innerHeight-.5)*20;
-  document.querySelector('.hero-grid').style.transform=`translate(${x*.3}px,${y*.3}px)`;
-});
-
-// ===================== SMOOTH STAGGER CARDS =====================
-const cardObserver = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if(e.isIntersecting){
-      setTimeout(()=>{ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }, i*60);
-    }
-  });
-}, {threshold:.1});
-document.querySelectorAll('.product-card').forEach((c,i)=>{
-  c.style.opacity='0'; c.style.transform='translateY(30px)';
-  c.style.transition=`opacity .6s ${i*.05}s ease, transform .6s ${i*.05}s ease, box-shadow .4s, border-color .4s`;
-  cardObserver.observe(c);
-});
+// ── SOUND (subtle)
+let ctx;
+function snd(f,d){try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(0,ctx.currentTime);g.gain.linearRampToValueAtTime(.03,ctx.currentTime+.02);g.gain.linearRampToValueAtTime(0,ctx.currentTime+d);o.start();o.stop(ctx.currentTime+d);}catch(e){}}
+document.querySelectorAll('a,button,.card,.f-btn').forEach(el=>el.addEventListener('mouseenter',()=>snd(660,.1)));
 </script>
 </body>
 </html>
