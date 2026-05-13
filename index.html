@@ -1,1071 +1,1567 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ITZA CLOTHESS | Fabricantes Directos · Monterrey NL</title>
-<meta name="description" content="Fabricantes directos de ropa en Monterrey NL. Bordado, DTF, DTF-UV. Playeras, polos, sudaderas, uniformes industriales. Tallas XS–5XL.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Itza Clothes — Tu diseño. Hecho realidad.</title>
+<meta name="description" content="Personalización premium de prendas en México: bordado, DTF, sublimación y técnicas combinadas. Para marcas, empresas, equipos y emprendedores." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
 <style>
-/* ─── BASE ─── */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#D8D6D0; --bg2:#CCCAC3; --white:#F5F3EF; --surface:#E6E4DE;
-  --navy:#163556; --navy2:#1B3F65; --navylt:#2A5A8C;
-  --black:#0D0D0D; --text:#1C1C1C; --muted:#5C5C5C;
-  --r:16px; --r-sm:8px; --r-lg:24px;
-  --shadow:0 8px 40px rgba(22,53,86,.13);
-  --shadowlg:0 20px 70px rgba(22,53,86,.2);
-  --ease:cubic-bezier(.76,0,.24,1);
-  --fh:'Barlow Condensed',sans-serif; --fb:'Inter',sans-serif;
-}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:var(--fb);background:var(--bg);color:var(--text);cursor:none;overflow-x:hidden;}
-@media(hover:none){body{cursor:auto;}}
-::selection{background:var(--navy);color:var(--white);}
-a{color:inherit;text-decoration:none;}
-img{display:block;max-width:100%;}
-button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px;}
+/* ─────────────────────────────────────────────────────────────
+   RESET + ROOT
+   ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ─── CURSOR ─── */
-#cur{position:fixed;inset:0 auto auto 0;z-index:99999;pointer-events:none;}
-.cd{width:9px;height:9px;background:var(--navy);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:transform .15s,background .2s;}
-.cr{width:36px;height:36px;border:1.5px solid rgba(22,53,86,.4);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease),border-color .3s;}
-body.hov .cr{width:54px;height:54px;border-color:var(--navy);}
-body.clk .cd{transform:translate(-50%,-50%) scale(2);background:#C49A3C;}
+:root {
+  --bg:         #06060A;
+  --surface:    #0F0F17;
+  --border:     #1E1E2E;
+  --text:       #EEEEF2;
+  --muted:      #6B6B8A;
+  --accent:     #AAFF4D;
+  --accent-dim: rgba(170, 255, 77, 0.08);
 
-/* ─── PROGRESS ─── */
-#prog{position:fixed;top:0;left:0;height:3px;background:var(--navy);z-index:9998;width:0;}
+  --ff-display: "Syne", sans-serif;
+  --ff-body:    "DM Sans", sans-serif;
 
-/* ─── NAV ─── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;transition:all .4s var(--ease);}
-#nav.on{background:rgba(210,208,202,.95);backdrop-filter:blur(18px);padding:13px 5%;border-bottom:1px solid rgba(22,53,86,.1);box-shadow:0 2px 20px rgba(22,53,86,.07);}
-.logo{display:flex;align-items:center;gap:13px;}
-.logo-mark{width:36px;height:36px;border:1.5px solid var(--navy);border-radius:50%;display:grid;place-items:center;}
-.logo-mark svg{width:18px;height:18px;fill:none;stroke:var(--navy);stroke-width:1.5;}
-.logo-txt{font-family:var(--fh);font-size:21px;letter-spacing:4px;color:var(--navy);line-height:1;}
-.logo-txt small{display:block;font-size:.42em;letter-spacing:5px;color:var(--navylt);font-family:var(--fb);font-weight:400;text-transform:uppercase;opacity:.8;}
-.nav-links{display:flex;gap:34px;list-style:none;}
-.nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:.6;transition:opacity .2s;}
-.nav-links a:hover{opacity:1;}
-.nav-r{display:flex;align-items:center;gap:12px;}
-.btn-wa{display:flex;align-items:center;gap:7px;padding:9px 20px;background:#25D366;color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;cursor:none;transition:transform .2s,box-shadow .2s;}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
-.btn-nav{padding:9px 22px;background:var(--navy);color:var(--white);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:background .2s,transform .2s;}
-.btn-nav:hover{background:var(--navy2);transform:translateY(-2px);}
-.ham{display:none;flex-direction:column;gap:5px;cursor:none;}
-.ham span{display:block;width:22px;height:1.5px;background:var(--navy);}
-.mob-nav{display:none;position:fixed;inset:0;z-index:1001;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:22px;}
-.mob-nav.open{display:flex;}
-.mob-nav a{font-family:var(--fh);font-size:54px;color:var(--white);letter-spacing:4px;transition:.2s;}
-.mob-nav a:hover{color:var(--bg);}
-.mob-x{position:absolute;top:24px;right:28px;font-size:26px;color:rgba(255,255,255,.5);cursor:none;}
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
 
-/* ─── HERO ─── */
-#hero{min-height:100vh;display:grid;grid-template-columns:54% 46%;overflow:hidden;}
-.hl{background:var(--navy);display:flex;flex-direction:column;justify-content:center;padding:140px 7% 80px;position:relative;overflow:hidden;}
-.hl::before{content:'ITZA';position:absolute;left:-20px;bottom:-80px;font-family:var(--fh);font-size:clamp(240px,32vw,480px);color:rgba(255,255,255,.03);line-height:1;pointer-events:none;user-select:none;letter-spacing:-20px;}
-.h-ey{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:26px;display:flex;align-items:center;gap:14px;animation:fu .9s var(--ease) both;}
-.h-ey::before{content:'';width:30px;height:1px;background:rgba(255,255,255,.3);}
-h1.hero{font-family:var(--fh);font-size:clamp(82px,11vw,148px);line-height:.88;color:var(--white);letter-spacing:2px;animation:fu 1s .1s var(--ease) both;}
-h1.hero em{display:block;font-style:normal;color:rgba(255,255,255,.22);-webkit-text-stroke:1.5px rgba(255,255,255,.25);}
-.h-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.52);line-height:1.85;margin:30px 0 42px;max-width:400px;animation:fu 1s .2s var(--ease) both;}
-.h-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fu 1s .3s var(--ease) both;}
-.btn-hw{padding:15px 36px;background:var(--white);color:var(--navy);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;box-shadow:0 6px 28px rgba(0,0,0,.18);}
-.btn-hw:hover{background:var(--bg);transform:translateY(-3px);}
-.btn-hg{padding:15px 36px;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.7);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:none;transition:all .3s;}
-.btn-hg:hover{border-color:rgba(255,255,255,.6);color:var(--white);}
-.h-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:42px;animation:fu 1s .45s var(--ease) both;}
-.hchip{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:6px 15px;border-radius:100px;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.45);text-transform:uppercase;}
-.hr{position:relative;overflow:hidden;}
-.hr img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform 9s ease;}
-#hero:hover .hr img{transform:scale(1.04);}
-.hr-ov{position:absolute;inset:0;background:linear-gradient(90deg,var(--navy),rgba(22,53,86,.15) 50%,transparent);}
-.hr-card{position:absolute;bottom:40px;right:36px;background:rgba(245,243,239,.93);backdrop-filter:blur(10px);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow);}
-.hr-card .n{font-family:var(--fh);font-size:42px;color:var(--navy);line-height:1;}
-.hr-card .l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
-.h-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;}
-.h-scroll span{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,.35);text-transform:uppercase;}
-.sl{width:1px;height:46px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scr 2s ease-in-out infinite;}
-@keyframes scr{0%,100%{transform:scaleY(1);opacity:.7;}50%{transform:scaleY(.4);opacity:.2;}}
-@keyframes fu{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
-
-/* ─── STATS ─── */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy2);}
-.stt{padding:30px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background .3s;}
-.stt:last-child{border-right:none;}
-.stt:hover{background:var(--navy);}
-.stt-n{font-family:var(--fh);font-size:clamp(38px,4vw,56px);color:var(--white);line-height:1;}
-.stt-l{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:5px;}
-
-/* ─── SECTIONS ─── */
-.sec{padding:108px 5%;position:relative;}
-.slb{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--navy);margin-bottom:13px;display:flex;align-items:center;gap:11px;}
-.slb::before{content:'';flex:0 0 24px;height:1.5px;background:var(--navy);}
-.stl{font-family:var(--fh);font-size:clamp(50px,7vw,96px);line-height:.9;color:var(--navy);letter-spacing:1px;text-transform:uppercase;}
-.rev{opacity:0;transform:translateY(38px);transition:opacity .9s var(--ease),transform .9s var(--ease);will-change:opacity,transform;}
-.rev.in{opacity:1;transform:none;will-change:auto;}
-
-/* ─── ABOUT ─── */
-#about{background:var(--white);}
-.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.ab-img{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:.75;box-shadow:var(--shadowlg);position:relative;}
-.ab-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s var(--ease);}
-.ab-img:hover img{transform:scale(1.04);}
-.ab-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,53,86,.25),transparent 50%);}
-.ab-tag{position:absolute;z-index:2;background:var(--navy);color:var(--white);font-weight:700;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 17px;border-radius:var(--r-sm);}
-.ab-tag.a{top:-15px;right:-15px;}.ab-tag.b{bottom:24px;left:-15px;}
-.ab-mini{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(22,53,86,.1);border-radius:var(--r-sm);overflow:hidden;margin-top:20px;}
-.am{background:var(--white);padding:20px 14px;text-align:center;}
-.am-n{font-family:var(--fh);font-size:38px;color:var(--navy);line-height:1;}
-.am-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
-.ab-copy p{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:18px;}
-.ab-copy strong{color:var(--navy);}
-.proc-list{margin-top:38px;}
-.pi{display:flex;gap:18px;padding:17px 0;border-bottom:1px solid rgba(22,53,86,.08);transition:padding-left .3s;}
-.pi:hover{padding-left:8px;}
-.pi-n{font-family:var(--fh);font-size:38px;color:rgba(22,53,86,.13);min-width:52px;line-height:1;transition:color .3s;}
-.pi:hover .pi-n{color:var(--navy);}
-.pi-t{font-size:12px;font-weight:700;color:var(--navy);letter-spacing:.5px;margin-bottom:3px;text-transform:uppercase;}
-.pi-d{font-size:13px;color:var(--muted);line-height:1.6;}
-
-/* ─── PRODUCTS ─── */
-#products{background:var(--bg);}
-.prod-top{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:40px;}
-.prod-hint{font-size:13px;color:var(--muted);max-width:280px;line-height:1.6;text-align:right;}
-.filt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:44px;}
-.fb{padding:9px 21px;border-radius:100px;border:1.5px solid rgba(22,53,86,.2);background:transparent;color:var(--navy);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:none;transition:all .25s;}
-.fb.on,.fb:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-
-/* ─── CARD ─── */
-.pcard{background:var(--white);border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(22,53,86,.07);cursor:none;opacity:0;transform:translateY(28px);will-change:opacity,transform;}
-.pcard.shown{animation:cardIn .55s var(--ease) forwards;}
-@keyframes cardIn{to{opacity:1;transform:none;}}
-.pcard.shown{will-change:auto;}
-.pcard:hover{box-shadow:var(--shadowlg);}
-.pcard-img{height:270px;overflow:hidden;position:relative;background:var(--white);}
-.pcard-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform .6s var(--ease);}
-.pcard:hover .pcard-img img{transform:scale(1.07);}
-.pcard-ov{position:absolute;inset:0;background:rgba(22,53,86,.75);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;transition:opacity .3s;}
-.pcard:hover .pcard-ov{opacity:1;}
-.ov-ring{width:54px;height:54px;border:2px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;transform:scale(.8);transition:transform .3s var(--ease);}
-.pcard:hover .ov-ring{transform:scale(1);}
-.ov-ring svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;}
-.ov-txt{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.8);}
-.pcard-badge{position:absolute;top:13px;left:13px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;z-index:1;}
-.pcard-body{padding:20px 20px 18px;}
-.pcard-name{font-family:var(--fh);font-size:21px;color:var(--navy);line-height:1.1;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
-.pcard-mat{font-size:11px;color:var(--navylt);font-weight:500;margin-bottom:9px;}
-.pcard-colors{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
-.csw{width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(0,0,0,.1);flex-shrink:0;transition:transform .2s;}
-.csw:hover{transform:scale(1.4);}
-.pcard-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px;}
-.ptag{background:var(--bg);border:1px solid rgba(22,53,86,.1);padding:3px 9px;border-radius:100px;font-size:9px;color:var(--muted);}
-.pcard-foot{border-top:1px solid rgba(22,53,86,.07);padding-top:11px;display:flex;align-items:center;justify-content:space-between;}
-.pcard-sz{font-size:10px;color:var(--muted);}
-.pcard-sz b{color:var(--navy);font-size:9px;letter-spacing:1px;text-transform:uppercase;}
-.pcard-wa{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--r-sm);transition:background .2s;cursor:none;}
-.pcard-wa:hover{background:var(--navy2);}
-
-/* ─── MODAL ─── */
-#modal{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;}
-#modal.open{display:flex;}
-.mbg{position:absolute;inset:0;background:rgba(10,10,10,.85);backdrop-filter:blur(10px);animation:fadin .3s ease;}
-@keyframes fadin{from{opacity:0;}to{opacity:1;}}
-.mbox{position:relative;z-index:1;width:min(960px,96vw);height:min(90vh,700px);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);display:grid;grid-template-columns:1fr 1fr;animation:min .4s var(--ease) both;}
-@keyframes min{from{opacity:0;transform:scale(.92) translateY(24px);}to{opacity:1;transform:none;}}
-/* LEFT: product image */
-.m-img{background:var(--white);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
-.m-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;}
-/* RIGHT: text panel */
-.m-info{background:var(--white);overflow-y:auto;padding:36px 32px;display:flex;flex-direction:column;gap:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
-.m-info::-webkit-scrollbar{width:3px;}
-.m-info::-webkit-scrollbar-thumb{background:rgba(22,53,86,.2);}
-.m-badge{display:inline-flex;background:var(--navy);color:var(--white);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:14px;align-self:flex-start;}
-.m-name{font-family:var(--fh);font-size:32px;color:var(--navy);line-height:1.05;text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;}
-.m-section{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid rgba(22,53,86,.08);}
-.m-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.m-slabel{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.m-slabel::before{content:'';width:16px;height:1.5px;background:var(--navy);flex-shrink:0;}
-.m-row{display:flex;gap:8px;flex-wrap:wrap;}
-.m-tag{background:var(--bg);border:1px solid rgba(22,53,86,.12);padding:5px 12px;border-radius:100px;font-size:11px;color:var(--text);}
-.m-mat{font-size:13px;color:var(--muted);line-height:1.7;}
-.m-colors{display:flex;gap:7px;flex-wrap:wrap;}
-.mcsw{width:22px;height:22px;border-radius:50%;border:2px solid rgba(0,0,0,.1);cursor:default;position:relative;transition:transform .2s;}
-.mcsw:hover{transform:scale(1.3);}
-.mcsw[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:var(--navy);color:var(--white);font-size:9px;padding:3px 8px;border-radius:4px;white-space:nowrap;pointer-events:none;z-index:2;}
-.m-props{display:flex;flex-direction:column;gap:7px;}
-.m-prop{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--muted);}
-.m-prop::before{content:'✓';color:var(--navy);font-weight:700;flex-shrink:0;margin-top:1px;}
-.m-cta-row{display:flex;gap:10px;padding-top:4px;}
-.m-wa{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:#25D366;color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--r-sm);transition:box-shadow .2s;cursor:none;}
-.m-wa:hover{box-shadow:0 8px 28px rgba(37,211,102,.45);}
-.m-cat-full{padding:13px;border:1.5px solid var(--navy);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:var(--r-sm);transition:background .2s;cursor:none;background:transparent;}
-.m-cat-full:hover{background:var(--navy);color:var(--white);}
-.m-close{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(22,53,86,.08);border:none;display:grid;place-items:center;cursor:none;transition:background .2s,transform .2s;}
-.m-close:hover{background:var(--navy);transform:rotate(90deg);}
-.m-close svg{width:15px;height:15px;stroke:var(--navy);fill:none;stroke-width:2.5;}
-.m-close:hover svg{stroke:var(--white);}
-.m-nav{position:absolute;bottom:14px;left:14px;display:flex;gap:8px;z-index:2;}
-.mnb{width:36px;height:36px;border-radius:50%;background:rgba(22,53,86,.08);border:none;display:grid;place-items:center;cursor:none;transition:background .2s;}
-.mnb:hover{background:var(--navy);}
-.mnb svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:2.5;}
-.mnb:hover svg{stroke:var(--white);}
-
-/* ─── MUESTRAS ─── */
-#muestras{background:var(--surface);}
-.muestras-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:60px;}
-.muestras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.muestra-card{border-radius:var(--r);overflow:hidden;cursor:none;position:relative;aspect-ratio:.75;box-shadow:var(--shadow);}
-.muestra-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
-.muestra-card:hover img{transform:scale(1.05);}
-.muestra-card::after{content:'Ver muestra';position:absolute;inset:0;background:rgba(22,53,86,.7);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);opacity:0;transition:opacity .3s;}
-.muestra-card:hover::after{opacity:1;}
-
-/* ─── MARQUEE ─── */
-#marquee{padding:54px 0;background:var(--navy);overflow:hidden;position:relative;}
-#marquee::before,#marquee::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:1;pointer-events:none;}
-#marquee::before{left:0;background:linear-gradient(90deg,var(--navy),transparent);}
-#marquee::after{right:0;background:linear-gradient(-90deg,var(--navy),transparent);}
-.mqt{display:flex;gap:14px;width:max-content;animation:mq 38s linear infinite;}
-.mqt:hover{animation-play-state:paused;}
-@keyframes mq{to{transform:translateX(-50%);}}
-.mchip{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:11px 20px;border-radius:100px;font-size:12px;color:rgba(255,255,255,.6);white-space:nowrap;transition:all .25s;cursor:none;}
-.mchip:hover{background:rgba(255,255,255,.12);color:var(--white);}
-
-/* ─── SERVICES ─── */
-#services{background:var(--white);}
-.srv-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:54px;}
-.srv-cards{display:flex;flex-direction:column;gap:4px;}
-.scard{padding:28px;background:var(--bg);border-radius:var(--r);border:1px solid rgba(22,53,86,.08);transition:all .35s var(--ease);position:relative;overflow:hidden;}
-.scard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);}
-.scard:hover{transform:translateX(8px);box-shadow:var(--shadow);background:var(--white);}
-.scard:hover::before{transform:scaleY(1);}
-.sc-ico{font-size:32px;margin-bottom:13px;}
-.sc-name{font-family:var(--fh);font-size:26px;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
-.sc-desc{font-size:13px;color:var(--muted);line-height:1.7;}
-.srv-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadowlg);}
-.srv-img img{width:100%;display:block;}
-
-/* ─── CONTACT ─── */
-#contact{background:var(--navy);position:relative;overflow:hidden;}
-#contact::before{content:'CLOTHESS';position:absolute;right:-80px;bottom:-100px;font-family:var(--fh);font-size:clamp(150px,18vw,280px);color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap;line-height:1;}
-.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.ct-info .slb{color:rgba(255,255,255,.38);}
-.ct-info .stl{color:var(--white);}
-.ct-desc{font-size:15px;color:rgba(255,255,255,.52);line-height:1.8;margin:18px 0 42px;}
-.ci{display:flex;align-items:center;gap:17px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.07);transition:padding-left .3s;}
-.ci:hover{padding-left:8px;}
-.ci-ico{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);display:grid;place-items:center;font-size:15px;flex-shrink:0;transition:background .3s;}
-.ci:hover .ci-ico{background:rgba(255,255,255,.1);}
-.ci-inf small{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.33);}
-.ci-inf a,.ci-inf p{font-size:14px;color:var(--white);display:block;margin-top:2px;transition:color .2s;}
-.ci-inf a:hover{color:var(--bg);}
-.socials{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px;}
-.soc{display:flex;align-items:center;gap:7px;padding:9px 17px;border:1px solid rgba(255,255,255,.13);border-radius:100px;font-size:10px;color:rgba(255,255,255,.52);transition:all .25s;cursor:none;letter-spacing:1px;}
-.soc:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:var(--white);}
-.ct-form{background:var(--white);border-radius:var(--r-lg);padding:38px 34px;}
-.ft{font-family:var(--fh);font-size:34px;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.fs{font-size:12px;color:var(--muted);margin-bottom:26px;}
-.fg{margin-bottom:15px;}
-.fg label{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:6px;}
-.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1.5px solid rgba(22,53,86,.1);border-radius:var(--r-sm);padding:12px 14px;color:var(--text);font-family:var(--fb);font-size:13px;outline:none;transition:border-color .25s,background .25s;-webkit-appearance:none;cursor:none;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);background:var(--white);}
-.fg select option{background:var(--white);}
-.fg textarea{resize:vertical;min-height:82px;}
-.f-btn{width:100%;padding:15px;background:var(--navy);border:none;border-radius:var(--r-sm);font-family:var(--fb);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);cursor:none;transition:background .25s,transform .2s;}
-.f-btn:hover{background:var(--navy2);transform:translateY(-2px);}
-
-/* ─── FOOTER ─── */
-footer{background:var(--bg2);border-top:1px solid rgba(22,53,86,.09);padding:52px 5% 26px;}
-.ft-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:42px;flex-wrap:wrap;gap:22px;}
-.ft-logo{font-family:var(--fh);font-size:30px;color:var(--navy);letter-spacing:4px;}
-.ft-logo small{display:block;font-size:.35em;letter-spacing:6px;color:var(--muted);font-family:var(--fb);font-weight:300;text-transform:uppercase;}
-.ft-nav{display:flex;gap:26px;flex-wrap:wrap;}
-.ft-nav a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);transition:color .2s;}
-.ft-nav a:hover{color:var(--navy);}
-.ft-bot{border-top:1px solid rgba(22,53,86,.08);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.ft-bot p,.ft-bot span{font-size:11px;color:var(--muted);}
-
-/* ─── WA FLOAT ─── */
-#waf{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:23px;box-shadow:0 6px 26px rgba(37,211,102,.4);cursor:none;transition:transform .3s,box-shadow .3s;}
-#waf:hover{transform:scale(1.12);box-shadow:0 12px 38px rgba(37,211,102,.5);}
-#waf .pulse{position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.35);animation:pulse 2.5s ease-out infinite;}
-@keyframes pulse{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.55);opacity:0;}}
-
-/* ─── TOUCH / HOVER ─── */
-@media(hover:none){
-  #cur{display:none;}
-  a,button,.pcard,.scard,.muestra-card,.fb,.csw,.mcsw,.mchip,.mnb,.m-close,.pcard-wa,.m-wa,.f-btn,.btn-wa,.btn-nav,.btn-hw,.btn-hg,.ham,.mob-x,.soc,.waf{cursor:pointer;}
-  /* No hover overlays on touch — tap opens modal directly */
-  .pcard:hover .pcard-ov{opacity:0;}
-  .pcard:hover{box-shadow:var(--shadow);}
-  .pcard:hover .pcard-img img{transform:none;}
-  .scard:hover{transform:none;box-shadow:none;background:var(--bg);}
-  .scard:hover::before{transform:scaleY(0);}
-  .ab-img:hover img,.muestra-card:hover img{transform:none;}
-  .pi:hover{padding-left:0;}
-  .ci:hover{padding-left:0;}
-  /* Active states for touch feedback */
-  .pcard:active{box-shadow:var(--shadowlg);}
-  .scard:active{transform:translateX(4px);}
-  .btn-hw:active,.btn-hg:active,.btn-wa:active,.btn-nav:active,.pcard-wa:active{opacity:.8;}
+  --maxw: 1280px;
 }
 
-/* ─── REDUCED MOTION ─── */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.1s!important;}
-  .rev{opacity:1;transform:none;transition:none;}
-  .rev.in{opacity:1;transform:none;}
-  .pcard{opacity:1;transform:none;}
-  .pcard.shown{animation:none;opacity:1;}
-  .mqt{animation:none;}
-  .sl{animation:none;}
-  #waf .pulse{animation:none;}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-weight: 400;
+  line-height: 1.55;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (hover: none) { body { cursor: auto; } }
+
+::selection { background: var(--accent); color: #06060A; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: none; color: inherit; cursor: none; }
+@media (hover: none) { button { cursor: pointer; } }
+
+img, svg { display: block; max-width: 100%; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 768px) { .container { padding: 0 2rem; } }
+@media (min-width: 1024px) { .container { padding: 0 3rem; } }
+
+/* ─────────────────────────────────────────────────────────────
+   CUSTOM CURSOR
+   ───────────────────────────────────────────────────────────── */
+#cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  mix-blend-mode: normal;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+#cursor.hover { background: var(--accent-dim); }
+#cursor.dark-section { border-color: var(--accent); }
+#cursor.diff-mode { mix-blend-mode: difference; border-color: #fff; }
+
+@media (hover: none) { #cursor { display: none; } }
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL REVEAL (IntersectionObserver)
+   ───────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY HELPERS
+   ───────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: none;
+}
+.eyebrow-mini {
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 18ch;
 }
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:1024px){
-  #hero{grid-template-columns:1fr;}.hr{display:none;}.hl{min-height:100vh;padding:120px 6% 80px;}
-  .ab-grid,.ct-grid,.srv-wrap,.muestras-intro{grid-template-columns:1fr;gap:44px;}
-  .stats{grid-template-columns:repeat(2,1fr);}.stt:nth-child(2){border-right:none;}
-  .pgrid{grid-template-columns:repeat(2,1fr);}
-  .muestras-grid{grid-template-columns:repeat(3,1fr);}
-  /* Modal stacks: image top, text bottom */
-  .mbox{grid-template-columns:1fr;grid-template-rows:42vmin 1fr;width:min(540px,96vw);height:min(90vh,660px);}
-  .m-img{height:auto;}
-  .m-info{padding:24px 28px 72px;}
-  /* Re-centre nav buttons at bottom centre */
-  .m-nav{bottom:16px;left:50%;transform:translateX(-50%);gap:14px;}
-  .m-close{top:12px;right:12px;}
-  .srv-img{max-height:420px;overflow:hidden;}
-  .srv-img img{width:100%;height:100%;object-fit:cover;}
+/* ─────────────────────────────────────────────────────────────
+   BUTTONS
+   ───────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: transform 0.3s var(--ease-out), background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+  white-space: nowrap;
+}
+.btn-accent {
+  background: var(--accent);
+  color: #06060A;
+}
+.btn-accent:hover {
+  box-shadow: 0 8px 32px rgba(170, 255, 77, 0.18);
+}
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn svg { width: 18px; height: 18px; }
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: color 0.3s ease, gap 0.3s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.text-link:hover { color: var(--text); gap: 0.65rem; }
+
+/* ─────────────────────────────────────────────────────────────
+   NAVIGATION
+   ───────────────────────────────────────────────────────────── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(6, 6, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+#nav.hidden { transform: translateY(-100%); }
+
+.nav-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .nav-inner { padding: 1.15rem 2rem; }
+}
+@media (min-width: 1024px) {
+  .nav-inner { padding: 1.25rem 3rem; }
 }
 
-@media(max-width:768px){
-  .nav-links,.btn-nav,.btn-wa{display:none;}.ham{display:flex;}
-  .sec{padding:64px 5% 56px;}
-  .muestras-grid{grid-template-columns:repeat(2,1fr);}
-  /* Stack product header */
-  .prod-top{grid-template-columns:1fr;gap:10px;}
-  .prod-hint{text-align:left;max-width:100%;}
-  /* Hide scroll indicator */
-  .h-scroll{display:none;}
-  /* Smaller mobile nav font */
-  .mob-nav a{font-size:clamp(30px,9vw,54px);}
-  /* Tighter section titles */
-  .stl{font-size:clamp(42px,10vw,96px);}
-  /* Stack about mini grid */
-  .ab-mini{grid-template-columns:repeat(4,1fr);}
-  /* Modal narrower */
-  .mbox{width:96vw;grid-template-rows:48vw 1fr;}
-  /* Reduce backdrop blur on mobile for perf */
-  .mbg{backdrop-filter:blur(6px);}
-  #nav.on{backdrop-filter:blur(10px);}
-  .muestras-intro{gap:24px;}
-  .sec{padding:60px 5% 52px;}
-  .ct-grid{gap:36px;}
+.wordmark {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
 }
 
-@media(max-width:600px){
-  .pgrid{grid-template-columns:repeat(2,1fr);}
-  .pcard-img{height:200px;}
-  .mbox{grid-template-rows:52vw 1fr;height:88vh;}
-  .m-info{padding:18px 18px 68px;}
-  .m-name{font-size:22px;margin-bottom:14px;}
-  .m-section{margin-bottom:14px;padding-bottom:12px;}
-  .m-badge{margin-bottom:10px;}
-  /* Smaller filter pills */
-  .filt{gap:5px;}.fb{padding:8px 13px;font-size:9px;}
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links { display: none; align-items: center; gap: 1.75rem; }
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.25s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width 0.3s var(--ease-out);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #06060A;
+  font-weight: 500;
+  transition: box-shadow 0.3s ease, transform 0.3s var(--ease-out);
+}
+.nav-cta:hover { box-shadow: 0 6px 24px rgba(170, 255, 77, 0.22); }
+
+@media (min-width: 768px) { .nav-links { display: flex; } }
+
+/* ─────────────────────────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────────────────────────── */
+#hero {
+  position: relative;
+  min-height: 100svh;
+  padding: 8rem 0 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  top: 35%; left: 15%;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(170,255,77,0.055), transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(238, 238, 242, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.2) 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.2) 70%, transparent);
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (min-width: 768px) { .hero-inner { padding: 0 2rem; } }
+@media (min-width: 1024px) { .hero-inner { padding: 0 3rem; } }
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--ff-body);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+.hero-label::before {
+  content: "";
+  width: 24px; height: 1px;
+  background: var(--accent);
+  display: inline-block;
 }
 
-@media(max-width:480px){
-  .pgrid{grid-template-columns:1fr;}
-  .pcard-img{height:240px;}
-  .stats{grid-template-columns:1fr 1fr;}.stt:nth-child(odd){border-right:1px solid rgba(255,255,255,.08);}
-  .filt{gap:5px;}.fb{padding:7px 12px;font-size:9px;}
-  .muestras-grid{grid-template-columns:1fr 1fr;}
-  .sec{padding:50px 5% 44px;}
-  /* Stack hero buttons */
-  .h-btns{flex-direction:column;gap:10px;}
-  .btn-hw,.btn-hg{text-align:center;padding:14px 28px;}
-  .h-chips{gap:5px;}
-  .hchip{font-size:9px;padding:5px 11px;}
-  /* Contact form */
-  .ct-form{padding:26px 18px;}
-  .ft{font-size:26px;}
-  /* Footer */
-  .ft-top{flex-direction:column;align-items:flex-start;gap:14px;}
-  .ft-nav{gap:16px;}
-  .ft-bot{flex-direction:column;gap:6px;}
-  /* Float WA button clear of iOS home bar */
-  #waf{bottom:22px;right:18px;width:50px;height:50px;font-size:20px;}
-  /* Hero padding */
-  .hl{padding:96px 5% 60px;}
-  /* Tighter title */
-  .stl{font-size:clamp(38px,12vw,96px);}
-  h1.hero{font-size:clamp(68px,19vw,148px);}
-  /* Stats tighter */
-  .stt{padding:22px 10px;}
-  .stt-n{font-size:clamp(32px,8vw,56px);}
+.hero-headline {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(4rem, 11vw, 12rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin-bottom: 2.5rem;
+}
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.05em 0;
+}
+.hero-line .line-inner { display: inline-block; }
+.line-accent { color: var(--accent); }
+
+.hero-sub {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  opacity: 0;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+.hero-cta > * { opacity: 0; }
+
+/* Marquee */
+.marquee {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg);
+  margin-top: auto;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.marquee-content span {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+}
+.marquee-content span::after {
+  content: "·";
+  color: var(--accent);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-@media(max-width:360px){
-  h1.hero{font-size:clamp(58px,17vw,148px);}
-  .stl{font-size:clamp(34px,12vw,96px);}
-  .pgrid{grid-template-columns:1fr;}
-  .mbox{grid-template-rows:44vw 1fr;height:90vh;}
-  .m-info{padding:14px 14px 60px;}
+/* ─────────────────────────────────────────────────────────────
+   SECTION DEFAULTS
+   ───────────────────────────────────────────────────────────── */
+section {
+  position: relative;
+  padding: 6rem 0;
 }
+@media (min-width: 768px) { section { padding: 8rem 0; } }
+@media (min-width: 1024px) { section { padding: 10rem 0; } }
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  max-width: 720px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SERVICES
+   ───────────────────────────────────────────────────────────── */
+#servicios { background: var(--bg); }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-out), box-shadow 0.45s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(170, 255, 77, 0.07);
+}
+.card-num {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.5rem;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(238, 238, 242, 0.04);
+  transition: color 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+.card:hover .card-num {
+  color: var(--accent);
+  opacity: 0.25;
+}
+.card-body { position: relative; z-index: 1; margin-top: 4.5rem; }
+.card-name {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.card-desc {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 32ch;
+}
+.card-tag {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   STATS BAND
+   ───────────────────────────────────────────────────────────── */
+.stats {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0;
+}
+.stats-grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding: 0 1.5rem;
+}
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding: 0 2rem;
+  }
+}
+.stat {
+  text-align: center;
+  position: relative;
+  padding: 1rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .stat + .stat::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 15%;
+    width: 1px; height: 70%;
+    background: var(--border);
+  }
+}
+.stat-num {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+.stat-label {
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PROCESS
+   ───────────────────────────────────────────────────────────── */
+#proceso { background: var(--bg); }
+
+.process-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .process-grid {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+.process-step {
+  flex: 1;
+  position: relative;
+  padding: 1rem 0;
+}
+.step-num {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.step-name {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.step-desc {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 240px;
+  line-height: 1.55;
+}
+.connector {
+  height: 1px;
+  width: 0;
+  border-top: 1px dashed var(--accent);
+  align-self: center;
+  flex-shrink: 0;
+}
+@media (max-width: 1023px) {
+  .connector {
+    height: 32px;
+    width: 1px !important;
+    border-top: none;
+    border-left: 1px dashed var(--accent);
+    margin-left: 0.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .connector {
+    flex: 0 0 60px;
+    margin: 0 1rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BRAND QUOTE
+   ───────────────────────────────────────────────────────────── */
+.brand-quote {
+  position: relative;
+  text-align: center;
+  padding: 10rem 1.5rem;
+  overflow: hidden;
+}
+.brand-quote::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 700px; height: 700px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(170,255,77,0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.brand-quote-text {
+  position: relative;
+  z-index: 1;
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  max-width: 24ch;
+  margin: 0 auto 2rem;
+}
+.brand-quote-text .q-line {
+  display: block;
+  overflow: hidden;
+}
+.brand-quote-attribution {
+  position: relative;
+  z-index: 1;
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LOCATIONS
+   ───────────────────────────────────────────────────────────── */
+#sucursales { background: var(--bg); }
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .locations-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.location {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.25rem;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s var(--ease-out);
+}
+.location:hover {
+  box-shadow: 0 0 40px rgba(170, 255, 77, 0.06) inset;
+  border-color: rgba(170, 255, 77, 0.25);
+}
+.loc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ff-body);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.dot {
+  position: relative;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  animation: pulse-ring 2.2s var(--ease-out) infinite;
+}
+.dot.green { background: var(--accent); color: var(--accent); }
+.dot.amber { background: #FFBE3D; color: #FFBE3D; }
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+.loc-name {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.loc-kind {
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.loc-desc {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 36ch;
+}
+.loc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+.loc-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.loc-btn svg { width: 14px; height: 14px; }
+
+/* ─────────────────────────────────────────────────────────────
+   FINAL CTA
+   ───────────────────────────────────────────────────────────── */
+#contacto {
+  min-height: 100svh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+}
+#contacto::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1000px; height: 1000px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(170,255,77,0.045), transparent 55%);
+  pointer-events: none;
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+}
+.cta-headline {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 2.5rem;
+}
+.cta-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.05em 0;
+}
+.cta-line-1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: var(--text);
+}
+.cta-line-2 {
+  font-size: clamp(3.3rem, 8.8vw, 7.7rem);
+  color: var(--accent);
+}
+.cta-sub {
+  font-family: var(--ff-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: var(--muted);
+  max-width: 540px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+.cta-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.2rem 2rem;
+  background: var(--accent);
+  color: #06060A;
+  border-radius: 999px;
+  font-family: var(--ff-body);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.005em;
+  will-change: transform;
+  transition: box-shadow 0.4s ease;
+}
+.cta-btn:hover {
+  box-shadow: 0 12px 50px rgba(170, 255, 77, 0.28);
+}
+.cta-btn svg { width: 22px; height: 22px; }
+.cta-footnote {
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 2rem;
+  }
+}
+@media (min-width: 1024px) { .footer-inner { padding: 2rem 3rem; } }
+
+.footer-brand {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.footer-nav a { transition: color 0.25s ease; }
+.footer-nav a:hover { color: var(--text); }
+.footer-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Decorative WhatsApp icon */
+.wa-icon { fill: currentColor; }
 </style>
 </head>
 <body>
 
-<div id="cur"><div class="cd"></div><div class="cr"></div></div>
-<div id="prog"></div>
-<a id="waf" href="https://wa.me/528118269338?text=Hola%2C%20me%20interesa%20cotizar" target="_blank"><div class="pulse"></div>💬</a>
+<!-- ─── CUSTOM CURSOR ─── -->
+<div id="cursor"></div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="logo">
-    <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 3s-7 3.5-7 9.5a7 7 0 0014 0C19 6.5 12 3 12 3z"/><line x1="12" y1="12" x2="12" y2="20"/></svg></div>
-    <div class="logo-txt">ITZA CLOTHESS<small>Fabricantes Directos</small></div>
+<!-- ─── NAVIGATION ─── -->
+<header id="nav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="#" class="wordmark" aria-label="Itza Clothes inicio">ITZA</a>
+    <nav class="nav-right" aria-label="Menú">
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#sucursales">Sucursales</a>
+      </div>
+      <!-- WhatsApp number placeholder: +521XXXXXXXXXX -->
+      <a class="nav-cta" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    </nav>
   </div>
-  <ul class="nav-links">
-    <li><a href="#about">Nosotros</a></li><li><a href="#products">Catálogo</a></li>
-    <li><a href="#muestras">Muestras</a></li><li><a href="#services">Servicios</a></li><li><a href="#contact">Contacto</a></li>
-  </ul>
-  <div class="nav-r">
-    <a class="btn-wa" href="https://wa.me/528118269338" target="_blank">💬 WhatsApp</a>
-    <a class="btn-nav" href="#contact">Cotizar</a>
-    <button class="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-<div class="mob-nav" id="mobMenu">
-  <span class="mob-x" onclick="toggleMob()">✕</span>
-  <a href="#about" onclick="toggleMob()">Nosotros</a>
-  <a href="#products" onclick="toggleMob()">Catálogo</a>
-  <a href="#muestras" onclick="toggleMob()">Muestras</a>
-  <a href="#services" onclick="toggleMob()">Servicios</a>
-  <a href="#contact" onclick="toggleMob()">Contacto</a>
-</div>
+</header>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hl">
-    <div class="h-ey">Monterrey · NL · México</div>
-    <h1 class="hero">ITZA<em>CLOTHESS</em></h1>
-    <p class="h-desc">Somos fabricantes directos. Controlamos cada etapa desde el corte hasta el bordado computarizado. Calidad industrial, sin intermediarios.</p>
-    <div class="h-btns">
-      <a class="btn-hw" href="#products">Ver Catálogo</a>
-      <a class="btn-hg" href="#contact">Solicitar Cotización</a>
-    </div>
-    <div class="h-chips">
-      <span class="hchip">XS–5XL</span><span class="hchip">Bordado</span>
-      <span class="hchip">DTF · DTF-UV</span><span class="hchip">Envíos nacionales</span>
-    </div>
-    <div class="h-scroll"><span>Scroll</span><div class="sl"></div></div>
-  </div>
-  <div class="hr">
-    <img src="img/page_01.jpg" alt="ITZA CLOTHESS">
-    <div class="hr-ov"></div>
-    <div class="hr-card"><div class="n">30+</div><div class="l">Modelos disponibles</div></div>
-  </div>
-</section>
+<main>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stt"><div class="stt-n">30+</div><div class="stt-l">Modelos</div></div>
-  <div class="stt"><div class="stt-n">5XL</div><div class="stt-l">Talla máxima</div></div>
-  <div class="stt"><div class="stt-n">100%</div><div class="stt-l">Fabricantes propios</div></div>
-  <div class="stt"><div class="stt-n">MTY</div><div class="stt-l">Envío local · nacional</div></div>
-</div>
+  <!-- ─── HERO ─── -->
+  <section id="hero" aria-label="Inicio">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
 
-<!-- ABOUT -->
-<section id="about" class="sec">
-  <div class="ab-grid">
-    <div class="rev" style="position:relative">
-      <div class="ab-img"><img src="img/page_02.jpg" alt="Calidad Industrial"></div>
-      <div class="ab-tag a">Fabricantes Directos</div>
-      <div class="ab-tag b">Monterrey, N.L.</div>
-      <div class="ab-mini">
-        <div class="am"><div class="am-n">100%</div><div class="am-l">Propio</div></div>
-        <div class="am"><div class="am-n">0</div><div class="am-l">Intermediarios</div></div>
-        <div class="am"><div class="am-n">XS</div><div class="am-l">Talla mín.</div></div>
-        <div class="am"><div class="am-n">5XL</div><div class="am-l">Talla máx.</div></div>
+    <div class="hero-inner">
+      <span class="hero-label" id="heroLabel">Personalización de prendas · MX</span>
+
+      <h1 class="hero-headline">
+        <span class="hero-line"><span class="line-inner" data-split>Bordado.</span></span>
+        <span class="hero-line"><span class="line-inner" data-split>DTF. Sublimación.</span></span>
+        <span class="hero-line"><span class="line-inner line-accent" data-split>Tu marca, perfecta.</span></span>
+      </h1>
+
+      <p class="hero-sub" id="heroSub">
+        Personalizamos prendas con las técnicas más avanzadas del mercado. Para marcas, empresas, equipos y emprendedores que no se conforman con lo genérico.
+      </p>
+
+      <div class="hero-cta">
+        <!-- WhatsApp number placeholder: +521XXXXXXXXXX -->
+        <a class="btn btn-accent" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.05 4.91A10 10 0 0 0 4.06 18.36L2 22l3.74-1.98a10 10 0 0 0 14.36-8.95 10 10 0 0 0-3.05-6.16Zm-7.06 15.21a8.3 8.3 0 0 1-4.23-1.16l-.3-.18-2.79 1.47.79-2.86-.2-.31a8.3 8.3 0 1 1 6.73 3.04Zm4.55-6.24c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.51.12-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.54.13.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+          </svg>
+          <span>Cotizar por WhatsApp</span>
+        </a>
+        <a class="text-link" href="#servicios">Ver servicios ↓</a>
       </div>
     </div>
-    <div class="ab-copy rev">
-      <div class="slb">¿Quiénes somos?</div>
-      <h2 class="stl">CALIDAD<br>INDUSTRIAL</h2>
-      <div style="margin-top:34px">
-        <p>Somos fabricantes y <strong>no revendedores</strong>. En Itza Clothess controlamos cada etapa: desde el corte de la tela hasta el bordado computarizado final.</p>
-        <p>Seriedad, capacidad de respuesta y acabados de nivel profesional para instituciones que no aceptan menos.</p>
-        <p><strong>Contamos con préstamo para corrida de tallas · Envíos locales y nacionales.</strong></p>
-      </div>
-      <div class="proc-list">
-        <div class="pi"><div class="pi-n">01</div><div><div class="pi-t">Selección de Modelo Base</div><div class="pi-d">Elegimos el modelo que mejor se adapta a tu necesidad.</div></div></div>
-        <div class="pi"><div class="pi-n">02</div><div><div class="pi-t">Configuración de Tallas XS–5XL</div><div class="pi-d">Cuadro de tallas completo para toda la corrida.</div></div></div>
-        <div class="pi"><div class="pi-n">03</div><div><div class="pi-t">Personalización de Marca</div><div class="pi-d">Bordado computarizado o DTF/DTF-UV con tu logo.</div></div></div>
-        <div class="pi"><div class="pi-n">04</div><div><div class="pi-t">Producción y Entrega Directa</div><div class="pi-d">Todo en taller propio. Sin intermediarios.</div></div></div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>Bordado</span><span>DTF</span><span>Sublimación</span><span>Técnicas combinadas</span><span>Uniformes corporativos</span><span>Gorras</span><span>Chamarras</span><span>Ropa deportiva</span>
+        </div>
+        <div class="marquee-content">
+          <span>Bordado</span><span>DTF</span><span>Sublimación</span><span>Técnicas combinadas</span><span>Uniformes corporativos</span><span>Gorras</span><span>Chamarras</span><span>Ropa deportiva</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PRODUCTS -->
-<section id="products" class="sec">
-  <div class="prod-top rev">
-    <div><div class="slb">Catálogo Completo</div><h2 class="stl">NUESTROS<br>PRODUCTOS</h2></div>
-    <p class="prod-hint">Haz clic en cualquier producto para ver la ficha completa: colores, materiales y especificaciones.</p>
-  </div>
-  <div class="filt rev" id="filtRow"></div>
-  <div class="pgrid" id="pgrid"></div>
-</section>
-
-<!-- MARQUEE -->
-<div id="marquee"><div class="mqt" id="mqt"></div></div>
-
-<!-- MUESTRAS -->
-<section id="muestras" class="sec">
-  <div class="muestras-intro">
-    <div class="rev">
-      <div class="slb">Diseños de Referencia</div>
-      <h2 class="stl">MUESTRAS<br>Y DISEÑOS</h2>
-    </div>
-    <div class="rev">
-      <p style="font-size:15px;color:var(--muted);line-height:1.9;">Modelos de referencia de jerseys, camisas y polos. Se pueden fabricar más diseños, colores y combinaciones. Consulta por tu diseño personalizado.</p>
-      <a href="https://wa.me/528118269338?text=Quiero%20ver%20más%20muestras%20de%20diseños" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:13px 28px;background:var(--navy);color:var(--white);border-radius:4px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:none;">Ver más diseños →</a>
-    </div>
-  </div>
-  <div class="muestras-grid rev" id="muestrasGrid"></div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="sec">
-  <div class="rev"><div class="slb">Técnicas disponibles</div><h2 class="stl">NUESTROS<br>SERVICIOS</h2></div>
-  <div class="srv-wrap">
-    <div class="srv-cards rev">
-      <div class="scard"><div class="sc-ico">🪡</div><div class="sc-name">Bordado Computarizado</div><div class="sc-desc">Alta resolución con maquinaria industrial. Perfecto para logos y diseños corporativos. Acabado duradero que no se despega ni desvanece tras el lavado.</div></div>
-      <div class="scard"><div class="sc-ico">🖨️</div><div class="sc-name">Impresión DTF</div><div class="sc-desc">Direct to Film. Colores ultra vivos, alta definición. Ideal para diseños complejos, fotorrealistas o con gradientes que el bordado no puede replicar.</div></div>
-      <div class="scard"><div class="sc-ico">✨</div><div class="sc-name">Impresión DTF-UV</div><div class="sc-desc">Tecnología premium: colores ultra vibrantes con acabado UV de larga duración. Resistente al sol, lavado y fricción. La mejor opción para proyectos exigentes.</div></div>
-    </div>
-    <div class="srv-img rev"><img src="img/page_29.jpg" alt="Servicios"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="sec">
-  <div class="ct-grid">
-    <div class="ct-info rev">
-      <div class="slb">Contáctanos</div>
-      <h2 class="stl">SOLICITA<br>COTIZACIÓN</h2>
-      <p class="ct-desc">Respondemos el mismo día. Envíos locales y nacionales. Contamos con préstamo para corrida de tallas.</p>
-      <div>
-        <div class="ci"><div class="ci-ico">📞</div><div class="ci-inf"><small>WhatsApp · Teléfonos</small><a href="tel:+528118269338">+52 8118 2693 38</a><a href="tel:+528135989470">+52 8135 9894 70</a></div></div>
-        <div class="ci"><div class="ci-ico">✉️</div><div class="ci-inf"><small>Email</small><a href="mailto:itzaclothess@gmail.com">itzaclothess@gmail.com</a></div></div>
-        <div class="ci"><div class="ci-ico">📍</div><div class="ci-inf"><small>Ubicación</small><p>Lic. Alfonso Santos Palomo 8008,<br>Col. CROC, Monterrey, N.L.</p></div></div>
+  <!-- ─── SERVICES ─── -->
+  <section id="servicios" aria-label="Servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">// Servicios</span>
+        <h2 class="section-title reveal d1">Cada técnica, un resultado diferente.</h2>
       </div>
-      <div class="socials">
-        <a class="soc" href="https://instagram.com/itzaclothess" target="_blank">📸 itzaclothess</a>
-        <a class="soc" href="https://facebook.com/ItzaClothess" target="_blank">👤 Itza Clothess</a>
-        <a class="soc" href="https://tiktok.com/@itza.clothess_of" target="_blank">🎵 itza.clothess_of</a>
-      </div>
-    </div>
-    <div class="rev">
-      <div class="ct-form">
-        <div class="ft">Cotizar Ahora</div>
-        <div class="fs">Sin compromiso · Respuesta garantizada el mismo día</div>
-        <form onsubmit="sendWA(event)">
-          <div class="fg"><label>Nombre / Empresa</label><input type="text" placeholder="Tu nombre o empresa" required></div>
-          <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+52 81 0000 0000" required></div>
-          <div class="fg"><label>Producto de interés</label>
-            <select><option value="">Selecciona un producto</option>
-              <option>Playera Cuello Redondo</option><option>Polo Piqué</option><option>Polo Dri-Fit</option>
-              <option>Jersey Beisbolera</option><option>Camisa de Vestir</option><option>Sudadera</option>
-              <option>Chamarra Neopreno</option><option>Overol / Chaleco Industrial</option>
-              <option>Quirúrgico / Filipinas</option><option>Pantalones</option><option>Gorras</option>
-              <option>Mandiles</option><option>Estola</option><option>Termos</option><option>Otro / Varios</option>
-            </select>
+
+      <div class="cards-grid">
+        <article class="card" data-card>
+          <span class="card-num">01</span>
+          <div class="card-body">
+            <h3 class="card-name">Bordado</h3>
+            <p class="card-desc">Hilo de alta resistencia, ideal para uniformes corporativos, gorras y chamarras. Dura lavados y tiempo.</p>
           </div>
-          <div class="fg"><label>Detalles del pedido</label><textarea placeholder="Cantidad, tallas, colores, personalización (logo, bordado, DTF)..."></textarea></div>
-          <button type="submit" class="f-btn">Enviar por WhatsApp →</button>
-        </form>
+          <span class="card-tag">Alta durabilidad</span>
+        </article>
+
+        <article class="card" data-card>
+          <span class="card-num">02</span>
+          <div class="card-body">
+            <h3 class="card-name">DTF</h3>
+            <p class="card-desc">Colores fotográficos sin límite, detalles precisos. Perfecto para diseños complejos y logos multicolor.</p>
+          </div>
+          <span class="card-tag">Sin límite de colores</span>
+        </article>
+
+        <article class="card" data-card>
+          <span class="card-num">03</span>
+          <div class="card-body">
+            <h3 class="card-name">Sublimación</h3>
+            <p class="card-desc">Estampado integrado al tejido. No se agrieta, no se despega. Ideal para ropa deportiva y alto volumen.</p>
+          </div>
+          <span class="card-tag">Integrado al tejido</span>
+        </article>
+
+        <article class="card" data-card>
+          <span class="card-num">04</span>
+          <div class="card-body">
+            <h3 class="card-name">Técnicas Combinadas</h3>
+            <p class="card-desc">Bordado + DTF en la misma prenda. Producción en paralelo o secuencia, según tu diseño.</p>
+          </div>
+          <span class="card-tag">Exclusivo Itza</span>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ─── STATS ─── -->
+  <section class="stats" aria-label="Indicadores">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num" data-counter data-target="2" data-suffix="">0</div>
+        <div class="stat-label">Sucursales en operación</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-counter data-target="4" data-suffix="">0</div>
+        <div class="stat-label">Técnicas de personalización</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-counter data-target="100" data-suffix="%">0%</div>
+        <div class="stat-label">Producción a medida</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESS ─── -->
+  <section id="proceso" aria-label="Proceso">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">// Cómo funciona</span>
+        <h2 class="section-title reveal d1">De la idea al producto terminado.</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step" data-step>
+          <div class="step-num">01</div>
+          <h3 class="step-name">Cotización</h3>
+          <p class="step-desc">Cuéntanos tu proyecto, cantidad y técnica deseada.</p>
+        </div>
+
+        <div class="connector" data-connector></div>
+
+        <div class="process-step" data-step>
+          <div class="step-num">02</div>
+          <h3 class="step-name">Confirmación</h3>
+          <p class="step-desc">Apruebas el precio y registras tu anticipo.</p>
+        </div>
+
+        <div class="connector" data-connector></div>
+
+        <div class="process-step" data-step>
+          <div class="step-num">03</div>
+          <h3 class="step-name">Producción</h3>
+          <p class="step-desc">Nuestro equipo trabaja en tu pedido con precisión.</p>
+        </div>
+
+        <div class="connector" data-connector></div>
+
+        <div class="process-step" data-step>
+          <div class="step-num">04</div>
+          <h3 class="step-name">Entrega</h3>
+          <p class="step-desc">Revisamos calidad y entregamos en sucursal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BRAND QUOTE ─── -->
+  <section class="brand-quote" aria-label="Declaración de marca">
+    <blockquote class="brand-quote-text" id="brandQuote">
+      <span class="q-line"><span data-quote-line>No vendemos prendas.</span></span>
+      <span class="q-line"><span data-quote-line>Hacemos que tu marca se vea como lo que es.</span></span>
+    </blockquote>
+    <div class="brand-quote-attribution reveal">— Itza Clothes, desde México</div>
+  </section>
+
+  <!-- ─── LOCATIONS ─── -->
+  <section id="sucursales" aria-label="Sucursales">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">// Encuéntranos</span>
+        <h2 class="section-title reveal d1">Dos sucursales. Una misma calidad.</h2>
+      </div>
+
+      <div class="locations-grid">
+        <article class="location" data-loc data-dir="left">
+          <div class="loc-status">
+            <span class="dot green" aria-hidden="true"></span>
+            <span>Operando</span>
+          </div>
+          <h3 class="loc-name">Sucursal 1</h3>
+          <div class="loc-kind">Taller de Producción</div>
+          <p class="loc-desc">Levantamiento de pedidos, producción y entrega. El corazón operativo de Itza Clothes.</p>
+          <!-- WhatsApp number placeholder: +521XXXXXXXXXX -->
+          <a class="loc-btn" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.05 4.91A10 10 0 0 0 4.06 18.36L2 22l3.74-1.98a10 10 0 0 0 14.36-8.95 10 10 0 0 0-3.05-6.16Zm-7.06 15.21a8.3 8.3 0 0 1-4.23-1.16l-.3-.18-2.79 1.47.79-2.86-.2-.31a8.3 8.3 0 1 1 6.73 3.04Zm4.55-6.24c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.51.12-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.54.13.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+            </svg>
+            Contactar esta sucursal
+          </a>
+        </article>
+
+        <article class="location" data-loc data-dir="right">
+          <div class="loc-status">
+            <span class="dot amber" aria-hidden="true"></span>
+            <span>Próximamente</span>
+          </div>
+          <h3 class="loc-name">Sucursal 2</h3>
+          <div class="loc-kind">Punto de Venta</div>
+          <p class="loc-desc">Levantamiento de pedidos y entrega. Un nuevo punto para llegar más cerca de ti.</p>
+          <!-- WhatsApp number placeholder: +521XXXXXXXXXX -->
+          <a class="loc-btn" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+            <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.05 4.91A10 10 0 0 0 4.06 18.36L2 22l3.74-1.98a10 10 0 0 0 14.36-8.95 10 10 0 0 0-3.05-6.16Zm-7.06 15.21a8.3 8.3 0 0 1-4.23-1.16l-.3-.18-2.79 1.47.79-2.86-.2-.31a8.3 8.3 0 1 1 6.73 3.04Zm4.55-6.24c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.51.12-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.54.13.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+            </svg>
+            Contactar esta sucursal
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ─── -->
+  <section id="contacto" aria-label="Contacto">
+    <div class="cta-inner">
+      <h2 class="cta-headline">
+        <span class="cta-line cta-line-1"><span data-cta-line>¿Tienes un proyecto?</span></span>
+        <span class="cta-line cta-line-2"><span data-cta-line>Hablemos.</span></span>
+      </h2>
+      <p class="cta-sub reveal">Mándanos un mensaje y te respondemos con una cotización sin compromiso.</p>
+      <div class="cta-btn-wrap reveal d1">
+        <!-- WhatsApp number placeholder: +521XXXXXXXXXX -->
+        <a class="cta-btn" id="magneticBtn" href="https://wa.me/521XXXXXXXXXX" target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.05 4.91A10 10 0 0 0 4.06 18.36L2 22l3.74-1.98a10 10 0 0 0 14.36-8.95 10 10 0 0 0-3.05-6.16Zm-7.06 15.21a8.3 8.3 0 0 1-4.23-1.16l-.3-.18-2.79 1.47.79-2.86-.2-.31a8.3 8.3 0 1 1 6.73 3.04Zm4.55-6.24c-.25-.13-1.47-.72-1.7-.8-.23-.09-.4-.13-.56.13-.17.25-.65.8-.8.97-.15.16-.3.18-.55.06-.25-.13-1.06-.39-2.02-1.24-.74-.66-1.24-1.48-1.39-1.73-.15-.25-.02-.39.11-.51.12-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.86.84-.86 2.04 0 1.21.88 2.37 1 2.54.13.16 1.74 2.65 4.21 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/>
+          </svg>
+          <span>Cotizar por WhatsApp</span>
+        </a>
+      </div>
+      <p class="cta-footnote reveal d2">Sin costo · Sin compromiso · Respuesta en el día</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
 <footer>
-  <div class="ft-top">
-    <div class="ft-logo">ITZA CLOTHESS<small>Fabricantes Directos · Monterrey N.L.</small></div>
-    <nav class="ft-nav"><a href="#about">Nosotros</a><a href="#products">Catálogo</a><a href="#muestras">Muestras</a><a href="#services">Servicios</a><a href="#contact">Contacto</a></nav>
+  <div class="footer-inner">
+    <div class="footer-brand">ITZA Clothes</div>
+    <nav class="footer-nav" aria-label="Pie de página">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#sucursales">Sucursales</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="footer-meta">© 2025 · México</div>
   </div>
-  <div class="ft-bot"><p>© 2025 Itza Clothess · Monterrey, Nuevo León, México</p><span>Fabricantes Directos · Sin Intermediarios</span></div>
 </footer>
 
-<!-- MODAL -->
-<div id="modal">
-  <div class="mbg" id="mbg"></div>
-  <div class="mbox">
-    <div class="m-img"><img id="mImg" src="" alt=""></div>
-    <div class="m-info" id="mInfo"></div>
-    <button class="m-close" id="mClose"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <div class="m-nav">
-      <button class="mnb" id="mPrev"><svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg></button>
-      <button class="mnb" id="mNext"><svg viewBox="0 0 24 24"><polyline points="9,6 15,12 9,18"/></svg></button>
-    </div>
-  </div>
-</div>
+<!-- ─── GSAP ─── -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
 
 <script>
-/* ══════ PRODUCT DATA ══════ */
-const P = [
-  { name:"Playera Cuello Redondo", cat:"playera", badge:"Playera",
-    mat:"50% Poliéster – 50% Algodón / 100% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Suave al tacto","Resistente al lavado","Corte recto clásico","Cuello reforzado","Disponible en 2 composiciones de tela"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#6E6E6E","Gris"],["#163556","Marino"],["#002FA7","Azul Rey"],["#69B3E7","Cielo"],["#007940","Verde"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#F4A7B9","Rosa Palo"],["#4A7C59","Militar"],["#6B4226","Café"],["#A0C878","Lima"],["#00BFAE","Turquesa"],["#5B4A3F","Guinda"],["#D4A5A5","Durazno"],["#B8860B","Mostaza"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/playera-cuello-redondo.jpg", wa:"Playera%20Cuello%20Redondo" },
+(function () {
+  "use strict";
 
-  { name:"Playera Cuello Redondo Manga Larga", cat:"playera", badge:"Playera",
-    mat:"50% Poliéster – 50% Algodón / 100% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Manga larga completa","Cuello redondo reforzado","Suave al tacto","Resistente al lavado","Disponible en 2 composiciones de tela"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#6E6E6E","Gris"],["#163556","Marino"],["#002FA7","Azul Rey"],["#69B3E7","Cielo"],["#007940","Verde"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#F4A7B9","Rosa Palo"],["#4A7C59","Militar"],["#6B4226","Café"],["#A0C878","Lima"],["#5B4A3F","Guinda"],["#D4A5A5","Durazno"],["#B8860B","Mostaza"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/playera-manga-larga.jpg", wa:"Playera%20Manga%20Larga" },
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGSAP = typeof gsap !== "undefined";
+  const hasST = hasGSAP && typeof ScrollTrigger !== "undefined";
+  const hasSplit = hasGSAP && typeof SplitText !== "undefined";
 
-  { name:"Polo Piqué", cat:"polo", badge:"Polo",
-    mat:"50% Poliéster – 50% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Tela piqué texturizada","3 botones en cuello","Acabado formal","Transpirable","Resistente al lavado"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris Oscuro"],["#9E9E9E","Gris"],["#F5F3EF","Blanco"],["#6B4226","Café"],["#1B5E20","Verde Oscuro"],["#163556","Marino"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#00BCD4","Turquesa"],["#002FA7","Azul Rey"],["#A5D6A7","Verde Menta"],["#F48FB1","Rosa"],["#C8102E","Rojo"],["#BCAAA4","Beige"],["#A0C878","Lima"],["#7B2D8B","Morado"],["#8B0000","Vino"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/polo-pique.jpg", wa:"Polo%20Piqu%C3%A9" },
+  if (hasST) gsap.registerPlugin(ScrollTrigger);
+  if (hasSplit) gsap.registerPlugin(SplitText);
 
-  { name:"Polo Piqué Manga Larga", cat:"polo", badge:"Polo",
-    mat:"50% Poliéster – 50% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Tela piqué texturizada","Manga larga completa","3 botones en cuello","Formal y elegante"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris Oscuro"],["#9E9E9E","Gris"],["#F5F3EF","Blanco"],["#163556","Marino"],["#002FA7","Azul Rey"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#1B5E20","Verde"],["#7B2D8B","Morado"],["#6B4226","Café"],["#8B0000","Vino"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/polo-pique-ml.jpg", wa:"Polo%20Piqu%C3%A9%20Manga%20Larga" },
+  /* ─────────────────────────────────────────────────────────
+     CUSTOM CURSOR
+     ───────────────────────────────────────────────────────── */
+  const cursor = document.getElementById("cursor");
+  const isTouch = window.matchMedia("(hover: none)").matches;
 
-  { name:"Polo Dri-Fit", cat:"polo", badge:"Dri-Fit",
-    mat:"100% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Tecnología Dri-Fit transpirable","Evacuación de humedad","Ultra ligero","Secado rápido","Ideal para actividades físicas y uniformes deportivos"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris"],["#002FA7","Azul Rey"],["#FF6900","Naranja"],["#1B5E20","Verde"],["#C8102E","Rojo"],["#FFC72C","Amarillo"],["#F5F3EF","Blanco"],["#163556","Marino"],["#7B2D8B","Morado"],["#00BCD4","Turquesa"],["#E40695","Fucsia"],["#A0C878","Lima"],["#69B3E7","Cielo"],["#8B0000","Vino"],["#FF69B4","Rosa"],["#B8860B","Mostaza"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/polo-dri-fit.jpg", wa:"Polo%20Dri-Fit" },
+  if (cursor && !isTouch && hasGSAP) {
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3" });
 
-  { name:"Polo Dri-Fit Manga Larga", cat:"polo", badge:"Dri-Fit",
-    mat:"100% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Tecnología Dri-Fit transpirable","Manga larga","Evacuación de humedad","Secado rápido","Protección solar UV"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris"],["#002FA7","Azul Rey"],["#163556","Marino"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#1B5E20","Verde"],["#FFC72C","Amarillo"],["#F5F3EF","Blanco"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#A0C878","Lima"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/polo-dri-fit-ml.jpg", wa:"Polo%20Dri-Fit%20Manga%20Larga" },
+    window.addEventListener("mousemove", (e) => {
+      xTo(e.clientX);
+      yTo(e.clientY);
+    });
 
-  { name:"Polo Dri-Fit Combinada", cat:"polo", badge:"Dri-Fit",
-    mat:"100% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["2 tonos combinados","Tecnología Dri-Fit","Diseño deportivo premium","Evacuación de humedad","Secado rápido"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris"],["#002FA7","Azul Rey"],["#163556","Marino"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#1B5E20","Verde"],["#FFC72C","Amarillo"],["#F5F3EF","Blanco"],["#7B2D8B","Morado"],["#A0C878","Lima"],["#00BCD4","Turquesa"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/polo-dri-fit-combinada.jpg", wa:"Polo%20Dri-Fit%20Combinada" },
+    const hoverables = document.querySelectorAll("a, button, .card, .location, .loc-btn");
+    hoverables.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("hover");
+        gsap.to(cursor, { scale: 2.2, duration: 0.25, ease: "power3.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hover");
+        gsap.to(cursor, { scale: 1, duration: 0.25, ease: "power3.out" });
+      });
+    });
 
-  { name:"Polo Dri-Fit Combinada Manga Larga", cat:"polo", badge:"Dri-Fit",
-    mat:"100% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["2 tonos combinados","Manga larga completa","Tecnología Dri-Fit","Evacuación de humedad","Protección solar UV"],
-    colors:[["#0D0D0D","Negro"],["#4A4A4A","Gris"],["#002FA7","Azul Rey"],["#163556","Marino"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#1B5E20","Verde"],["#FFC72C","Amarillo"],["#F5F3EF","Blanco"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/polo-dri-fit-combinada-ml.jpg", wa:"Polo%20Dri-Fit%20Combinada%20ML" },
+    // Toggle subtle modes for hero & final CTA (dark sections)
+    const darkSections = document.querySelectorAll("#hero, #contacto, .brand-quote");
+    darkSections.forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("dark-section"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("dark-section"));
+    });
 
-  { name:"Jersey Beisbolera", cat:"playera", badge:"Jersey",
-    mat:"100% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero","Niños"],
-    props:["Corte beisbolero clásico","Botones frontales","Costuras en contraste","Múltiples diseños disponibles","Ideal para equipos deportivos"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#C8102E","Rojo"],["#163556","Marino"],["#002FA7","Azul Rey"],["#4A4A4A","Gris"],["#1B5E20","Verde"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#7B2D8B","Morado"],["#8B0000","Vino"],["#00BCD4","Turquesa"],["#E40695","Fucsia"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/jersey-beisbolera.jpg", wa:"Jersey%20Beisbolera" },
+    // Difference mode over bright content (stat numbers, accent text)
+    const diffTargets = document.querySelectorAll(".stat-num, .line-accent, .cta-line-2");
+    diffTargets.forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("diff-mode"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("diff-mode"));
+    });
+  } else if (cursor) {
+    cursor.style.display = "none";
+    document.body.style.cursor = "auto";
+  }
 
-  { name:"Camisa de Vestir Manga Larga", cat:"playera", badge:"Camisa",
-    mat:"100% Algodón / 60% Algodón – 40% Poliéster",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero"],
-    props:["Corte semi-entallado","Puños con botón","Cuello clásico","Carta completa de colores disponible","Variedad de patrones y telas"],
-    colors:[["#F5F3EF","Blanco"],["#69B3E7","Cielo"],["#FADADD","Rosa Palo"],["#163556","Marino"],["#0D0D0D","Negro"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#9E9E9E","Gris"],["#1B5E20","Verde"],["#6B4226","Café"],["#7B2D8B","Morado"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/camisa-vestir.jpg", wa:"Camisa%20de%20Vestir" },
+  /* ─────────────────────────────────────────────────────────
+     NAV — hide on scroll down, show on scroll up
+     ───────────────────────────────────────────────────────── */
+  const nav = document.getElementById("nav");
+  let lastScroll = 0;
+  let ticking = false;
 
-  { name:"Camisola Mezclilla", cat:"industrial", badge:"Mezclilla",
-    mat:"100% Algodón · 14oz",
-    sizes:"XS · S · M · L · XL · 2XL",
-    for:["Unisex"],
-    props:["Mezclilla pesada 14oz","Resistente a roces y desgaste","Con cinta reflectiva disponible","Botones resistentes","Ideal para trabajo industrial"],
-    colors:[["#2C4A7C","Mezclilla Azul"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/camisola-mezclilla.jpg", wa:"Camisola%20Mezclilla" },
-
-  { name:"Camisa Mezclilla Lisa", cat:"industrial", badge:"Mezclilla",
-    mat:"100% Algodón · 7oz",
-    sizes:"XS · S · M · L · XL · 2XL",
-    for:["Dama","Caballero"],
-    props:["Mezclilla ligera 7oz","Acabado liso sin textura","Uso casual y laboral","Cómoda y transpirable"],
-    colors:[["#3A5FA0","Mezclilla Lisa"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/camisa-mezclilla-lisa.jpg", wa:"Camisa%20Mezclilla%20Lisa" },
-
-  { name:"Pantalón Mezclilla", cat:"pantalon", badge:"Pantalón",
-    mat:"Mezclilla 14oz",
-    sizes:"28 · 30 · 32 · 34 · 36 · 38 · 40 · 42 · 44",
-    for:["Unisex"],
-    props:["Mezclilla pesada 14oz","Alta resistencia al desgaste","Con cinta reflectiva disponible","Cinturilla reforzada","Bolsillos frontales y traseros"],
-    colors:[["#2C4A7C","Mezclilla Azul"]],
-    pers:["Bordado","Serigrafía"],
-    img:"img/products/pantalon-mezclilla.jpg", wa:"Pantalón%20Mezclilla" },
-
-  { name:"Pantalón Mezclilla Liso Casual", cat:"pantalon", badge:"Pantalón",
-    mat:"Mezclilla Lisa",
-    sizes:"28 · 30 · 32 · 34 · 36 · 38 · 40 · 42 · 44",
-    for:["Unisex"],
-    props:["Mezclilla lisa sin textura marcada","Corte clásico casual","Cinturilla con presillas","Bolsillos frontales y traseros"],
-    colors:[["#3A5FA0","Mezclilla Clara"]],
-    pers:["Bordado"],
-    img:"img/products/pantalon-mezclilla-casual.jpg", wa:"Pantalón%20Mezclilla%20Casual" },
-
-  { name:"Pantalón Cargo", cat:"pantalon", badge:"Pantalón",
-    mat:"Gabardina resistente",
-    sizes:"28 · 30 · 32 · 34 · 36 · 38 · 40 · 42 · 44",
-    for:["Unisex"],
-    props:["Múltiples bolsillos laterales","Bolsillos con velcro","Cinta reflectiva disponible","Alta resistencia","Ideal para trabajo en campo"],
-    colors:[["#163556","Azul Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#8B0000","Guinda"],["#6B4226","Café"],["#C8102E","Rojo"],["#B8860B","Mostaza"]],
-    pers:["Bordado"],
-    img:"img/products/pantalon-cargo.jpg", wa:"Pantalón%20Cargo" },
-
-  { name:"Pantalón de Vestir Casual", cat:"pantalon", badge:"Pantalón",
-    mat:"Tela vestir",
-    sizes:"28 · 30 · 32 · 34 · 36 · 38 · 40 · 42 · 44",
-    for:["Unisex"],
-    props:["Corte recto formal","Tela lisa de vestir","Cinturilla con presillas","Bolsillos delanteros y traseros","Uso corporativo"],
-    colors:[["#9E9E9E","Gris"],["#163556","Marino"],["#0D0D0D","Negro"]],
-    pers:["Bordado"],
-    img:"img/products/pantalon-vestir.jpg", wa:"Pantalón%20de%20Vestir" },
-
-  { name:"Sudadera Básica Cuello Redondo", cat:"sudadera", badge:"Sudadera",
-    mat:"50% Poliéster – 50% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Adulto Unisex","Niños"],
-    props:["Cuello redondo reforzado","Tela gruesa y abrigadora","Puños y basta elastizados","Sin capucha","Excelente para uniformes institucionales"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#9E9E9E","Gris"],["#163556","Marino"],["#002FA7","Azul Rey"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#1B5E20","Verde"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#00BCD4","Turquesa"],["#8B0000","Vino"],["#6B4226","Café"],["#A0C878","Lima"],["#4A7C59","Militar"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/sudadera-basica.jpg", wa:"Sudadera%20Básica" },
-
-  { name:"Sudadera Completa con Capucha", cat:"sudadera", badge:"Sudadera",
-    mat:"50% Poliéster – 50% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Adulto Unisex","Niños"],
-    props:["Capucha con cordón","Bolsillo canguro frontal","Tela gruesa y abrigadora","Puños elastizados","Bordado o logo frontal disponible"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#9E9E9E","Gris"],["#163556","Marino"],["#002FA7","Azul Rey"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#1B5E20","Verde"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#00BCD4","Turquesa"],["#8B0000","Vino"],["#4A7C59","Militar"],["#A0C878","Lima"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/sudadera-completa.jpg", wa:"Sudadera%20con%20Capucha" },
-
-  { name:"Sudadera de Cierre con Capucha", cat:"sudadera", badge:"Sudadera",
-    mat:"50% Poliéster – 50% Algodón",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Adulto Unisex","Niños"],
-    props:["Cierre frontal completo","Capucha con cordón","Bolsillo canguro","Tela gruesa abrigadora","Logo disponible en pecho"],
-    colors:[["#0D0D0D","Negro"],["#163556","Marino"],["#002FA7","Azul Rey"],["#C8102E","Rojo"],["#1B5E20","Verde"],["#7B2D8B","Morado"],["#9E9E9E","Gris"],["#F5F3EF","Blanco"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#00BCD4","Turquesa"],["#E40695","Fucsia"],["#8B0000","Vino"],["#BCAAA4","Beige"],["#A0C878","Lima"]],
-    pers:["Bordado Computarizado","Impresión DTF","Impresión DTF-UV"],
-    img:"img/products/sudadera-cierre.jpg", wa:"Sudadera%20de%20Cierre" },
-
-  { name:"Chamarra Neopreno", cat:"sudadera", badge:"Chamarra",
-    mat:"90% Poliéster – 10% Licra · Antifluidos",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero"],
-    props:["Tela neopreno antifluidos","Cierre frontal YKK","Cuello alto protector","Bolsillos laterales con cierre","Ideal para área médica, cocina y laboratorio"],
-    colors:[["#0D0D0D","Negro"],["#163556","Marino"],["#002FA7","Azul Rey"],["#8B0000","Guinda"],["#F5F3EF","Blanco"],["#9E9E9E","Gris"],["#C3C3C3","Gris Claro"],["#C8102E","Rojo"],["#1B5E20","Verde"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/chamarra-neopreno.jpg", wa:"Chamarra%20Neopreno" },
-
-  { name:"Overol", cat:"industrial", badge:"Industrial",
-    mat:"100% Algodón · Gabardina",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Unisex"],
-    props:["Gabardina 100% algodón resistente","Cinta reflectiva disponible","Múltiples bolsillos funcionales","Cierre frontal completo","Certificable para industria"],
-    colors:[["#163556","Azul Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#6B4226","Café"],["#8B6914","Marrón"],["#C8102E","Rojo"],["#FFC72C","Amarillo"],["#FF6900","Naranja"],["#1B5E20","Verde"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/overol.jpg", wa:"Overol" },
-
-  { name:"Chaleco Industrial", cat:"industrial", badge:"Industrial",
-    mat:"100% Algodón · Gabardina",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Unisex"],
-    props:["Gabardina 100% algodón","Sin mangas para mayor movilidad","Múltiples bolsillos","Cinta reflectiva disponible","Alta visibilidad disponible"],
-    colors:[["#1B5E20","Verde Oscuro"],["#002FA7","Azul Rey"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#C8102E","Rojo"],["#FFC72C","Amarillo"],["#FF6900","Naranja"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/chaleco-industrial.jpg", wa:"Chaleco%20Industrial" },
-
-  { name:"Quirúrgico / Filipinas", cat:"industrial", badge:"Médico",
-    mat:"Tela antifluidos · Transpirable",
-    sizes:"XS · S · M · L · XL · 2XL · 3XL · 4XL · 5XL",
-    for:["Dama","Caballero"],
-    props:["Tela antifluidos certificada","Corte recto / Scrubs","Transpirable y cómodo","Bolsillos funcionales","Lavado industrial resistente"],
-    colors:[["#163556","Azul Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#FFC72C","Amarillo"],["#E40695","Fucsia"],["#F4A7B9","Rosa Palo"],["#F5F3EF","Blanco"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/quirurgico.jpg", wa:"Quirúrgico%20Filipinas" },
-
-  { name:"Mandil Completo", cat:"accesorio", badge:"Mandil",
-    mat:"Varios materiales · Cinta ajustable",
-    sizes:"Unitalla",
-    for:["Unisex"],
-    props:["Cobertura completa","Cinta ajustable al cuello y cintura","Bolsillos frontales","Resistente a líquidos","Ideal para cocina, estética y servicio"],
-    colors:[["#163556","Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#6B4226","Café"],["#8B6914","Marrón"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#F5F3EF","Blanco"],["#1B5E20","Verde"],["#1B5E20","Verde Oscuro"],["#002FA7","Azul Rey"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#F4A7B9","Rosa Palo"],["#00BCD4","Turquesa"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/mandil-completo.jpg", wa:"Mandil%20Completo" },
-
-  { name:"Mandil Corto", cat:"accesorio", badge:"Mandil",
-    mat:"100% Poliéster / 60% Algodón – 40% Poliéster · Cinta ajustable",
-    sizes:"Unitalla",
-    for:["Unisex"],
-    props:["Cobertura de cintura a rodilla","Cinta ajustable","Bolsillos frontales","Resistente a líquidos","Ideal para meseros y bartenders"],
-    colors:[["#163556","Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#6B4226","Café"],["#8B6914","Marrón"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#F5F3EF","Blanco"],["#1B5E20","Verde"],["#002FA7","Azul Rey"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#00BCD4","Turquesa"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/mandil-corto.jpg", wa:"Mandil%20Corto" },
-
-  { name:"Estola", cat:"accesorio", badge:"Graduación",
-    mat:"Satén – Poliéster",
-    sizes:"Niño / Adulto",
-    for:["Niños","Adultos","Unisex"],
-    props:["Tela satén brillante","Acabado formal de graduación","Personalizable con nombre o institución","Peso ligero","Disponible en todos los colores"],
-    colors:[["#163556","Marino"],["#4A4A4A","Gris"],["#0D0D0D","Negro"],["#C8102E","Rojo"],["#FF6900","Naranja"],["#F5F3EF","Blanco"],["#1B5E20","Verde"],["#002FA7","Azul Rey"],["#7B2D8B","Morado"],["#E40695","Fucsia"],["#FFC72C","Amarillo"],["#00BCD4","Turquesa"]],
-    pers:["Bordado Computarizado","Impresión DTF"],
-    img:"img/products/estola.jpg", wa:"Estola" },
-
-  { name:"Gorra Trucker", cat:"accesorio", badge:"Gorra",
-    mat:"Panel frontal tela · Malla posterior",
-    sizes:"Ajustable (adulto)",
-    for:["Unisex"],
-    props:["Panel frontal estructurado","Malla trasera transpirable","Broche ajustable snapback","Visera curvada","Ideal para bordado de logo"],
-    colors:[["#163556","Marino/Blanco"],["#C8102E","Rojo/Negro"],["#8B0000","Guinda"],["#1B5E20","Verde"],["#FF69B4","Rosa/Blanco"],["#00BCD4","Turquesa"],["#002FA7","Azul"],["#1B5E20","Verde/Negro"],["#0D0D0D","Negro/Negro"],["#FF6900","Naranja"],["#F5F3EF","Blanco"]],
-    pers:["Bordado Computarizado"],
-    img:"img/products/gorra-trucker.jpg", wa:"Gorra%20Trucker" },
-
-  { name:"Gorra Indomable", cat:"accesorio", badge:"Gorra",
-    mat:"Tela estructurada · Malla posterior",
-    sizes:"Ajustable (adulto)",
-    for:["Unisex"],
-    props:["Diseño Richardson style","Perfil bajo estructurado","Broche ajustable","Costuras contrastantes","Amplia variedad de colores combinados"],
-    colors:[["#163556","Marino"],["#1B5E20","Verde"],["#C8102E","Rojo"],["#002FA7","Azul"],["#FF6900","Naranja"],["#0D0D0D","Negro"],["#6B4226","Café"],["#7B2D8B","Morado"],["#FFC72C","Amarillo"]],
-    pers:["Bordado Computarizado"],
-    img:"img/products/gorra-indomable.jpg", wa:"Gorra%20Indomable" },
-
-  { name:"Gorra Bella", cat:"accesorio", badge:"Gorra",
-    mat:"Tela estructurada",
-    sizes:"Ajustable (adulto)",
-    for:["Unisex"],
-    props:["Perfil bajo clásico","Sin malla posterior","Cierre ajustable","Visera curvada","Perfecta para bordado corporativo"],
-    colors:[["#C8102E","Rojo"],["#002FA7","Azul Rey"],["#163556","Marino"],["#F5F3EF","Blanco"],["#1B5E20","Verde"],["#6B4226","Café"],["#7B2D8B","Morado"],["#0D0D0D","Negro"]],
-    pers:["Bordado Computarizado"],
-    img:"img/products/gorra-bella.jpg", wa:"Gorra%20Bella" },
-
-  { name:"Termos", cat:"accesorio", badge:"Termos",
-    mat:"Acero inoxidable (consultar modelos)",
-    sizes:"Varios tamaños",
-    for:["Unisex"],
-    props:["Acero inoxidable doble pared","Mantiene temperatura hasta 12h","Diseño slim moderno","Tapa con sello hermético","Personalizable con logo"],
-    colors:[["#0D0D0D","Negro"],["#F5F3EF","Blanco"],["#4A4A4A","Gris"],["#C8102E","Rojo"],["#163556","Marino"],["#C49A3C","Dorado"]],
-    pers:["Grabado láser","Impresión UV"],
-    img:"img/products/termos.jpg", wa:"Cat%C3%A1logo%20Termos" }
-];
-
-/* ══════ CATEGORIES ══════ */
-const CATS = [{k:'all',l:'Todos'},{k:'playera',l:'Playeras'},{k:'polo',l:'Polo'},{k:'pantalon',l:'Pantalones'},{k:'sudadera',l:'Sudaderas'},{k:'industrial',l:'Industrial'},{k:'accesorio',l:'Accesorios'}];
-
-/* ══════ MARQUEE ══════ */
-const MQ = ['⚾ Jersey Beisbolera','👔 Camisa de Vestir','⚡ Polo Dri-Fit','👕 Polo Piqué','🧥 Chamarra Neopreno','🦺 Chaleco Industrial','🏥 Quirúrgico Scrubs','🎓 Estola','👖 Pantalón Cargo','🧢 Gorras','☕ Termos','👨‍🍳 Mandil','🧥 Overol Industrial'];
-const mqt=document.getElementById('mqt');
-[...MQ,...MQ].forEach(t=>{const c=document.createElement('div');c.className='mchip';const[i,...w]=t.split(' ');c.innerHTML=`<span style="font-size:16px">${i}</span>${w.join(' ')}`;mqt.appendChild(c);});
-
-/* ══════ MUESTRAS ══════ */
-const MUESTRAS = [18,19,20,21,22,23,24,25,26,27,28];
-const mg = document.getElementById('muestrasGrid');
-MUESTRAS.forEach(n=>{
-  const d=document.createElement('div');d.className='muestra-card';
-  d.innerHTML=`<img src="img/page_${String(n).padStart(2,'0')}.jpg" alt="Muestra ${n}" loading="lazy">`;
-  d.onclick=()=>openCatalogImg(`img/page_${String(n).padStart(2,'0')}.jpg`,`Muestra diseño referencia`);
-  mg.appendChild(d);
-});
-
-/* ══════ FILTER BUTTONS ══════ */
-const fr=document.getElementById('filtRow');
-CATS.forEach(({k,l})=>{
-  const b=document.createElement('button');b.className='fb'+(k==='all'?' on':'');
-  b.textContent=l;b.onclick=()=>{document.querySelectorAll('.fb').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderCards(k);};
-  fr.appendChild(b);
-});
-
-/* ══════ RENDER CARDS ══════ */
-let visible=[];
-function renderCards(cat='all'){
-  const grid=document.getElementById('pgrid');
-  grid.innerHTML='';
-  visible=cat==='all'?P:P.filter(p=>p.cat===cat);
-  visible.forEach((p,i)=>{
-    const c=document.createElement('div');c.className='pcard';
-    c.innerHTML=`
-      <div class="pcard-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" style="object-position:center 15%">
-        <div class="pcard-ov"><div class="ov-ring"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div><div class="ov-txt">Ver detalles</div></div>
-        <span class="pcard-badge">${p.badge}</span>
-      </div>
-      <div class="pcard-body">
-        <div class="pcard-name">${p.name}</div>
-        <div class="pcard-mat">${p.mat}</div>
-        <div class="pcard-colors">${p.colors.slice(0,12).map(([c,n])=>`<span class="csw" style="background:${c}" title="${n}"></span>`).join('')}${p.colors.length>12?`<span style="font-size:9px;color:var(--muted);align-self:center">+${p.colors.length-12}</span>`:''}</div>
-        <div class="pcard-tags">${p.for.map(f=>`<span class="ptag">${f}</span>`).join('')}</div>
-        <div class="pcard-foot">
-          <div class="pcard-sz"><b>Tallas:</b> ${p.sizes.split('·')[0].trim()} – ${p.sizes.split('·').pop().trim()}</div>
-          <a class="pcard-wa" href="https://wa.me/528118269338?text=Quiero%20cotizar%20${p.wa}" target="_blank" onclick="event.stopPropagation()">Cotizar →</a>
-        </div>
-      </div>`;
-    c.addEventListener('click',()=>openModal(i));
-    setTimeout(()=>c.classList.add('shown'),i*55+80);
-    grid.appendChild(c);
-  });
-}
-renderCards();
-
-/* ══════ MODAL ══════ */
-let curIdx=0;
-const modal=document.getElementById('modal');
-const mImg=document.getElementById('mImg');
-const mInfo=document.getElementById('mInfo');
-
-function openModal(idx){
-  curIdx=idx;fillModal(visible[idx]);
-  modal.classList.add('open');document.body.style.overflow='hidden';
-}
-function openCatalogImg(src,name){
-  mImg.src=src;
-  mInfo.innerHTML=`<div class="m-badge">Vista Catálogo</div><div class="m-name">${name}</div><div class="m-section"><div class="m-slabel">Nota</div><p class="m-mat">Esta página muestra diseños y colores de referencia. Se pueden fabricar más combinaciones.</p></div><div class="m-cta-row"><a class="m-wa" href="https://wa.me/528118269338?text=Vi%20una%20muestra%20y%20quiero%20cotizar" target="_blank">💬 Cotizar por WhatsApp</a></div>`;
-  modal.classList.add('open');document.body.style.overflow='hidden';
-}
-function fillModal(p){
-  mImg.src=p.img;mImg.alt=p.name;
-  mInfo.innerHTML=`
-    <span class="m-badge">${p.badge}</span>
-    <h2 class="m-name">${p.name}</h2>
-    <div class="m-section">
-      <div class="m-slabel">Material</div>
-      <p class="m-mat">${p.mat}</p>
-    </div>
-    <div class="m-section">
-      <div class="m-slabel">Tallas disponibles</div>
-      <p class="m-mat" style="font-weight:600;color:var(--navy)">${p.sizes}</p>
-    </div>
-    <div class="m-section">
-      <div class="m-slabel">Para quién</div>
-      <div class="m-row">${p.for.map(f=>`<span class="m-tag">${f}</span>`).join('')}</div>
-    </div>
-    <div class="m-section">
-      <div class="m-slabel">Colores disponibles (${p.colors.length})</div>
-      <div class="m-colors">${p.colors.map(([c,n])=>`<span class="mcsw" style="background:${c}" title="${n}"></span>`).join('')}</div>
-      <p style="font-size:10px;color:var(--muted);margin-top:8px">Pasa el cursor sobre cada color para ver el nombre</p>
-    </div>
-    <div class="m-section">
-      <div class="m-slabel">Características</div>
-      <div class="m-props">${p.props.map(pr=>`<div class="m-prop">${pr}</div>`).join('')}</div>
-    </div>
-    <div class="m-section">
-      <div class="m-slabel">Personalización disponible</div>
-      <div class="m-row">${p.pers.map(pe=>`<span class="m-tag">✦ ${pe}</span>`).join('')}</div>
-    </div>
-    <div class="m-cta-row">
-      <a class="m-wa" href="https://wa.me/528118269338?text=Quiero%20cotizar%20${p.wa}" target="_blank">💬 Cotizar por WhatsApp</a>
-    </div>`;
-}
-function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
-document.getElementById('mbg').onclick=closeModal;
-document.getElementById('mClose').onclick=closeModal;
-document.getElementById('mPrev').onclick=()=>{curIdx=(curIdx-1+visible.length)%visible.length;fillModal(visible[curIdx]);};
-document.getElementById('mNext').onclick=()=>{curIdx=(curIdx+1)%visible.length;fillModal(visible[curIdx]);};
-document.addEventListener('keydown',e=>{
-  if(!modal.classList.contains('open'))return;
-  if(e.key==='Escape')closeModal();
-  if(e.key==='ArrowLeft'){curIdx=(curIdx-1+visible.length)%visible.length;fillModal(visible[curIdx]);}
-  if(e.key==='ArrowRight'){curIdx=(curIdx+1)%visible.length;fillModal(visible[curIdx]);}
-});
-
-/* ── Touch swipe for modal ── */
-(function(){
-  let tx=0,ty=0;
-  const mbox=document.querySelector('.mbox');
-  mbox.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY;},{passive:true});
-  mbox.addEventListener('touchend',e=>{
-    if(!modal.classList.contains('open'))return;
-    const dx=e.changedTouches[0].clientX-tx;
-    const dy=e.changedTouches[0].clientY-ty;
-    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>44){
-      if(dx<0){curIdx=(curIdx+1)%visible.length;fillModal(visible[curIdx]);}
-      else{curIdx=(curIdx-1+visible.length)%visible.length;fillModal(visible[curIdx]);}
+  function onScroll() {
+    const y = window.scrollY;
+    if (y > lastScroll && y > 100) {
+      nav.classList.add("hidden");
+    } else {
+      nav.classList.remove("hidden");
     }
-  },{passive:true});
+    lastScroll = y;
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ─────────────────────────────────────────────────────────
+     GLOBAL REVEAL OBSERVER
+     ───────────────────────────────────────────────────────── */
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("visible"));
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     HERO ENTRANCE
+     ───────────────────────────────────────────────────────── */
+  function heroEntrance() {
+    if (!hasGSAP) return;
+
+    const lines = document.querySelectorAll(".hero-line [data-split]");
+    const splits = [];
+
+    if (hasSplit && !reduceMotion) {
+      lines.forEach((line) => {
+        const s = new SplitText(line, { type: "chars,words" });
+        splits.push(s);
+      });
+    }
+
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+
+    if (splits.length === 3) {
+      tl.from(splits[0].chars, {
+        y: 80, opacity: 0, rotateX: -40,
+        stagger: 0.025, duration: 1.0
+      }, 0);
+      tl.from(splits[1].chars, {
+        y: 80, opacity: 0, rotateX: -40,
+        stagger: 0.025, duration: 1.0
+      }, 0.45);
+      tl.from(splits[2].chars, {
+        y: 60, opacity: 0, skewX: 6,
+        stagger: 0.03, duration: 1.0, ease: "power4.out"
+      }, 0.9);
+    } else {
+      tl.from(".hero-line", { y: 60, opacity: 0, stagger: 0.15, duration: 0.9 });
+    }
+
+    tl.to("#heroLabel", { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.1)
+      .from("#heroLabel", { x: -12, duration: 0.6, ease: "power3.out" }, 0.1);
+
+    tl.to("#heroSub", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, "-=0.4")
+      .from("#heroSub", { y: 24, duration: 0.7, ease: "power3.out" }, "<");
+
+    tl.to(".hero-cta > *", { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" }, "-=0.5")
+      .from(".hero-cta > *", { y: 20, duration: 0.6, stagger: 0.1, ease: "power3.out" }, "<");
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     SERVICE CARDS
+     ───────────────────────────────────────────────────────── */
+  function cardsAnim() {
+    if (!hasST) return;
+    const cards = document.querySelectorAll("[data-card]");
+    gsap.from(cards, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.12,
+      scrollTrigger: {
+        trigger: "#servicios .cards-grid",
+        start: "top 85%"
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     STAT COUNTERS
+     ───────────────────────────────────────────────────────── */
+  function statCounters() {
+    if (!hasST) return;
+    const counters = document.querySelectorAll("[data-counter]");
+
+    ScrollTrigger.create({
+      trigger: ".stats",
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        counters.forEach((el, i) => {
+          const target = parseInt(el.dataset.target, 10);
+          const suffix = el.dataset.suffix || "";
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 1.8,
+            delay: i * 0.2,
+            ease: "power2.out",
+            snap: { val: 1 },
+            onUpdate() {
+              el.innerText = Math.round(obj.val) + suffix;
+            }
+          });
+        });
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     PROCESS — steps + connectors
+     ───────────────────────────────────────────────────────── */
+  function processAnim() {
+    if (!hasST) return;
+    const steps = document.querySelectorAll("[data-step]");
+    const connectors = document.querySelectorAll("[data-connector]");
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+    gsap.from(steps, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: "#proceso .process-grid",
+        start: "top 80%"
+      }
+    });
+
+    gsap.to(connectors, {
+      width: isDesktop ? "100%" : "1px",
+      height: isDesktop ? "1px" : "32px",
+      duration: 0.8,
+      ease: "power2.inOut",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: "#proceso .process-grid",
+        start: "top 75%"
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     BRAND QUOTE
+     ───────────────────────────────────────────────────────── */
+  function brandQuoteAnim() {
+    if (!hasST) return;
+    const lines = document.querySelectorAll("[data-quote-line]");
+
+    if (hasSplit && !reduceMotion) {
+      lines.forEach((line) => {
+        const split = new SplitText(line, { type: "lines" });
+        gsap.from(split.lines, {
+          y: 40,
+          opacity: 0,
+          skewY: 1.5,
+          stagger: 0.12,
+          duration: 1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: line,
+            start: "top 85%"
+          }
+        });
+      });
+    } else {
+      gsap.from(lines, {
+        y: 40,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".brand-quote",
+          start: "top 85%"
+        }
+      });
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     LOCATIONS — x reveal
+     ───────────────────────────────────────────────────────── */
+  function locationsAnim() {
+    if (!hasST) return;
+    const cards = document.querySelectorAll("[data-loc]");
+    cards.forEach((card, i) => {
+      const dir = card.dataset.dir === "right" ? 40 : -40;
+      gsap.from(card, {
+        x: dir,
+        opacity: 0,
+        duration: 0.9,
+        delay: i * 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#sucursales .locations-grid",
+          start: "top 80%"
+        }
+      });
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     FINAL CTA — headline
+     ───────────────────────────────────────────────────────── */
+  function finalCtaAnim() {
+    if (!hasST) return;
+    const lines = document.querySelectorAll("[data-cta-line]");
+
+    if (hasSplit && !reduceMotion) {
+      const splits = [];
+      lines.forEach((line) => splits.push(new SplitText(line, { type: "chars,words" })));
+
+      const allChars = splits.reduce((acc, s) => acc.concat(s.chars), []);
+      gsap.from(allChars, {
+        y: 80,
+        opacity: 0,
+        rotateX: -40,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.025,
+        scrollTrigger: {
+          trigger: "#contacto",
+          start: "top 70%"
+        }
+      });
+    } else {
+      gsap.from(lines, {
+        y: 60,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1.2,
+        ease: "expo.out",
+        scrollTrigger: {
+          trigger: "#contacto",
+          start: "top 70%"
+        }
+      });
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     MAGNETIC BUTTON
+     ───────────────────────────────────────────────────────── */
+  function magneticBtn() {
+    if (!hasGSAP || isTouch) return;
+    const btn = document.getElementById("magneticBtn");
+    if (!btn) return;
+
+    const xTo = gsap.quickTo(btn, "x", { duration: 0.4, ease: "power3.out" });
+    const yTo = gsap.quickTo(btn, "y", { duration: 0.4, ease: "power3.out" });
+    const radius = 120;
+
+    window.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.hypot(dx, dy);
+
+      if (dist < radius) {
+        xTo(dx * 0.35);
+        yTo(dy * 0.35);
+      } else {
+        xTo(0);
+        yTo(0);
+      }
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "power3.out" });
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     INIT
+     ───────────────────────────────────────────────────────── */
+  function init() {
+    heroEntrance();
+    cardsAnim();
+    statCounters();
+    processAnim();
+    brandQuoteAnim();
+    locationsAnim();
+    finalCtaAnim();
+    magneticBtn();
+
+    if (hasST) ScrollTrigger.refresh();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Refresh ScrollTrigger after fonts load to correct positions
+  if ("fonts" in document) {
+    document.fonts.ready.then(() => { if (hasST) ScrollTrigger.refresh(); });
+  }
 })();
-
-/* ══════ CURSOR (desktop only) ══════ */
-const isTouch=window.matchMedia('(hover:none)').matches;
-if(!isTouch){
-  const cd=document.querySelector('.cd'),cr=document.querySelector('.cr');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
-  document.addEventListener('mousedown',()=>document.body.classList.add('clk'));
-  document.addEventListener('mouseup',()=>document.body.classList.remove('clk'));
-  document.querySelectorAll('a,button,.pcard,.scard,.muestra-card').forEach(el=>{
-    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-  });
-  (function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
-}
-
-/* ══════ NAV + PROGRESS ══════ */
-const nav=document.getElementById('nav'),prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('on',scrollY>60);
-  prog.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
-});
-
-/* ══════ REVEAL ══════ */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08});
-document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
-
-/* ══════ MOBILE ══════ */
-function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');}
-
-/* ══════ FORM ══════ */
-function sendWA(e){
-  e.preventDefault();const f=e.target;
-  const n=f.querySelector('input[type=text]').value,t=f.querySelector('input[type=tel]').value,
-        p=f.querySelector('select').value,d=f.querySelector('textarea').value;
-  window.open(`https://wa.me/528118269338?text=${encodeURIComponent(`Hola Itza Clothess! 👋\n\nNombre: ${n}\nTeléfono: ${t}\nProducto: ${p}\n\nDetalles: ${d}\n\n¡Gracias!`)}`,'_blank');
-}
 </script>
+
 </body>
 </html>
